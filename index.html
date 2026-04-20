@@ -4,31 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aaron Michael Price | Independent App Developer</title>
-    <meta name="description" content="Independent app developer shipping polished mobile tools, thoughtful product design, and responsive support.">
-    <meta name="theme-color" content="#f4efe5">
+    <meta name="description" content="Independent app developer building thoughtful apps, publishing product notes, and offering responsive support.">
+    <meta name="theme-color" content="#f7f7f3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f4efe5;
-            --bg-soft: #efe7da;
-            --surface: rgba(255, 252, 247, 0.82);
-            --surface-strong: #fffaf2;
-            --ink: #1e1a17;
-            --ink-soft: #5f564e;
-            --line: rgba(30, 26, 23, 0.12);
-            --accent: #c64d28;
-            --accent-deep: #8f3115;
-            --accent-soft: #ffd6c5;
-            --secondary: #11453b;
-            --secondary-soft: #d6ebe4;
-            --shadow: 0 30px 80px rgba(66, 42, 24, 0.14);
-            --radius-xl: 30px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-            --content-width: 1180px;
+            --bg: #f7f7f3;
+            --surface: #ffffff;
+            --surface-soft: #fbfbf8;
+            --text: #141414;
+            --text-soft: #636363;
+            --line: #e7e7df;
+            --accent: #1e1e1e;
+            --accent-soft: #f0f0eb;
+            --success: #1d6b45;
+            --danger: #9c3d2b;
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow: 0 18px 42px rgba(20, 20, 20, 0.06);
+            --content-width: 1120px;
         }
 
         * {
@@ -42,23 +39,23 @@
         }
 
         body {
-            font-family: 'Manrope', sans-serif;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at top left, rgba(198, 77, 40, 0.16), transparent 24rem),
-                radial-gradient(circle at 85% 18%, rgba(17, 69, 59, 0.15), transparent 18rem),
-                linear-gradient(180deg, #f8f2e8 0%, var(--bg) 46%, #f3ecdf 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
         a {
             color: inherit;
+            text-decoration: none;
         }
 
-        img,
-        svg {
-            display: block;
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
         }
 
         .container {
@@ -66,509 +63,373 @@
             margin: 0 auto;
         }
 
-        .site-shell {
-            position: relative;
-            overflow: clip;
-        }
-
-        .site-shell::before,
-        .site-shell::after {
-            content: "";
-            position: fixed;
-            inset: auto;
-            width: 20rem;
-            height: 20rem;
-            pointer-events: none;
-            border-radius: 999px;
-            filter: blur(60px);
-            opacity: 0.35;
-            z-index: -1;
-        }
-
-        .site-shell::before {
-            top: -4rem;
-            right: -6rem;
-            background: rgba(198, 77, 40, 0.34);
-        }
-
-        .site-shell::after {
-            bottom: 8rem;
-            left: -5rem;
-            background: rgba(17, 69, 59, 0.26);
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 0.55rem 0.9rem;
-            border-radius: 999px;
-            background: rgba(255, 250, 242, 0.82);
-            border: 1px solid rgba(30, 26, 23, 0.1);
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--ink-soft);
-            backdrop-filter: blur(16px);
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 0.55rem;
-            height: 0.55rem;
-            border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 0.35rem rgba(198, 77, 40, 0.14);
-        }
-
-        .section-title,
-        h1,
-        h3 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-weight: 400;
-            line-height: 0.98;
-            letter-spacing: -0.03em;
-        }
-
-        h1 {
-            font-size: clamp(3.7rem, 8vw, 7.6rem);
-            max-width: 11ch;
-        }
-
-        .section-title {
-            font-size: clamp(2.4rem, 4vw, 4.15rem);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: var(--ink-soft);
-        }
-
-        .button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .button,
-        .store-link,
-        button[type="submit"] {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            min-height: 3.4rem;
-            padding: 0.95rem 1.3rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-size: 0.96rem;
-            font-weight: 800;
-            text-decoration: none;
-            transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease, border-color 0.24s ease;
-        }
-
-        .button:hover,
-        .store-link:hover,
-        button[type="submit"]:hover {
-            transform: translateY(-2px);
-        }
-
-        button[type="submit"]:disabled {
-            opacity: 0.72;
-            cursor: wait;
-            transform: none;
-        }
-
-        .button-primary,
-        button[type="submit"] {
-            color: #fff9f2;
-            background: linear-gradient(135deg, var(--accent) 0%, #db7342 100%);
-            box-shadow: 0 16px 38px rgba(198, 77, 40, 0.28);
-        }
-
-        .button-secondary {
-            color: var(--ink);
-            background: rgba(255, 252, 247, 0.62);
-            border-color: rgba(30, 26, 23, 0.12);
-            backdrop-filter: blur(14px);
-        }
-
         header {
             position: sticky;
             top: 0;
-            z-index: 40;
-            padding: 1.1rem 0;
-            background: rgba(244, 239, 229, 0.74);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(30, 26, 23, 0.08);
+            z-index: 30;
+            background: rgba(247, 247, 243, 0.94);
+            border-bottom: 1px solid rgba(20, 20, 20, 0.06);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-wrap {
+        .nav {
+            min-height: 4.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
         .brand {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.9rem;
-            font-weight: 800;
-            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .brand-mark {
-            width: 2.85rem;
-            height: 2.85rem;
-            border-radius: 1rem;
-            background:
-                linear-gradient(150deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.3)),
-                linear-gradient(135deg, var(--accent), #e09062);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 14px 28px rgba(198, 77, 40, 0.2);
-            position: relative;
-        }
-
-        .brand-mark::after {
-            content: "A";
-            position: absolute;
-            inset: 0;
+            width: 2.35rem;
+            height: 2.35rem;
+            border-radius: 0.9rem;
+            background: var(--accent);
+            color: #fff;
             display: grid;
             place-items: center;
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.55rem;
-            color: #fff9f2;
+            font-size: 0.95rem;
+            font-weight: 800;
         }
 
         .brand-copy {
             display: grid;
         }
 
-        .brand-copy strong {
-            font-size: 0.98rem;
-            letter-spacing: -0.02em;
-        }
-
         .brand-copy span {
-            color: var(--ink-soft);
+            color: var(--text-soft);
             font-size: 0.82rem;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 1.35rem;
+            gap: 1.2rem;
         }
 
         nav a {
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-weight: 700;
+            color: var(--text-soft);
             font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        main section {
+            padding: 4.5rem 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.75rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--text-soft);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.04em;
+            line-height: 1.02;
+        }
+
+        h1 {
+            max-width: 11ch;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            margin: 1rem 0 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 0.9rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-soft);
         }
 
         .hero {
-            padding: 4rem 0 3rem;
+            padding-top: 3.5rem;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 1.5rem;
             align-items: stretch;
         }
 
-        .hero-copy,
-        .hero-panel,
+        .panel,
         .app-card,
-        .story-card,
+        .blog-card,
+        .blog-viewer,
         .contact-card,
-        .form-card {
+        .form-card,
+        .note-card {
             background: var(--surface);
-            border: 1px solid rgba(255, 255, 255, 0.48);
+            border: 1px solid var(--line);
             border-radius: var(--radius-xl);
-            backdrop-filter: blur(20px);
             box-shadow: var(--shadow);
         }
 
         .hero-copy {
-            padding: clamp(2rem, 4vw, 4rem);
-            position: relative;
-            overflow: hidden;
+            padding: clamp(2rem, 4vw, 3.5rem);
         }
 
-        .hero-copy::before {
-            content: "";
-            position: absolute;
-            inset: auto -4rem -5rem auto;
-            width: 15rem;
-            height: 15rem;
-            background: radial-gradient(circle, rgba(198, 77, 40, 0.18), transparent 68%);
-            pointer-events: none;
+        .hero-copy p {
+            max-width: 38rem;
+            font-size: 1.08rem;
         }
 
-        .hero-copy .eyebrow {
-            margin-bottom: 1.5rem;
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 2rem;
         }
 
-        .lead {
-            max-width: 34rem;
-            margin: 1.4rem 0 2.2rem;
-            font-size: 1.12rem;
+        .button,
+        .store-link,
+        button[type="submit"],
+        .blog-card button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 3.1rem;
+            padding: 0.9rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
         }
 
-        .hero-metrics {
+        .button:hover,
+        .store-link:hover,
+        button[type="submit"]:hover,
+        .blog-card button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button-primary,
+        button[type="submit"] {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .button-secondary,
+        .store-link,
+        .blog-card button {
+            background: var(--surface-soft);
+        }
+
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .hero-aside {
+            padding: 1.5rem;
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
-            margin-top: 2.3rem;
+        }
+
+        .note-card {
+            padding: 1.4rem;
+        }
+
+        .note-card strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-size: 1rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
         }
 
         .metric {
-            padding: 1rem 1.1rem;
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(30, 26, 23, 0.08);
+            padding: 1.2rem;
+            border-radius: var(--radius-lg);
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
         }
 
         .metric strong {
             display: block;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             margin-bottom: 0.15rem;
-            line-height: 1;
         }
 
-        .metric span {
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            font-weight: 700;
-        }
-
-        .hero-panel {
-            padding: 1.3rem;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .highlight-card,
-        .status-band {
-            border-radius: calc(var(--radius-xl) - 8px);
-            overflow: hidden;
-        }
-
-        .highlight-card {
-            min-height: 24rem;
-            padding: 1.6rem;
-            background:
-                linear-gradient(180deg, rgba(18, 16, 14, 0.14), rgba(18, 16, 14, 0.48)),
-                radial-gradient(circle at 20% 20%, rgba(255, 214, 197, 0.7), transparent 18rem),
-                linear-gradient(145deg, #385f57 0%, #1d3f39 40%, #0f2320 100%);
-            color: #fffaf4;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .highlight-card .eyebrow {
-            background: rgba(255, 255, 255, 0.14);
-            color: rgba(255, 250, 244, 0.78);
-            border-color: rgba(255, 255, 255, 0.16);
-        }
-
-        .highlight-card p,
-        .highlight-card li {
-            color: rgba(255, 250, 244, 0.78);
-        }
-
-        .highlight-card ul {
-            list-style: none;
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .highlight-card li {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-weight: 700;
-        }
-
-        .highlight-card li::before {
-            content: "";
-            width: 0.6rem;
-            height: 0.6rem;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            box-shadow: 0 0 0 0.35rem rgba(255, 214, 197, 0.12);
-        }
-
-        .status-band {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .status-pill {
-            padding: 1.25rem;
-            border-radius: calc(var(--radius-lg) - 6px);
-            min-height: 8.4rem;
-        }
-
-        .status-pill strong {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 1.05rem;
-        }
-
-        .status-pill.orange {
-            background: linear-gradient(135deg, rgba(198, 77, 40, 0.16), rgba(255, 250, 242, 0.95));
-        }
-
-        .status-pill.green {
-            background: linear-gradient(135deg, rgba(17, 69, 59, 0.18), rgba(255, 250, 242, 0.95));
-        }
-
-        section {
-            padding: 2rem 0 4rem;
-        }
-
-        .section-intro {
+        .section-head {
             display: flex;
             justify-content: space-between;
-            gap: 1.5rem;
             align-items: end;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .section-intro p {
-            max-width: 34rem;
-            font-size: 1.02rem;
+        .section-head p {
+            max-width: 32rem;
         }
 
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.3rem;
+            gap: 1rem;
         }
 
         .app-card {
             padding: 1.5rem;
             display: grid;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
-        .app-card:nth-child(2) {
-            transform: translateY(2rem);
-        }
-
-        .app-topline {
+        .app-meta {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            align-items: start;
         }
 
         .app-icon {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1.35rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            background: var(--accent-soft);
             display: grid;
             place-items: center;
-            font-size: 1.75rem;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 214, 197, 0.8));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            font-weight: 800;
         }
 
         .app-state {
-            display: inline-flex;
-            padding: 0.4rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(17, 69, 59, 0.12);
-            color: var(--secondary);
-            font-size: 0.76rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
+            color: var(--text-soft);
+            font-size: 0.82rem;
+            font-weight: 700;
             text-transform: uppercase;
-        }
-
-        .app-card h3 {
-            font-size: 2rem;
-            line-height: 1;
+            letter-spacing: 0.08em;
         }
 
         .feature-list {
-            display: grid;
-            gap: 0.65rem;
             list-style: none;
+            display: grid;
+            gap: 0.6rem;
         }
 
         .feature-list li {
+            color: var(--text-soft);
             display: flex;
-            gap: 0.7rem;
-            align-items: start;
-            color: var(--ink-soft);
+            gap: 0.55rem;
         }
 
         .feature-list li::before {
-            content: "•";
-            color: var(--accent);
-            font-size: 1.3rem;
-            line-height: 1;
+            content: "—";
+            color: var(--text);
         }
 
         .store-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.75rem;
         }
 
-        .store-link {
-            color: var(--ink);
-            background: rgba(255, 252, 247, 0.86);
-            border-color: rgba(30, 26, 23, 0.1);
-        }
-
-        .story-grid {
+        .blog-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1.2rem;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 1rem;
+            align-items: start;
         }
 
-        .story-card {
-            padding: 1.5rem;
-            min-height: 16rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .blog-list {
+            display: grid;
+            gap: 0.9rem;
         }
 
-        .story-card:nth-child(2) {
-            background: linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(255, 214, 197, 0.58));
+        .blog-card {
+            padding: 1.25rem;
+            display: grid;
+            gap: 0.7rem;
         }
 
-        .story-card:nth-child(3) {
-            background: linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(214, 235, 228, 0.72));
+        .blog-card.is-active {
+            border-color: #cfcfc2;
+            background: var(--surface-soft);
         }
 
-        .story-card h3 {
-            font-size: 1.85rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .story-number {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 0.12em;
+        .blog-meta,
+        .viewer-meta {
+            color: var(--text-soft);
+            font-size: 0.83rem;
+            font-weight: 700;
             text-transform: uppercase;
-            color: var(--ink-soft);
+            letter-spacing: 0.08em;
+        }
+
+        .blog-card p {
+            font-size: 0.96rem;
+        }
+
+        .blog-viewer {
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .blog-viewer h3 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin: 0.75rem 0 0.8rem;
+        }
+
+        .blog-body {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .blog-body p {
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        .blog-empty {
+            color: var(--text-soft);
+        }
+
+        .blog-help {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--line);
+            color: var(--text-soft);
+            font-size: 0.92rem;
         }
 
         .contact-layout {
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 1.35rem;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 1rem;
             align-items: start;
         }
 
@@ -577,27 +438,23 @@
             padding: 1.5rem;
         }
 
-        .contact-card {
-            display: grid;
-            gap: 1.25rem;
-        }
-
         .contact-list {
-            display: grid;
-            gap: 0.9rem;
             list-style: none;
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
         }
 
         .contact-list li {
-            padding: 1rem 1.1rem;
+            padding: 1rem 1.05rem;
             border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(30, 26, 23, 0.08);
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
         }
 
         .contact-list strong {
             display: block;
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.25rem;
         }
 
         .form-grid {
@@ -606,18 +463,9 @@
             gap: 1rem;
         }
 
-        .form-card h3 {
-            font-size: 2rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .form-card p {
-            margin-bottom: 1.2rem;
-        }
-
         form {
             display: grid;
-            gap: 0.95rem;
+            gap: 0.9rem;
         }
 
         .field {
@@ -631,8 +479,7 @@
 
         label {
             font-size: 0.88rem;
-            font-weight: 800;
-            letter-spacing: 0.01em;
+            font-weight: 700;
         }
 
         input,
@@ -640,33 +487,32 @@
         textarea {
             width: 100%;
             padding: 0.92rem 1rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(30, 26, 23, 0.12);
-            background: rgba(255, 252, 247, 0.86);
-            color: var(--ink);
-            font: inherit;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background: var(--surface-soft);
+            color: var(--text);
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
 
         input:focus,
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: rgba(198, 77, 40, 0.55);
-            background: #fffdf8;
-            box-shadow: 0 0 0 0.3rem rgba(198, 77, 40, 0.14);
+            border-color: #bcbcaf;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(20, 20, 20, 0.04);
         }
 
         textarea {
-            resize: vertical;
             min-height: 8rem;
+            resize: vertical;
         }
 
         .form-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
             align-items: center;
+            gap: 0.75rem;
         }
 
         .form-note,
@@ -675,7 +521,7 @@
         }
 
         .form-note {
-            color: var(--ink-soft);
+            color: var(--text-soft);
         }
 
         .form-status {
@@ -684,44 +530,39 @@
         }
 
         .form-status.success {
-            color: var(--secondary);
+            color: var(--success);
         }
 
         .form-status.error {
-            color: var(--accent-deep);
+            color: var(--danger);
         }
 
-        .footer {
-            padding: 0 0 3rem;
+        footer {
+            padding: 0 0 2rem;
         }
 
         .footer-bar {
             display: flex;
             justify-content: space-between;
-            gap: 1rem;
             align-items: center;
+            gap: 1rem;
             padding: 1.25rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
             border-radius: 999px;
-            background: rgba(255, 252, 247, 0.78);
-            border: 1px solid rgba(30, 26, 23, 0.1);
-            box-shadow: 0 20px 44px rgba(66, 42, 24, 0.08);
-            backdrop-filter: blur(12px);
-        }
-
-        .footer-bar p,
-        .footer-links {
-            font-size: 0.92rem;
         }
 
         .footer-links {
             display: flex;
             gap: 1rem;
+            color: var(--text-soft);
+            font-size: 0.92rem;
         }
 
         [data-reveal] {
             opacity: 0;
-            transform: translateY(26px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(20px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
 
         [data-reveal].is-visible {
@@ -737,8 +578,8 @@
             *,
             *::before,
             *::after {
-                animation: none !important;
                 transition: none !important;
+                animation: none !important;
             }
 
             [data-reveal] {
@@ -747,24 +588,23 @@
             }
         }
 
-        @media (max-width: 1040px) {
+        @media (max-width: 980px) {
             .hero-grid,
+            .blog-layout,
             .contact-layout,
-            .story-grid {
-                grid-template-columns: 1fr;
-            }
-
             .apps-grid,
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .app-card:nth-child(2) {
-                transform: none;
+            .section-head,
+            .footer-bar {
+                flex-direction: column;
+                align-items: start;
             }
         }
 
-        @media (max-width: 760px) {
+        @media (max-width: 720px) {
             header {
                 position: static;
             }
@@ -773,28 +613,12 @@
                 display: none;
             }
 
-            .hero {
-                padding-top: 2rem;
+            main section {
+                padding: 3.5rem 0;
             }
 
-            .hero-copy,
-            .hero-panel,
-            .app-card,
-            .story-card,
-            .contact-card,
-            .form-card {
-                border-radius: 1.55rem;
-            }
-
-            .hero-metrics,
-            .status-band {
+            .metric-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .section-intro,
-            .footer-bar {
-                align-items: start;
-                flex-direction: column;
             }
 
             .button-row,
@@ -805,287 +629,246 @@
 
             .button,
             .store-link,
-            button[type="submit"] {
+            button[type="submit"],
+            .blog-card button {
                 width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="site-shell">
-        <header>
-            <div class="container nav-wrap">
-                <a class="brand" href="#top" aria-label="Aaron Michael Price home">
-                    <span class="brand-mark" aria-hidden="true"></span>
-                    <span class="brand-copy">
-                        <strong>Aaron Michael Price</strong>
-                        <span>Independent app developer</span>
-                    </span>
-                </a>
-                <nav aria-label="Primary navigation">
-                    <a href="#apps">Apps</a>
-                    <a href="#process">Process</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </header>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#top" aria-label="Aaron Michael Price home">
+                <span class="brand-mark" aria-hidden="true">A</span>
+                <span class="brand-copy">
+                    <strong>Aaron Michael Price</strong>
+                    <span>Independent app developer</span>
+                </span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <a href="#apps">Apps</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-        <main id="top">
-            <section class="hero">
-                <div class="container hero-grid">
-                    <article class="hero-copy" data-reveal>
-                        <span class="eyebrow">Shipping calm, useful software</span>
-                        <h1>Mobile products with taste, traction, and follow-through.</h1>
-                        <p class="lead">I design and build focused apps that feel clear on day one, reliable on day one hundred, and supported long after launch.</p>
-                        <div class="button-row">
-                            <a class="button button-primary" href="#contact">Start a conversation</a>
-                            <a class="button button-secondary" href="#apps">See the apps</a>
+    <main id="top">
+        <section class="hero">
+            <div class="container hero-grid">
+                <article class="panel hero-copy" data-reveal>
+                    <span class="eyebrow">Minimal by design</span>
+                    <h1>Simple product pages for thoughtful apps.</h1>
+                    <p>I build and support mobile products with a cleaner visual language, clear communication, and room to publish updates as the work evolves.</p>
+                    <div class="button-row">
+                        <a class="button button-primary" href="#contact">Get in touch</a>
+                        <a class="button button-secondary" href="#blog">Read the blog</a>
+                    </div>
+                </article>
+
+                <aside class="panel hero-aside" data-reveal>
+                    <div class="note-card">
+                        <strong>What changed</strong>
+                        <p>The site now uses one font family, flatter surfaces, cleaner spacing, and far fewer decorative effects.</p>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <strong>Cleaner UI</strong>
+                            <span>Less noise, stronger hierarchy.</span>
                         </div>
-                        <div class="hero-metrics" aria-label="Highlights">
-                            <div class="metric">
-                                <strong>iOS + Android</strong>
-                                <span>Cross-platform app launches</span>
-                            </div>
-                            <div class="metric">
-                                <strong>Fast support</strong>
-                                <span>Clear responses for users and testers</span>
-                            </div>
-                            <div class="metric">
-                                <strong>Human-first</strong>
-                                <span>Product decisions with empathy</span>
-                            </div>
+                        <div class="metric">
+                            <strong>Blog ready</strong>
+                            <span>Posts render from editable data.</span>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <strong>Support still works</strong>
+                        <p>Both contact forms remain wired to Formspree with the same submit logic and status states.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="apps">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow">Apps</span>
+                        <h2>Focused products, clearly presented.</h2>
+                    </div>
+                    <p>The layout is simpler now, but it still gives you room for app descriptions, features, and store links.</p>
+                </div>
+
+                <div class="apps-grid">
+                    <article class="app-card" data-reveal>
+                        <div class="app-meta">
+                            <div class="app-icon" aria-hidden="true">A</div>
+                            <span class="app-state">Live now</span>
+                        </div>
+                        <div>
+                            <h3>Your App Name</h3>
+                            <p>A clean, focused mobile tool with a product story that is easy to scan and easy to trust.</p>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Clear onboarding and focused feature set</li>
+                            <li>Designed for repeat use instead of novelty</li>
+                            <li>Ready for real App Store and Play links</li>
+                        </ul>
+                        <div class="store-links">
+                            <a class="store-link" href="#" aria-label="View Your App Name on the App Store">App Store</a>
+                            <a class="store-link" href="#" aria-label="View Your App Name on Google Play">Google Play</a>
                         </div>
                     </article>
 
-                    <aside class="hero-panel" data-reveal>
-                        <div class="highlight-card">
-                            <div>
-                                <span class="eyebrow">What I optimize for</span>
-                                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-top: 1rem; margin-bottom: 1rem;">Simple interfaces. Serious polish.</h2>
-                                <p>Every screen should feel intentional. The experience needs to be fast, friendly, and easy to trust.</p>
-                            </div>
-                            <ul>
-                                <li>Thoughtful onboarding and first-run experience</li>
-                                <li>Accessible interactions that feel lightweight</li>
-                                <li>Support channels that do not leave users hanging</li>
-                            </ul>
+                    <article class="app-card" data-reveal>
+                        <div class="app-meta">
+                            <div class="app-icon" aria-hidden="true">B</div>
+                            <span class="app-state">Growing</span>
                         </div>
-                        <div class="status-band">
-                            <div class="status-pill orange">
-                                <strong>Product design</strong>
-                                <p>Brand, UX, copy, motion, and launch-ready presentation.</p>
-                            </div>
-                            <div class="status-pill green">
-                                <strong>Operations</strong>
-                                <p>Support workflows, form handling, and clean handoff details.</p>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-            </section>
-
-            <section id="apps">
-                <div class="container">
-                    <div class="section-intro" data-reveal>
                         <div>
-                            <span class="eyebrow">Featured apps</span>
-                            <h2 class="section-title">Products with room to grow.</h2>
+                            <h3>Your Second App</h3>
+                            <p>A second slot for another app, experiment, or upcoming release without the page feeling crowded.</p>
                         </div>
-                        <p>These cards are set up so we can swap in your real app names, descriptions, and store URLs without changing the layout again.</p>
-                    </div>
-
-                    <div class="apps-grid">
-                        <article class="app-card" data-reveal>
-                            <div class="app-topline">
-                                <div class="app-icon" aria-hidden="true">A</div>
-                                <span class="app-state">Live now</span>
-                            </div>
-                            <div>
-                                <h3>Your App Name</h3>
-                                <p>A polished mobile tool built to solve a real everyday problem with clarity, warmth, and zero clutter.</p>
-                            </div>
-                            <ul class="feature-list">
-                                <li>Clear onboarding that gets users to value quickly</li>
-                                <li>Focused feature set with thoughtful details</li>
-                                <li>Built for repeat use instead of novelty</li>
-                            </ul>
-                            <div class="store-links">
-                                <a class="store-link" href="#" aria-label="View Your App Name on the App Store">App Store</a>
-                                <a class="store-link" href="#" aria-label="View Your App Name on Google Play">Google Play</a>
-                            </div>
-                        </article>
-
-                        <article class="app-card" data-reveal>
-                            <div class="app-topline">
-                                <div class="app-icon" aria-hidden="true">B</div>
-                                <span class="app-state">Growing</span>
-                            </div>
-                            <div>
-                                <h3>Your Second App</h3>
-                                <p>A second product slot for another app, experiment, or upcoming release with room for a stronger story and launch CTA.</p>
-                            </div>
-                            <ul class="feature-list">
-                                <li>Space for use cases, outcomes, and core features</li>
-                                <li>Flexible content length without breaking the card</li>
-                                <li>Ready for real links once you have them</li>
-                            </ul>
-                            <div class="store-links">
-                                <a class="store-link" href="#" aria-label="View Your Second App on the App Store">App Store</a>
-                                <a class="store-link" href="#" aria-label="View Your Second App on Google Play">Google Play</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="process">
-                <div class="container">
-                    <div class="section-intro" data-reveal>
-                        <div>
-                            <span class="eyebrow">How I work</span>
-                            <h2 class="section-title">The product and the support need to feel like the same brand.</h2>
-                        </div>
-                        <p>That means launch pages, contact flows, bug reports, and follow-up communication should all feel calm and consistent.</p>
-                    </div>
-
-                    <div class="story-grid">
-                        <article class="story-card" data-reveal>
-                            <div>
-                                <p class="story-number">01 / Product</p>
-                                <h3>Useful by default</h3>
-                                <p>Interfaces are designed to reduce hesitation and get people to the right action without friction.</p>
-                            </div>
-                            <p>Fewer dead ends. Better first impressions.</p>
-                        </article>
-                        <article class="story-card" data-reveal>
-                            <div>
-                                <p class="story-number">02 / Communication</p>
-                                <h3>Support that feels personal</h3>
-                                <p>Contact and support forms are separated so incoming requests are clearer and easier to respond to quickly.</p>
-                            </div>
-                            <p>Less noise. Better triage.</p>
-                        </article>
-                        <article class="story-card" data-reveal>
-                            <div>
-                                <p class="story-number">03 / Delivery</p>
-                                <h3>Ready for the real details</h3>
-                                <p>The page now has a stronger visual identity and a form setup we can connect to your actual inbox or form endpoint.</p>
-                            </div>
-                            <p>Better presentation. Better conversion.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <div class="container contact-layout">
-                    <aside class="contact-card" data-reveal>
-                        <div>
-                            <span class="eyebrow">Contact and support</span>
-                            <h2 class="section-title">Two clear paths in, one polished experience.</h2>
-                            <p>General outreach and product support now have separate forms, better validation, clearer status messaging, and a configurable submission flow.</p>
-                        </div>
-                        <ul class="contact-list">
-                            <li>
-                                <strong>Contact form</strong>
-                                <span>Best for partnerships, press, consulting, and general questions.</span>
-                            </li>
-                            <li>
-                                <strong>Support form</strong>
-                                <span>Best for bug reports, feature requests, account issues, and app-specific help.</span>
-                            </li>
-                            <li>
-                                <strong>Current setup</strong>
-                                <span>Forms are ready to send to Formspree or another endpoint once your destination is filled in.</span>
-                            </li>
+                        <ul class="feature-list">
+                            <li>Flexible for launch notes or roadmap highlights</li>
+                            <li>Works well with short or medium copy</li>
+                            <li>Easy to keep updated over time</li>
                         </ul>
-                    </aside>
-
-                    <div class="form-grid">
-                        <section class="form-card" data-reveal>
-                            <h3>Get in touch</h3>
-                            <p>Use this for outreach, collaborations, or general questions.</p>
-                            <form data-form-type="contact">
-                                <div class="field">
-                                    <label for="contact-name">Name</label>
-                                    <input type="text" id="contact-name" name="name" autocomplete="name" required>
-                                </div>
-                                <div class="field">
-                                    <label for="contact-email">Email</label>
-                                    <input type="email" id="contact-email" name="email" autocomplete="email" required>
-                                </div>
-                                <div class="field field-wide">
-                                    <label for="contact-subject">Subject</label>
-                                    <input type="text" id="contact-subject" name="subject" placeholder="How can I help?" required>
-                                </div>
-                                <div class="field field-wide">
-                                    <label for="contact-message">Message</label>
-                                    <textarea id="contact-message" name="message" placeholder="Tell me a little about what you need." required></textarea>
-                                </div>
-                                <input type="hidden" name="form_kind" value="contact">
-                                <div class="form-actions">
-                                    <button type="submit">Send message</button>
-                                    <span class="form-note">You’ll see an on-page confirmation after submit.</span>
-                                </div>
-                                <p class="form-status" aria-live="polite"></p>
-                            </form>
-                        </section>
-
-                        <section class="form-card" data-reveal>
-                            <h3>Support request</h3>
-                            <p>Use this for app issues, feature ideas, and troubleshooting.</p>
-                            <form data-form-type="support">
-                                <div class="field">
-                                    <label for="support-app">Which app?</label>
-                                    <select id="support-app" name="app" required>
-                                        <option value="">Select an app</option>
-                                        <option value="Your App Name">Your App Name</option>
-                                        <option value="Your Second App">Your Second App</option>
-                                    </select>
-                                </div>
-                                <div class="field">
-                                    <label for="support-type">Issue type</label>
-                                    <select id="support-type" name="issue_type" required>
-                                        <option value="">Select type</option>
-                                        <option value="Bug report">Bug report</option>
-                                        <option value="Feature request">Feature request</option>
-                                        <option value="Need help">Need help</option>
-                                    </select>
-                                </div>
-                                <div class="field field-wide">
-                                    <label for="support-email">Email</label>
-                                    <input type="email" id="support-email" name="email" autocomplete="email" required>
-                                </div>
-                                <div class="field field-wide">
-                                    <label for="support-description">Description</label>
-                                    <textarea id="support-description" name="description" placeholder="What happened, what you expected, and any steps that reproduce it." required></textarea>
-                                </div>
-                                <input type="hidden" name="form_kind" value="support">
-                                <div class="form-actions">
-                                    <button type="submit">Submit request</button>
-                                    <span class="form-note">Structured for easier triage and faster follow-up.</span>
-                                </div>
-                                <p class="form-status" aria-live="polite"></p>
-                            </form>
-                        </section>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-bar">
-                    <p><span id="year"></span> Aaron Michael Price. Built for launch, support, and steady iteration.</p>
-                    <div class="footer-links">
-                        <a href="#apps">Apps</a>
-                        <a href="#process">Process</a>
-                        <a href="#contact">Contact</a>
-                    </div>
+                        <div class="store-links">
+                            <a class="store-link" href="#" aria-label="View Your Second App on the App Store">App Store</a>
+                            <a class="store-link" href="#" aria-label="View Your Second App on Google Play">Google Play</a>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </footer>
-    </div>
+        </section>
+
+        <section id="blog">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow">Blog</span>
+                        <h2>Publish notes, updates, and release posts.</h2>
+                    </div>
+                    <p>The blog section below is generated from a simple posts array in the page script, so adding a post is just adding another object.</p>
+                </div>
+
+                <div class="blog-layout">
+                    <div class="blog-list" id="blog-list" data-reveal></div>
+                    <article class="blog-viewer" id="blog-viewer" data-reveal>
+                        <p class="blog-empty">Choose a post to read.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-layout">
+                <aside class="contact-card" data-reveal>
+                    <span class="eyebrow">Contact</span>
+                    <h2>Two simple paths for contact and support.</h2>
+                    <p>The design is quieter, but the forms still separate general outreach from app support so requests stay organized.</p>
+                    <ul class="contact-list">
+                        <li>
+                            <strong>Contact form</strong>
+                            <span>For partnerships, general questions, or collaboration.</span>
+                        </li>
+                        <li>
+                            <strong>Support form</strong>
+                            <span>For bugs, feature requests, and app-specific help.</span>
+                        </li>
+                        <li>
+                            <strong>Formspree wired</strong>
+                            <span>Both forms submit directly to your configured endpoints.</span>
+                        </li>
+                    </ul>
+                </aside>
+
+                <div class="form-grid">
+                    <section class="form-card" data-reveal>
+                        <h3>Get in touch</h3>
+                        <p>Use this for general outreach.</p>
+                        <form data-form-type="contact">
+                            <div class="field">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="field">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="field field-wide">
+                                <label for="contact-subject">Subject</label>
+                                <input type="text" id="contact-subject" name="subject" placeholder="How can I help?" required>
+                            </div>
+                            <div class="field field-wide">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" placeholder="Tell me a little about what you need." required></textarea>
+                            </div>
+                            <input type="hidden" name="form_kind" value="contact">
+                            <div class="form-actions">
+                                <button type="submit">Send message</button>
+                                <span class="form-note">You’ll see a confirmation after submit.</span>
+                            </div>
+                            <p class="form-status" aria-live="polite"></p>
+                        </form>
+                    </section>
+
+                    <section class="form-card" data-reveal>
+                        <h3>Support request</h3>
+                        <p>Use this for app support and feedback.</p>
+                        <form data-form-type="support">
+                            <div class="field">
+                                <label for="support-app">Which app?</label>
+                                <select id="support-app" name="app" required>
+                                    <option value="">Select an app</option>
+                                    <option value="Your App Name">Your App Name</option>
+                                    <option value="Your Second App">Your Second App</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="support-type">Issue type</label>
+                                <select id="support-type" name="issue_type" required>
+                                    <option value="">Select type</option>
+                                    <option value="Bug report">Bug report</option>
+                                    <option value="Feature request">Feature request</option>
+                                    <option value="Need help">Need help</option>
+                                </select>
+                            </div>
+                            <div class="field field-wide">
+                                <label for="support-email">Email</label>
+                                <input type="email" id="support-email" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="field field-wide">
+                                <label for="support-description">Description</label>
+                                <textarea id="support-description" name="description" placeholder="Share the issue, expected behavior, and any useful steps to reproduce it." required></textarea>
+                            </div>
+                            <input type="hidden" name="form_kind" value="support">
+                            <div class="form-actions">
+                                <button type="submit">Submit request</button>
+                                <span class="form-note">Structured to keep support requests clear.</span>
+                            </div>
+                            <p class="form-status" aria-live="polite"></p>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bar">
+                <p><span id="year"></span> Aaron Michael Price. Built with a simpler, more minimal layout.</p>
+                <div class="footer-links">
+                    <a href="#apps">Apps</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         window.SITE_CONFIG = {
@@ -1093,6 +876,33 @@
             supportEndpoint: "https://formspree.io/f/mrerlnlz",
             fallbackEmail: ""
         };
+
+        window.BLOG_POSTS = [
+            {
+                slug: "building-with-more-focus",
+                title: "Building with More Focus",
+                date: "April 20, 2026",
+                tag: "Product",
+                summary: "A short note about simplifying product decisions and removing friction from the experience.",
+                content: [
+                    "Minimal design is not about making things empty. It is about making the important parts feel obvious and easy to trust.",
+                    "When a product page is clear, the app itself feels more believable. The same is true for support, release notes, and follow-up communication.",
+                    "This site now gives me a straightforward place to publish updates without having to redesign the page every time I want to share something."
+                ]
+            },
+            {
+                slug: "why-support-matters",
+                title: "Why Support Matters",
+                date: "April 12, 2026",
+                tag: "Support",
+                summary: "A simple support experience helps users feel heard and makes product issues easier to sort quickly.",
+                content: [
+                    "A support form should do two things well: help people explain what they need and help the product owner triage it quickly.",
+                    "Separating contact from support keeps requests cleaner and makes response time easier to manage.",
+                    "Even small apps benefit from support workflows that feel calm, direct, and personal."
+                ]
+            }
+        ];
 
         if ("IntersectionObserver" in window) {
             const revealObserver = new IntersectionObserver((entries) => {
@@ -1102,7 +912,7 @@
                         revealObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.14 });
+            }, { threshold: 0.12 });
 
             document.querySelectorAll("[data-reveal]").forEach((node) => {
                 revealObserver.observe(node);
@@ -1119,9 +929,11 @@
             if (type === "contact") {
                 return window.SITE_CONFIG.contactEndpoint;
             }
+
             if (type === "support") {
                 return window.SITE_CONFIG.supportEndpoint;
             }
+
             return "";
         }
 
@@ -1158,7 +970,7 @@
             statusNode.className = `form-status ${statusClass}`.trim();
         }
 
-        async function handleConfiguredSubmit(form, endpoint, formData) {
+        async function handleConfiguredSubmit(endpoint, formData) {
             const response = await fetch(endpoint, {
                 method: "POST",
                 headers: {
@@ -1173,6 +985,64 @@
 
             return response;
         }
+
+        function renderBlogViewer(post) {
+            const viewer = document.getElementById("blog-viewer");
+
+            if (!post) {
+                viewer.innerHTML = '<p class="blog-empty">Choose a post to read.</p>';
+                return;
+            }
+
+            const paragraphs = post.content
+                .map((paragraph) => `<p>${paragraph}</p>`)
+                .join("");
+
+            viewer.innerHTML = `
+                <p class="viewer-meta">${post.tag} / ${post.date}</p>
+                <h3>${post.title}</h3>
+                <p>${post.summary}</p>
+                <div class="blog-body">${paragraphs}</div>
+                <p class="blog-help">To add a new post, duplicate one object in <code>window.BLOG_POSTS</code> and update the title, date, summary, and content.</p>
+            `;
+        }
+
+        function renderBlogPosts() {
+            const list = document.getElementById("blog-list");
+            const posts = window.BLOG_POSTS || [];
+
+            if (!posts.length) {
+                list.innerHTML = '<article class="blog-card"><p class="blog-empty">No posts yet. Add one in <code>window.BLOG_POSTS</code>.</p></article>';
+                renderBlogViewer(null);
+                return;
+            }
+
+            list.innerHTML = posts.map((post, index) => `
+                <article class="blog-card ${index === 0 ? "is-active" : ""}" data-post-slug="${post.slug}">
+                    <p class="blog-meta">${post.tag} / ${post.date}</p>
+                    <h3>${post.title}</h3>
+                    <p>${post.summary}</p>
+                    <button type="button" data-post-button="${post.slug}">Read post</button>
+                </article>
+            `).join("");
+
+            renderBlogViewer(posts[0]);
+
+            list.querySelectorAll("[data-post-button]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const slug = button.dataset.postButton;
+                    const selectedPost = posts.find((post) => post.slug === slug);
+
+                    list.querySelectorAll(".blog-card").forEach((card) => {
+                        card.classList.toggle("is-active", card.dataset.postSlug === slug);
+                    });
+
+                    renderBlogViewer(selectedPost);
+                });
+            });
+        }
+
+        renderBlogPosts();
 
         document.querySelectorAll("form[data-form-type]").forEach((form) => {
             form.addEventListener("submit", async (event) => {
@@ -1194,7 +1064,7 @@
 
                 try {
                     if (endpoint) {
-                        await handleConfiguredSubmit(form, endpoint, formData);
+                        await handleConfiguredSubmit(endpoint, formData);
                         form.reset();
                         setStatus(form, "Message sent successfully. I will follow up as soon as I can.", "success");
                     } else {
