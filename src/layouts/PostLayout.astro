@@ -1,0 +1,19 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={`${frontmatter.title} | Aaron Michael Price`} description={frontmatter.excerpt}>
+  <article class="section">
+    <div class="container post-shell">
+      <a class="back-link" href="/blog">Back to blog</a>
+      <p class="post-meta">{frontmatter.category} / {frontmatter.publishDate}</p>
+      <h1 class="post-title">{frontmatter.title}</h1>
+      <p class="post-excerpt">{frontmatter.excerpt}</p>
+      <div class="post-content">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

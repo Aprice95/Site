@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { products } from '../../data/products';
+
+const product = products.find((entry) => entry.slug === 'switchboard');
+if (!product) {
+  throw new Error('Switchboard product data missing.');
+}
+---
+
+<BaseLayout title="Switchboard | Aaron Michael Price" description={product.shortDescription}>
+  <section class="section">
+    <div class="container detail-shell">
+      <p class="card-meta">{product.status}</p>
+      <h1 class="page-title">{product.name}</h1>
+      <p class="lead">{product.description}</p>
+
+      <div class="detail-grid">
+        <article class="panel detail-card">
+          <h2>What it does</h2>
+          <p>
+            Switchboard is being built to reduce the friction around audio device switching. It uses
+            Shortcuts and widgets as the execution layer, then adds organization, profiles, and
+            visibility so the control surface stays useful over time.
+          </p>
+        </article>
+
+        <article class="panel detail-card">
+          <h2>Core features</h2>
+          <ul class="feature-list">
+            {product.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

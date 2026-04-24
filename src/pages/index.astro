@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForms from '../components/ContactForms.astro';
+import { products } from '../data/products';
+
+const posts = (await Astro.glob('./blog/*.md'))
+  .sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Aaron Michael Price | Blog and Product Updates"
+  description="Thoughtful apps, product updates, and direct support for WidgText, Switchboard, and future releases."
+>
+  <section class="hero section">
+    <div class="container hero-grid">
+      <article class="panel hero-copy">
+        <span class="eyebrow">Independent app developer</span>
+        <h1>Writing about the products while building them in public.</h1>
+        <p>
+          This site is now structured around publishing. It highlights current products, recent
+          writing, and clear paths for support without forcing everything into one static page.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href="/blog">Read the blog</a>
+          <a class="button button-secondary" href="/products">Browse products</a>
+        </div>
+      </article>
+
+      <aside class="panel hero-aside">
+        <div class="note-card">
+          <strong>Primary use: blog</strong>
+          <p>Posts, release notes, and product thinking can now live in dedicated Markdown files.</p>
+        </div>
+        <div class="metric-grid">
+          <div class="metric">
+            <strong>{products.length} products</strong>
+            <span>Current work and upcoming releases.</span>
+          </div>
+          <div class="metric">
+            <strong>{posts.length} recent posts</strong>
+            <span>Editorial front page instead of a single landing panel.</span>
+          </div>
+        </div>
+        <div class="note-card">
+          <strong>Direct support</strong>
+          <p>Contact and support forms remain live and route to the existing Formspree endpoints.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Recent posts</span>
+          <h2>Latest writing</h2>
+        </div>
+        <p>Product notes, release updates, support changes, and writing about the decisions behind the work.</p>
+      </div>
+
+      <div class="post-grid">
+        {
+          posts.map((post) => (
+            <a class="panel post-card" href={post.url}>
+              <p class="card-meta">{post.frontmatter.category} / {post.frontmatter.publishDate}</p>
+              <h3>{post.frontmatter.title}</h3>
+              <p>{post.frontmatter.excerpt}</p>
+              <span class="text-link">Read post</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Products</span>
+          <h2>Current products</h2>
+        </div>
+        <p>Customer-facing product pages now sit alongside the blog instead of competing with it.</p>
+      </div>
+
+      <div class="products-grid">
+        {
+          products.map((product) => (
+            <article class="panel product-card">
+              <p class="card-meta">{product.status}</p>
+              <h3>{product.name}</h3>
+              <p>{product.shortDescription}</p>
+              <ul class="feature-list">
+                {product.features.map((feature) => <li>{feature}</li>)}
+              </ul>
+              <div class="button-row compact">
+                <a class="button button-primary" href={product.ctaPrimary.href}>{product.ctaPrimary.label}</a>
+                <a class="button button-secondary" href={product.ctaSecondary.href}>{product.ctaSecondary.label}</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactForms />
+</BaseLayout>

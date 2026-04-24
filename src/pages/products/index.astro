@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { products } from '../../data/products';
+---
+
+<BaseLayout title="Products | Aaron Michael Price" description="Current and upcoming products, with direct support and product context.">
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Products</span>
+          <h1 class="page-title">Products</h1>
+        </div>
+        <p>Each product page can stay evergreen while the blog handles updates, release notes, and in-progress thinking.</p>
+      </div>
+
+      <div class="products-grid">
+        {
+          products.map((product) => (
+            <article class="panel product-card">
+              <p class="card-meta">{product.status}</p>
+              <h2>{product.name}</h2>
+              <p>{product.description}</p>
+              <ul class="feature-list">
+                {product.features.map((feature) => <li>{feature}</li>)}
+              </ul>
+              <div class="button-row compact">
+                <a class="button button-primary" href={`/products/${product.slug}`}>View product</a>
+                <a class="button button-secondary" href="/#contact">Get support</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

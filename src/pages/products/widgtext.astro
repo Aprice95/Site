@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { products } from '../../data/products';
+
+const product = products.find((entry) => entry.slug === 'widgtext');
+if (!product) {
+  throw new Error('WidgText product data missing.');
+}
+---
+
+<BaseLayout title="WidgText | Aaron Michael Price" description={product.shortDescription}>
+  <section class="section">
+    <div class="container detail-shell">
+      <p class="card-meta">{product.status}</p>
+      <h1 class="page-title">{product.name}</h1>
+      <p class="lead">{product.description}</p>
+
+      <div class="detail-grid">
+        <article class="panel detail-card">
+          <h2>What it does</h2>
+          <p>
+            WidgText gives users a faster way to make widgets feel personal. It supports quick text
+            editing, styling controls, multiple widget slots, and rotating quote lists without adding
+            friction to the setup flow.
+          </p>
+        </article>
+
+        <article class="panel detail-card">
+          <h2>Core features</h2>
+          <ul class="feature-list">
+            {product.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,202 @@
+---
+import { formConfig } from '../data/site';
+import { products } from '../data/products';
+
+const productOptions = products.map((product) => product.name);
+---
+
+<section id="contact" class="section">
+  <div class="container contact-layout">
+    <aside class="panel section-copy">
+      <span class="eyebrow">Contact</span>
+      <h2>Two clear paths for contact and support.</h2>
+      <p>
+        Whether someone has a product question, a support issue, or a partnership inquiry, the
+        forms route messages clearly and keep follow-up organized.
+      </p>
+
+      <ul class="contact-list">
+        <li>
+          <strong>General contact</strong>
+          <span>For press, partnerships, consulting inquiries, or general questions.</span>
+        </li>
+        <li>
+          <strong>Product support</strong>
+          <span>For bugs, feature requests, troubleshooting, and app-specific help.</span>
+        </li>
+        <li>
+          <strong>Direct submission</strong>
+          <span>Both forms submit to live Formspree endpoints with inline success and error states.</span>
+        </li>
+      </ul>
+    </aside>
+
+    <div class="form-grid">
+      <section class="panel form-card">
+        <h3>Get in touch</h3>
+        <p>Share your question, idea, or project and I will respond as soon as I can.</p>
+
+        <form data-form-type="contact">
+          <div class="field">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field field-wide">
+            <label for="contact-subject">Subject</label>
+            <input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              placeholder="What would you like to talk about?"
+              required
+            />
+          </div>
+
+          <div class="field field-wide">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder="A few details about your question or project will help me respond well."
+              required
+            ></textarea>
+          </div>
+
+          <input type="hidden" name="form_kind" value="contact" />
+
+          <div class="form-actions">
+            <button type="submit">Send message</button>
+            <span class="form-note">A confirmation message will appear here after submit.</span>
+          </div>
+
+          <p class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel form-card">
+        <h3>Support request</h3>
+        <p>Share what happened, what you expected, and any detail that helps with a faster reply.</p>
+
+        <form data-form-type="support">
+          <div class="field">
+            <label for="support-app">Which app?</label>
+            <select id="support-app" name="app" required>
+              <option value="">Select the product</option>
+              {productOptions.map((name) => <option value={name}>{name}</option>)}
+              <option value="Not sure">I am not sure</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="support-type">Issue type</label>
+            <select id="support-type" name="issue_type" required>
+              <option value="">Select type</option>
+              <option value="Bug report">Bug report</option>
+              <option value="Feature request">Feature request</option>
+              <option value="Need help">Need help</option>
+            </select>
+          </div>
+
+          <div class="field field-wide">
+            <label for="support-email">Email</label>
+            <input id="support-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field field-wide">
+            <label for="support-description">Description</label>
+            <textarea
+              id="support-description"
+              name="description"
+              placeholder="Share the issue, expected behavior, and any useful steps to reproduce it."
+              required
+            ></textarea>
+          </div>
+
+          <input type="hidden" name="form_kind" value="support" />
+
+          <div class="form-actions">
+            <button type="submit">Submit request</button>
+            <span class="form-note">Helpful details make investigation and follow-up easier.</span>
+          </div>
+
+          <p class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script
+  is:inline
+  define:vars={{
+    contactEndpoint: formConfig.contactEndpoint,
+    supportEndpoint: formConfig.supportEndpoint
+  }}
+>
+  const formEndpoints = {
+    contact: contactEndpoint,
+    support: supportEndpoint
+  };
+
+  function setStatus(form, message, statusClass) {
+    const statusNode = form.querySelector('.form-status');
+    if (!statusNode) return;
+    statusNode.textContent = message;
+    statusNode.className = `form-status ${statusClass}`.trim();
+  }
+
+  async function submitToEndpoint(endpoint, formData) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json'
+      },
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error('Submission failed');
+    }
+  }
+
+  document.querySelectorAll('form[data-form-type]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const type = form.dataset.formType;
+      const endpoint = formEndpoints[type];
+      const formData = new FormData(form);
+
+      if (!submitButton || !endpoint) {
+        setStatus(form, 'This form is not configured correctly.', 'error');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      setStatus(form, '', '');
+
+      try {
+        await submitToEndpoint(endpoint, formData);
+        form.reset();
+        setStatus(form, 'Message sent successfully. I will follow up as soon as I can.', 'success');
+      } catch (error) {
+        setStatus(form, 'The message could not be sent. Please try again.', 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = type === 'contact' ? 'Send message' : 'Submit request';
+      }
+    });
+  });
+</script>
