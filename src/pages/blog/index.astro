@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../lib/paths';
 
-const posts = (await Astro.glob('./*.md')).sort(
-  (a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
-);
+const posts = Object.values(
+  import.meta.glob('./*.md', { eager: true })
+).sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
 ---
 
 <BaseLayout title="Blog | Aaron Michael Price" description="Product notes, release updates, support changes, and writing about the work.">
@@ -20,7 +21,7 @@ const posts = (await Astro.glob('./*.md')).sort(
       <div class="post-list">
         {
           posts.map((post) => (
-            <a class="panel post-list-item" href={post.url}>
+            <a class="panel post-list-item" href={withBase(post.url ?? '/blog')}>
               <div>
                 <p class="card-meta">{post.frontmatter.category} / {post.frontmatter.publishDate}</p>
                 <h2>{post.frontmatter.title}</h2>

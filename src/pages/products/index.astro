@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { products } from '../../data/products';
+import { withBase } from '../../lib/paths';
 ---
 
 <BaseLayout title="Products | Aaron Michael Price" description="Current and upcoming products, with direct support and product context.">
@@ -25,8 +26,8 @@ import { products } from '../../data/products';
                 {product.features.map((feature) => <li>{feature}</li>)}
               </ul>
               <div class="button-row compact">
-                <a class="button button-primary" href={`/products/${product.slug}`}>View product</a>
-                <a class="button button-secondary" href="/#contact">Get support</a>
+                <a class="button button-primary" href={withBase(`/products/${product.slug}`)}>View product</a>
+                <a class="button button-secondary" href={withBase('/#contact')}>Get support</a>
               </div>
             </article>
           ))

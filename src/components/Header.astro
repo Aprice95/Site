@@ -1,10 +1,11 @@
 ---
 import { site } from '../data/site';
+import { withBase } from '../lib/paths';
 ---
 
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/">
+    <a class="brand" href={withBase()}>
       <span class="brand-mark" aria-hidden="true">A</span>
       <span class="brand-copy">
         <strong>{site.title}</strong>
@@ -15,7 +16,7 @@ import { site } from '../data/site';
     <nav aria-label="Primary navigation">
       {
         site.nav.map((item) => (
-          <a href={item.href}>{item.label}</a>
+          <a href={withBase(item.href)}>{item.label}</a>
         ))
       }
     </nav>
