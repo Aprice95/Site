@@ -1,6 +1,8 @@
 # Site
 
-Astro rebuild of the personal site for Aaron Michael Price.
+Astro personal site for Aaron Price — aaronprice.org. An indie-apps showcase:
+WidgText and Marching Tycoon (shipped), SetFlow (upcoming), plus the blog and
+contact/support forms.
 
 ## Scripts
 
@@ -12,10 +14,15 @@ npm run new-post -- "My New Post"
 
 ## Current status
 
-- Astro project structure is in place.
+- App data (names, copy, store links, screenshots, facts) lives in `src/data/products.ts` —
+  edit there to update cards and product pages everywhere at once.
+- App pages live under `src/pages/products/` and share `src/layouts/ProductLayout.astro`.
+- App icons and screenshots live in `public/images/apps/` (resized copies of the
+  originals in each app's project folder).
 - Blog posts live as Markdown files in `src/pages/blog/`.
-- Product pages live under `src/pages/products/`.
-- Contact and support forms submit to Formspree.
+- Contact and support forms submit to Formspree; the SetFlow page has a launch-list
+  form that posts to the contact endpoint with `form_kind=setflow-launch-list`.
+- `/products/switchboard` redirects to `/products` (configured in `astro.config.mjs`).
 - GitHub Pages deployment workflow lives at `.github/workflows/deploy.yml`.
 - Astro is configured for the custom domain:
   - `site: https://aaronprice.org`

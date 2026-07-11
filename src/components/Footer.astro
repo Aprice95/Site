@@ -1,14 +1,44 @@
 ---
+import { products } from '../data/products';
 import { withBase } from '../lib/paths';
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="container footer-bar">
-    <p>Independent app developer focused on thoughtful products and clear support.</p>
-    <div class="footer-links">
-      <a href={withBase('/blog')}>Blog</a>
-      <a href={withBase('/products')}>Products</a>
-      <a href={withBase('/#contact')}>Contact</a>
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a class="brand" href={withBase()}>
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <strong>Aaron Price</strong>
+      </a>
+      <p>
+        A one-person app studio rooted in the marching arts. Every app here is designed, built,
+        and supported by me.
+      </p>
     </div>
+
+    <nav class="footer-col" aria-label="Apps">
+      <strong>Apps</strong>
+      {
+        products.map((product) => (
+          <a href={withBase(`/products/${product.slug}`)}>
+            {product.name}
+            {product.status === 'upcoming' && <span class="footer-soon">soon</span>}
+          </a>
+        ))
+      }
+    </nav>
+
+    <nav class="footer-col" aria-label="Site">
+      <strong>Site</strong>
+      <a href={withBase('/blog')}>Blog</a>
+      <a href={withBase('/#contact')}>Contact</a>
+      <a href={withBase('/#contact')}>Support</a>
+    </nav>
+  </div>
+
+  <div class="container footer-meta">
+    <p>© {year} Aaron Price · Made in Athens, Georgia 🍑</p>
   </div>
 </footer>

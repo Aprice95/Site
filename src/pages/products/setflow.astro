@@ -1,0 +1,109 @@
+---
+import ProductLayout from '../../layouts/ProductLayout.astro';
+import { products } from '../../data/products';
+import { formConfig } from '../../data/site';
+
+const product = products.find((entry) => entry.slug === 'setflow');
+if (!product) {
+  throw new Error('SetFlow product data missing.');
+}
+---
+
+<ProductLayout product={product}>
+  <section class="section" id="notify">
+    <div class="container">
+      <div class="setflow-band">
+        <div class="setflow-inner">
+          <div class="setflow-copy">
+            <span class="eyebrow">Launch list</span>
+            <h2>Be first on the field. 🥁</h2>
+            <p>
+              Leave your email and I'll let you know when SetFlow hits TestFlight — and when it
+              ships. No newsletter, no noise, just the two emails that matter.
+            </p>
+          </div>
+          <form class="setflow-notify" data-notify-form>
+            <div class="field">
+              <label for="notify-email">Email</label>
+              <input
+                id="notify-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <input type="hidden" name="form_kind" value="setflow-launch-list" />
+            <input type="hidden" name="subject" value="SetFlow launch list signup" />
+            <button type="submit">Request access</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</ProductLayout>
+
+<style>
+  .setflow-notify {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.6rem;
+    border-radius: var(--radius-lg);
+    background: rgba(6, 32, 15, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .setflow-notify label {
+    color: #f2f7ee;
+  }
+
+  .setflow-notify .form-status {
+    color: #cfe4d2;
+  }
+
+  .setflow-notify .form-status.success {
+    color: #b7f0c6;
+  }
+
+  .setflow-notify .form-status.error {
+    color: #ffc9b5;
+  }
+</style>
+
+<script is:inline define:vars={{ endpoint: formConfig.contactEndpoint }}>
+  const form = document.querySelector('[data-notify-form]');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const button = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.form-status');
+    button.disabled = true;
+    button.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      form.reset();
+      if (status) {
+        status.textContent = "You're on the list! Talk soon. 🎺";
+        status.className = 'form-status success';
+      }
+    } catch (error) {
+      if (status) {
+        status.textContent = 'That didn’t go through — please try again.';
+        status.className = 'form-status error';
+      }
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Request access';
+    }
+  });
+</script>

@@ -1,10 +1,11 @@
 export const site = {
-  title: 'Aaron Michael Price',
+  title: 'Aaron Price',
   description:
-    'Independent app developer building thoughtful apps, publishing product updates, and offering responsive support.',
+    'Indie apps from Athens, Georgia: WidgText custom text widgets for iPhone, Marching Tycoon — a retro idle band game for iOS and Android — and SetFlow, a marching-arts rehearsal app in the works.',
+  tagline: 'Indie apps from Athens, Georgia',
   nav: [
+    { href: '/products', label: 'Apps' },
     { href: '/blog', label: 'Blog' },
-    { href: '/products', label: 'Products' },
     { href: '/#contact', label: 'Contact' }
   ]
 };

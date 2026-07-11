@@ -9,16 +9,12 @@ import { withBase } from '../lib/paths';
       <span class="brand-mark" aria-hidden="true">A</span>
       <span class="brand-copy">
         <strong>{site.title}</strong>
-        <span>Independent app developer</span>
+        <span>{site.tagline}</span>
       </span>
     </a>
 
     <nav aria-label="Primary navigation">
-      {
-        site.nav.map((item) => (
-          <a href={withBase(item.href)}>{item.label}</a>
-        ))
-      }
+      {site.nav.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
     </nav>
   </div>
 </header>

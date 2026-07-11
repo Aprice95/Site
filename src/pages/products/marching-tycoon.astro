@@ -2,9 +2,9 @@
 import ProductLayout from '../../layouts/ProductLayout.astro';
 import { products } from '../../data/products';
 
-const product = products.find((entry) => entry.slug === 'widgtext');
+const product = products.find((entry) => entry.slug === 'marching-tycoon');
 if (!product) {
-  throw new Error('WidgText product data missing.');
+  throw new Error('Marching Tycoon product data missing.');
 }
 ---
 

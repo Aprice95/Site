@@ -1,0 +1,137 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import { withBase } from '../lib/paths';
+import type { Product } from '../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const isShipped = product.status === 'shipped';
+const ogImage = product.screenshots[0]?.src ?? product.icon;
+---
+
+<BaseLayout
+  title={`${product.name} — ${product.tagline} | Aaron Price`}
+  description={product.shortDescription}
+  ogImage={ogImage}
+>
+  <section class="product-hero">
+    <div class="container product-hero-inner">
+      <a class="back-link" href={withBase('/products')}>← All apps</a>
+
+      <div class="product-hero-head">
+        <img src={withBase(product.icon)} alt="" width="512" height="512" loading="eager" />
+        <div>
+          <h1>{product.name}</h1>
+        </div>
+      </div>
+
+      <div class="chip-row">
+        <span class={`chip ${isShipped ? 'chip-live' : 'chip-soon'}`}>{product.statusLabel}</span>
+        <span class="chip">{product.platforms}</span>
+      </div>
+
+      <p class="lead">{product.description}</p>
+
+      {isShipped && <StoreBadges links={product.links} appName={product.name} />}
+      {
+        !isShipped && (
+          <div class="button-row">
+            <a class="button button-primary" href="#notify">
+              Get notified at launch
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    product.screenshots.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class={`shots-row${product.slug === 'marching-tycoon' ? ' pixel' : ''}`}>
+            {product.screenshots.map((shot) => (
+              <img src={withBase(shot.src)} alt={shot.alt} width="640" height="1390" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">{isShipped ? 'What it does' : 'What it will do'}</span>
+          <h2>{product.tagline}</h2>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        {
+          product.features.map((feature) => (
+            <article class="feature-tile">
+              <h3>{feature.title}</h3>
+              <p>{feature.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel facts-card">
+        {
+          product.facts.map((fact) => (
+            <div class="fact">
+              <span>{fact.label}</span>
+              <strong>{fact.value}</strong>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <slot />
+
+  <section class="section">
+    <div class="container">
+      <div class="panel cta-band">
+        {
+          isShipped ? (
+            <>
+              <h2>Give {product.name} a try</h2>
+              <p>
+                It's free to start. If something's off or you have an idea, the
+                <a class="text-link" href={withBase('/#contact')}>
+                  support form
+                </a>
+                goes straight to me.
+              </p>
+              <StoreBadges links={product.links} appName={product.name} />
+            </>
+          ) : (
+            <>
+              <h2>{product.name} is on the way</h2>
+              <p>
+                Want early access or just curious? Say hello through the
+                <a class="text-link" href={withBase('/#contact')}>
+                  contact form
+                </a>
+                and mention {product.name}.
+              </p>
+            </>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
