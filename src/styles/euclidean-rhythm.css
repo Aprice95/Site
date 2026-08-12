@@ -16,6 +16,10 @@
   line-height: 1.5;
 }
 
+body:has(.rhythm-lab-page) .site-footer {
+  margin-top: 0;
+}
+
 .rhythm-lab-page [hidden] { display: none !important; }
 .rhythm-lab-page button,
 .rhythm-lab-page a { font: inherit; }
