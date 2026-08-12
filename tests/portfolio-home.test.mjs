@@ -12,3 +12,17 @@ test('publishes Aaron Price’s professional portfolio at the site root', async 
   assert.match(html, /id="about"/);
   assert.match(html, /href="\/euclidean-rhythm-lab\/?"/);
 });
+
+test('keeps the portfolio header touch-friendly and consistently branded', async () => {
+  const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const stylesheetPaths = [...html.matchAll(/href="(\/_astro\/[^\"]+\.css)"/g)].map(
+    (match) => match[1]
+  );
+  const stylesheets = await Promise.all(
+    stylesheetPaths.map((path) => readFile(new URL(`../dist${path}`, import.meta.url), 'utf8'))
+  );
+  const css = stylesheets.join('\n');
+
+  assert.match(html, /<link rel="apple-touch-icon" href="\/apple-touch-icon\.png">/);
+  assert.match(css, /\.portfolio-header nav a\{[^}]*min-height:44px[^}]*padding:0 4px/);
+});

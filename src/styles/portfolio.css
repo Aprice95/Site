@@ -67,6 +67,12 @@
 }
 
 .portfolio-header nav a {
+  min-width: 24px;
+  min-height: 44px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font: 560 13px/1 var(--portfolio-font-mono);
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -846,11 +852,11 @@
   }
 
   .portfolio-header nav {
-    gap: 13px;
+    gap: 8px;
   }
 
   .portfolio-header nav a {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .portfolio-home .hero {
