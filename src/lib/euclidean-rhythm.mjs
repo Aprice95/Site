@@ -122,3 +122,28 @@ export function comparePrediction(prediction, actual) {
     complete: answered === total
   };
 }
+
+export function feedbackMessage(score, revealed) {
+  if (!score.complete) {
+    return `${score.answered} of ${score.total} steps classified`;
+  }
+  if (!revealed) {
+    return 'All steps classified. Ready to reveal.';
+  }
+  if (score.correct === score.total) {
+    return 'Perfect prediction. You found the distribution.';
+  }
+  return `${score.correct} of ${score.total} steps matched. Compare the gaps below.`;
+}
+
+export function restorePredictionFocus(container, index) {
+  const control = container.querySelector(`[data-prediction-index="${index}"]`);
+  if (control && typeof control.focus === 'function') {
+    control.focus();
+  }
+}
+
+export function focusChallengeHeading(heading) {
+  heading.setAttribute('tabindex', '-1');
+  heading.focus();
+}

@@ -135,7 +135,13 @@ const pythonSource = buildPythonLessonSource();
 
           <div class="erl-challenge-actions">
             <div class="erl-challenge-action-group">
-              <button type="button" class="erl-secondary-button" data-hint-button aria-expanded="false">
+              <button
+                type="button"
+                class="erl-secondary-button"
+                data-hint-button
+                aria-expanded="false"
+                aria-controls="rhythm-hint"
+              >
                 Need a hint?
               </button>
               <button type="button" class="erl-secondary-button" data-reset-button>Reset prediction</button>
@@ -145,7 +151,7 @@ const pythonSource = buildPythonLessonSource();
             </button>
           </div>
 
-          <p class="erl-hint-box" data-hint-box hidden></p>
+          <p class="erl-hint-box" id="rhythm-hint" data-hint-box hidden></p>
           <p class="erl-feedback" data-feedback role="status" aria-live="polite">
             0 of {challenges[0].steps} steps classified
           </p>
@@ -219,6 +225,9 @@ const pythonSource = buildPythonLessonSource();
     import {
       buildEuclideanPattern,
       comparePrediction,
+      feedbackMessage,
+      focusChallengeHeading,
+      restorePredictionFocus,
       patternToPython
     } from '../lib/euclidean-rhythm.mjs';
 
@@ -306,6 +315,7 @@ const pythonSource = buildPythonLessonSource();
           const correct = revealed && value === actual[index];
           const missed = revealed && value !== actual[index];
           button.type = 'button';
+          button.dataset.predictionIndex = String(index);
           button.className = [
             'erl-prediction-step',
             value === 1 ? 'is-beat' : value === 0 ? 'is-rest' : '',
@@ -338,6 +348,7 @@ const pythonSource = buildPythonLessonSource();
             prediction[index] = value === null ? 1 : value === 1 ? 0 : null;
             renderPrediction();
             updateFeedback();
+            restorePredictionFocus(grid, index);
           });
           grid.append(button);
         });
@@ -346,11 +357,7 @@ const pythonSource = buildPythonLessonSource();
       const updateFeedback = () => {
         const score = comparePrediction(prediction, currentPattern());
         revealButton.disabled = !score.complete || revealed;
-        feedback.textContent = !score.complete
-          ? `${score.answered} of ${score.total} steps classified`
-          : score.correct === score.total
-            ? 'Perfect prediction. You found the distribution.'
-            : `${score.correct} of ${score.total} steps matched. Compare the gaps below.`;
+        feedback.textContent = feedbackMessage(score, revealed);
       };
 
       const renderAnswer = () => {
@@ -404,7 +411,10 @@ const pythonSource = buildPythonLessonSource();
 
       tabButtons.forEach((button, index) => button.addEventListener('click', () => selectChallenge(index)));
       resetButton.addEventListener('click', () => selectChallenge(challengeIndex));
-      nextButton.addEventListener('click', () => selectChallenge(challengeIndex + 1));
+      nextButton.addEventListener('click', () => {
+        selectChallenge(challengeIndex + 1);
+        focusChallengeHeading(title);
+      });
       hintButton.addEventListener('click', () => {
         const willShow = hintBox.hidden;
         hintBox.hidden = !willShow;

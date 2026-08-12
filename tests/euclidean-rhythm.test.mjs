@@ -7,6 +7,9 @@ import {
   buildPythonLessonSource,
   clampRhythmInputs,
   comparePrediction,
+  feedbackMessage,
+  focusChallengeHeading,
+  restorePredictionFocus,
   patternToPython
 } from '../src/lib/euclidean-rhythm.mjs';
 
@@ -55,6 +58,50 @@ test('scores both incomplete and complete predictions', () => {
     answered: 3,
     complete: true
   });
+});
+
+test('withholds correctness until the learner reveals the answer', () => {
+  const score = { correct: 8, total: 8, answered: 8, complete: true };
+
+  assert.equal(feedbackMessage(score, false), 'All steps classified. Ready to reveal.');
+  assert.equal(feedbackMessage(score, true), 'Perfect prediction. You found the distribution.');
+});
+
+test('restores keyboard focus to a recreated prediction control', () => {
+  let focused = false;
+  let requestedSelector = '';
+  const container = {
+    querySelector(selector) {
+      requestedSelector = selector;
+      return { focus: () => { focused = true; } };
+    }
+  };
+
+  restorePredictionFocus(container, 4);
+
+  assert.equal(requestedSelector, '[data-prediction-index="4"]');
+  assert.equal(focused, true);
+});
+
+test('moves focus to the new challenge heading after advancing', () => {
+  let focused = false;
+  let assignedName = '';
+  let assignedValue = '';
+  const heading = {
+    setAttribute(name, value) {
+      assignedName = name;
+      assignedValue = value;
+    },
+    focus() {
+      focused = true;
+    }
+  };
+
+  focusChallengeHeading(heading);
+
+  assert.equal(assignedName, 'tabindex');
+  assert.equal(assignedValue, '-1');
+  assert.equal(focused, true);
 });
 
 test('emits runnable Python that preserves rotation behavior', () => {
