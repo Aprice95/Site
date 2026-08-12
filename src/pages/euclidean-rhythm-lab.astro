@@ -1,0 +1,455 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildEuclideanPattern, buildPythonLessonSource } from '../lib/euclidean-rhythm.mjs';
+import '../styles/euclidean-rhythm.css';
+
+const challenges = [
+  {
+    steps: 8,
+    pulses: 3,
+    rotation: 0,
+    title: 'Space three beats',
+    prompt: 'Place 3 beats across 8 steps so the gaps feel as even as possible.',
+    hint: 'Start with a beat. Then ask: where would the next beat make the largest gap smaller?'
+  },
+  {
+    steps: 12,
+    pulses: 5,
+    rotation: 0,
+    title: 'Increase the resolution',
+    prompt: 'Now distribute 5 beats across 12 steps without bunching them together.',
+    hint: 'Five beats create five gaps. Some gaps will need 2 steps and some will need 3.'
+  },
+  {
+    steps: 8,
+    pulses: 3,
+    rotation: 2,
+    title: 'Rotate, don’t rebuild',
+    prompt: 'The same 3-in-8 pattern starts two positions later. Predict the rotation.',
+    hint: 'Rotation changes where the cycle starts—not the spacing or number of beats.'
+  }
+];
+
+const heroPattern = buildEuclideanPattern(8, 3, 0);
+const pythonSource = buildPythonLessonSource();
+---
+
+<BaseLayout
+  title="Euclidean Rhythm Lab | Aaron Price"
+  description="An interactive computer science lesson by Aaron Price: learn loops, modular arithmetic, Python, and algorithmic thinking through musical rhythm."
+  ogImage="/images/learning/euclidean-rhythm-lab-og.png"
+>
+  <div class="rhythm-lab-page" data-rhythm-lab>
+    <div class="erl-subnav">
+      <a class="erl-wordmark" href="#top" aria-label="Euclidean Rhythm Lab home">
+        <span class="erl-wordmark-mark" aria-hidden="true">3:8</span>
+        <span>Aaron Price · Learning Design Sample</span>
+      </a>
+      <a class="erl-quiet-link" href="#design-note">Design notes <span aria-hidden="true">↓</span></a>
+    </div>
+
+    <section class="erl-hero" id="top">
+      <div class="erl-hero-copy">
+        <p class="erl-eyebrow">Interactive CS mini-lesson · 8–10 minutes</p>
+        <h1>Euclidean Rhythm Lab</h1>
+        <p class="erl-hero-lede">Learn the pattern. Predict the beats. Reveal the algorithm.</p>
+        <p class="erl-hero-support">
+          Musicians distribute sound through time. Programmers distribute values through a
+          sequence. In this lab, those are the same problem.
+        </p>
+        <a class="erl-primary-link" href="#lesson">
+          Start the first challenge <span aria-hidden="true">↘</span>
+        </a>
+      </div>
+
+      <div class="erl-hero-orbit" aria-label="A three-beat rhythm across eight steps">
+        {
+          heroPattern.map((value, index) => (
+            <span
+              class:list={['erl-orbit-step', `erl-orbit-step-${index + 1}`, value && 'is-hit']}
+              aria-hidden="true"
+            >
+              {value ? '●' : index + 1}
+            </span>
+          ))
+        }
+        <div class="erl-orbit-center" aria-hidden="true">
+          <strong>3</strong><span>beats</span><i>÷</i><strong>8</strong><span>steps</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="erl-concept-strip" aria-label="Learning objectives">
+      <div><span>01</span><strong>Loops</strong><p>Repeat one rule across a sequence.</p></div>
+      <div><span>02</span><strong>Modular arithmetic</strong><p>Wrap positions around a cycle.</p></div>
+      <div><span>03</span><strong>Algorithmic thinking</strong><p>Turn “evenly spaced” into steps.</p></div>
+    </section>
+
+    <section class="erl-lesson-section" id="lesson" aria-labelledby="lesson-title">
+      <div class="erl-section-intro">
+        <p class="erl-eyebrow">Predict before the computer answers</p>
+        <h2 id="lesson-title">Can you hear the algorithm before you see it?</h2>
+        <p>
+          Classify every position as a beat or a rest. Each press cycles from unknown to beat to
+          rest. Only then can you reveal the pattern.
+        </p>
+      </div>
+
+      <div class="erl-lab-shell">
+        <nav class="erl-challenge-tabs" aria-label="Rhythm challenges">
+          {
+            challenges.map((challenge, index) => (
+              <button
+                type="button"
+                class:list={index === 0 && 'is-current'}
+                aria-current={index === 0 ? 'step' : undefined}
+                data-challenge-index={index}
+                data-steps={challenge.steps}
+                data-pulses={challenge.pulses}
+                data-rotation={challenge.rotation}
+                data-title={challenge.title}
+                data-prompt={challenge.prompt}
+                data-hint={challenge.hint}
+              >
+                <span>0{index + 1}</span>{challenge.title}
+              </button>
+            ))
+          }
+        </nav>
+
+        <div class="erl-challenge-card">
+          <div class="erl-challenge-heading">
+            <div>
+              <p class="erl-challenge-count" data-challenge-count>Challenge 1 of 3</p>
+              <h3 data-challenge-title>{challenges[0].title}</h3>
+              <p data-challenge-prompt>{challenges[0].prompt}</p>
+            </div>
+            <dl class="erl-parameter-card">
+              <div><dt>steps</dt><dd data-parameter-steps>{challenges[0].steps}</dd></div>
+              <div><dt>beats</dt><dd data-parameter-pulses>{challenges[0].pulses}</dd></div>
+              <div><dt>rotate</dt><dd data-parameter-rotation>{challenges[0].rotation}</dd></div>
+            </dl>
+          </div>
+
+          <div class="erl-prediction-grid" data-prediction-grid aria-label="Your rhythm prediction"></div>
+
+          <div class="erl-challenge-actions">
+            <div class="erl-challenge-action-group">
+              <button type="button" class="erl-secondary-button" data-hint-button aria-expanded="false">
+                Need a hint?
+              </button>
+              <button type="button" class="erl-secondary-button" data-reset-button>Reset prediction</button>
+            </div>
+            <button type="button" class="erl-primary-button" data-reveal-button disabled>
+              Reveal the algorithm
+            </button>
+          </div>
+
+          <p class="erl-hint-box" data-hint-box hidden></p>
+          <p class="erl-feedback" data-feedback role="status" aria-live="polite">
+            0 of {challenges[0].steps} steps classified
+          </p>
+
+          <div class="erl-reveal-panel" data-reveal-panel hidden>
+            <div class="erl-reveal-heading">
+              <div>
+                <p class="erl-eyebrow">The computer’s sequence</p>
+                <h4>Compare the size of each gap.</h4>
+              </div>
+              <button type="button" class="erl-audio-button" data-audio-button>
+                <span aria-hidden="true">♪</span><span data-audio-label>Hear the rhythm</span>
+              </button>
+            </div>
+
+            <ol class="erl-answer-sequence" data-answer-sequence aria-label="Correct rhythm pattern"></ol>
+
+            <div class="erl-explanation-grid">
+              <div><span>1</span><h5>Represent</h5><p>Model a beat as <code>1</code> and a rest as <code>0</code>.</p></div>
+              <div><span>2</span><h5>Distribute</h5><p>Repeatedly group beats with rests until the gaps are balanced.</p></div>
+              <div><span>3</span><h5>Rotate</h5><p>Shift the list with modulo logic while preserving its structure.</p></div>
+            </div>
+
+            <div class="erl-code-card">
+              <div class="erl-code-card-bar"><span>Python</span><code data-pattern-code></code></div>
+              <pre><code>{pythonSource}</code></pre>
+            </div>
+
+            <div class="erl-next-row">
+              <p>
+                <strong>First-principles check:</strong> the number of 1s stays fixed, while their
+                positions change to minimize uneven gaps.
+              </p>
+              <button type="button" class="erl-primary-button" data-next-button>Next challenge →</button>
+              <a class="erl-primary-link erl-compact" href="#design-note" data-design-link hidden>
+                See the design rationale ↓
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="erl-transfer-section" aria-labelledby="transfer-title">
+      <div><p class="erl-eyebrow">Transfer the idea</p><h2 id="transfer-title">One pattern, several computer-science lenses.</h2></div>
+      <div class="erl-transfer-grid">
+        <article><span>Sequence</span><h3>How should values be arranged?</h3><p>Move from an intuitive goal—“even spacing”—to a concrete list of binary values.</p></article>
+        <article><span>Invariant</span><h3>What must stay true?</h3><p>The list length and beat count never change, even when the starting point rotates.</p></article>
+        <article><span>Decomposition</span><h3>Which smaller operations help?</h3><p>Count, group, compare gaps, repeat, and rotate: each step can be tested on its own.</p></article>
+      </div>
+    </section>
+
+    <section class="erl-design-section" id="design-note" aria-labelledby="design-title">
+      <div><p class="erl-eyebrow">For the Brilliant team</p><h2 id="design-title">Why I designed the lesson this way</h2></div>
+      <div>
+        <p class="erl-design-lede">
+          Created as a new application demonstration, this prototype shows how I would translate
+          an abstract CS idea into an approachable, interactive problem-solving journey.
+        </p>
+        <div class="erl-design-principles">
+          <div><strong>Prediction before exposition</strong><p>Learners commit to a model first, so the reveal produces useful feedback instead of passive recognition.</p></div>
+          <div><strong>Concrete before symbolic</strong><p>Musical beats make distribution visible and audible before the Python representation appears.</p></div>
+          <div><strong>Challenge by variation</strong><p>Each challenge foregrounds a new idea—distribution, density, then rotation—supporting comparison and transfer.</p></div>
+          <div><strong>Multiple representations</strong><p>Grid, sound, binary sequence, prose, and code give learners several ways into the same concept.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    import {
+      buildEuclideanPattern,
+      comparePrediction,
+      patternToPython
+    } from '../lib/euclidean-rhythm.mjs';
+
+    const root = document.querySelector('[data-rhythm-lab]');
+
+    if (root instanceof HTMLElement) {
+      const tabButtons = Array.from(root.querySelectorAll('[data-challenge-index]'));
+      const challenges = tabButtons.map((button) => {
+        if (!(button instanceof HTMLButtonElement)) throw new Error('Invalid challenge button');
+        return {
+          steps: Number(button.dataset.steps),
+          pulses: Number(button.dataset.pulses),
+          rotation: Number(button.dataset.rotation),
+          title: button.dataset.title ?? '',
+          prompt: button.dataset.prompt ?? '',
+          hint: button.dataset.hint ?? ''
+        };
+      });
+
+      const grid = root.querySelector('[data-prediction-grid]');
+      const count = root.querySelector('[data-challenge-count]');
+      const title = root.querySelector('[data-challenge-title]');
+      const prompt = root.querySelector('[data-challenge-prompt]');
+      const stepsValue = root.querySelector('[data-parameter-steps]');
+      const pulsesValue = root.querySelector('[data-parameter-pulses]');
+      const rotationValue = root.querySelector('[data-parameter-rotation]');
+      const hintButton = root.querySelector('[data-hint-button]');
+      const resetButton = root.querySelector('[data-reset-button]');
+      const revealButton = root.querySelector('[data-reveal-button]');
+      const hintBox = root.querySelector('[data-hint-box]');
+      const feedback = root.querySelector('[data-feedback]');
+      const revealPanel = root.querySelector('[data-reveal-panel]');
+      const answerSequence = root.querySelector('[data-answer-sequence]');
+      const patternCode = root.querySelector('[data-pattern-code]');
+      const audioButton = root.querySelector('[data-audio-button]');
+      const audioLabel = root.querySelector('[data-audio-label]');
+      const nextButton = root.querySelector('[data-next-button]');
+      const designLink = root.querySelector('[data-design-link]');
+
+      if (
+        !(grid instanceof HTMLElement) || !(count instanceof HTMLElement) ||
+        !(title instanceof HTMLElement) || !(prompt instanceof HTMLElement) ||
+        !(stepsValue instanceof HTMLElement) || !(pulsesValue instanceof HTMLElement) ||
+        !(rotationValue instanceof HTMLElement) || !(hintButton instanceof HTMLButtonElement) ||
+        !(resetButton instanceof HTMLButtonElement) || !(revealButton instanceof HTMLButtonElement) ||
+        !(hintBox instanceof HTMLElement) || !(feedback instanceof HTMLElement) ||
+        !(revealPanel instanceof HTMLElement) || !(answerSequence instanceof HTMLOListElement) ||
+        !(patternCode instanceof HTMLElement) || !(audioButton instanceof HTMLButtonElement) ||
+        !(audioLabel instanceof HTMLElement) || !(nextButton instanceof HTMLButtonElement) ||
+        !(designLink instanceof HTMLAnchorElement)
+      ) {
+        throw new Error('Euclidean Rhythm Lab could not initialize');
+      }
+
+      let challengeIndex = 0;
+      let prediction = [];
+      let revealed = false;
+      let playing = false;
+      let playbackTimer;
+      let audioContext;
+
+      const stopPlayback = () => {
+        if (playbackTimer) window.clearTimeout(playbackTimer);
+        playbackTimer = undefined;
+        if (audioContext) void audioContext.close();
+        audioContext = undefined;
+        playing = false;
+        audioButton.disabled = false;
+        audioLabel.textContent = 'Hear the rhythm';
+      };
+
+      const currentChallenge = () => challenges[challengeIndex];
+      const currentPattern = () => {
+        const challenge = currentChallenge();
+        return buildEuclideanPattern(challenge.steps, challenge.pulses, challenge.rotation);
+      };
+
+      const renderPrediction = () => {
+        const actual = currentPattern();
+        grid.style.setProperty('--step-count', String(actual.length));
+        grid.replaceChildren();
+
+        prediction.forEach((value, index) => {
+          const button = document.createElement('button');
+          const correct = revealed && value === actual[index];
+          const missed = revealed && value !== actual[index];
+          button.type = 'button';
+          button.className = [
+            'erl-prediction-step',
+            value === 1 ? 'is-beat' : value === 0 ? 'is-rest' : '',
+            correct ? 'is-correct' : '',
+            missed ? 'is-missed' : ''
+          ].filter(Boolean).join(' ');
+          button.disabled = revealed;
+          button.setAttribute(
+            'aria-label',
+            revealed
+              ? `Step ${index + 1}: your ${value === 1 ? 'beat' : 'rest'} prediction is ${correct ? 'correct' : `incorrect; the answer is ${actual[index] === 1 ? 'beat' : 'rest'}`}`
+              : `Toggle predicted step ${index + 1}: ${value === null ? 'unknown' : value === 1 ? 'beat' : 'rest'}`
+          );
+
+          const number = document.createElement('span');
+          number.className = 'erl-step-number';
+          number.textContent = String(index + 1);
+          const symbol = document.createElement('span');
+          symbol.className = 'erl-step-value';
+          symbol.setAttribute('aria-hidden', 'true');
+          symbol.textContent = value === null ? '?' : value === 1 ? '●' : '–';
+          const name = document.createElement('span');
+          name.className = 'erl-step-name';
+          name.textContent = revealed
+            ? correct ? 'correct' : 'check gap'
+            : value === null ? 'choose' : value === 1 ? 'beat' : 'rest';
+          button.append(number, symbol, name);
+          button.addEventListener('click', () => {
+            if (revealed) return;
+            prediction[index] = value === null ? 1 : value === 1 ? 0 : null;
+            renderPrediction();
+            updateFeedback();
+          });
+          grid.append(button);
+        });
+      };
+
+      const updateFeedback = () => {
+        const score = comparePrediction(prediction, currentPattern());
+        revealButton.disabled = !score.complete || revealed;
+        feedback.textContent = !score.complete
+          ? `${score.answered} of ${score.total} steps classified`
+          : score.correct === score.total
+            ? 'Perfect prediction. You found the distribution.'
+            : `${score.correct} of ${score.total} steps matched. Compare the gaps below.`;
+      };
+
+      const renderAnswer = () => {
+        const actual = currentPattern();
+        answerSequence.style.setProperty('--step-count', String(actual.length));
+        answerSequence.replaceChildren();
+        actual.forEach((value, index) => {
+          const item = document.createElement('li');
+          if (value) item.classList.add('is-hit');
+          const readable = document.createElement('span');
+          readable.className = 'erl-sr-only';
+          readable.textContent = `Step ${index + 1}: ${value ? 'beat' : 'rest'}`;
+          const number = document.createElement('i');
+          number.setAttribute('aria-hidden', 'true');
+          number.textContent = String(index + 1);
+          const symbol = document.createElement('b');
+          symbol.setAttribute('aria-hidden', 'true');
+          symbol.textContent = value ? '●' : '–';
+          item.append(readable, number, symbol);
+          answerSequence.append(item);
+        });
+        patternCode.textContent = patternToPython(actual);
+      };
+
+      const selectChallenge = (index) => {
+        stopPlayback();
+        challengeIndex = index;
+        const challenge = currentChallenge();
+        prediction = Array.from({ length: challenge.steps }, () => null);
+        revealed = false;
+        revealPanel.hidden = true;
+        hintBox.hidden = true;
+        hintButton.setAttribute('aria-expanded', 'false');
+        hintButton.textContent = 'Need a hint?';
+        count.textContent = `Challenge ${index + 1} of ${challenges.length}`;
+        title.textContent = challenge.title;
+        prompt.textContent = challenge.prompt;
+        stepsValue.textContent = String(challenge.steps);
+        pulsesValue.textContent = String(challenge.pulses);
+        rotationValue.textContent = String(challenge.rotation);
+        nextButton.hidden = index === challenges.length - 1;
+        designLink.hidden = index !== challenges.length - 1;
+        tabButtons.forEach((button, buttonIndex) => {
+          button.classList.toggle('is-current', buttonIndex === index);
+          if (buttonIndex === index) button.setAttribute('aria-current', 'step');
+          else button.removeAttribute('aria-current');
+        });
+        renderPrediction();
+        updateFeedback();
+      };
+
+      tabButtons.forEach((button, index) => button.addEventListener('click', () => selectChallenge(index)));
+      resetButton.addEventListener('click', () => selectChallenge(challengeIndex));
+      nextButton.addEventListener('click', () => selectChallenge(challengeIndex + 1));
+      hintButton.addEventListener('click', () => {
+        const willShow = hintBox.hidden;
+        hintBox.hidden = !willShow;
+        hintBox.textContent = currentChallenge().hint;
+        hintButton.setAttribute('aria-expanded', String(willShow));
+        hintButton.textContent = willShow ? 'Hide hint' : 'Need a hint?';
+      });
+      revealButton.addEventListener('click', () => {
+        revealed = true;
+        renderPrediction();
+        renderAnswer();
+        updateFeedback();
+        revealPanel.hidden = false;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        revealPanel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      });
+      audioButton.addEventListener('click', () => {
+        if (playing) return;
+        const AudioContextClass = window.AudioContext;
+        if (!AudioContextClass) return;
+        const actual = currentPattern();
+        audioContext = new AudioContextClass();
+        const start = audioContext.currentTime + 0.08;
+        actual.forEach((value, index) => {
+          if (value === 0 || !audioContext) return;
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+          const noteTime = start + index * 0.18;
+          oscillator.type = 'sine';
+          oscillator.frequency.value = index === 0 ? 720 : 520;
+          gain.gain.setValueAtTime(0.0001, noteTime);
+          gain.gain.exponentialRampToValueAtTime(0.22, noteTime + 0.012);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.11);
+          oscillator.connect(gain).connect(audioContext.destination);
+          oscillator.start(noteTime);
+          oscillator.stop(noteTime + 0.12);
+        });
+        playing = true;
+        audioButton.disabled = true;
+        audioLabel.textContent = 'Playing…';
+        playbackTimer = window.setTimeout(stopPlayback, actual.length * 180 + 220);
+      });
+
+      window.addEventListener('pagehide', stopPlayback, { once: true });
+      selectChallenge(0);
+    }
+  </script>
+</BaseLayout>

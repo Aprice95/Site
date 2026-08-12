@@ -8,10 +8,11 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "test": "node --test tests/*.test.mjs",
     "preview": "astro preview",
     "new-post": "bash ./scripts/new-post.sh"
   },
   "dependencies": {
-    "astro": "^5.7.0"
+    "astro": "^7.2.1"
   }
 }
