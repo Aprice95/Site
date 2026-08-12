@@ -1,0 +1,44 @@
+---
+import type { PortfolioProject } from '../data/portfolio';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  project: PortfolioProject;
+}
+
+const { project } = Astro.props;
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+const resolveHref = (href: string) => (href.startsWith('/') ? withBase(href) : href);
+---
+
+<div class="project-copy">
+  <div class="project-index">
+    <span>{project.index}</span>
+    <span>{project.category}</span>
+  </div>
+  <h3>{project.title}</h3>
+  <p class="project-role">{project.role}</p>
+  <p class="project-summary">{project.summary}</p>
+  {
+    project.facts && (
+      <ul class="project-facts">
+        {project.facts.map((fact) => <li>{fact}</li>)}
+      </ul>
+    )
+  }
+  {
+    project.links && project.links.length > 0 && (
+      <div class="link-row">
+        {project.links.map((link) => (
+          <a
+            href={resolveHref(link.href)}
+            target={isExternal(link.href) ? '_blank' : undefined}
+            rel={isExternal(link.href) ? 'noreferrer' : undefined}
+          >
+            {link.label} <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    )
+  }
+</div>
