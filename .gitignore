@@ -4,4 +4,6 @@ dist/
 .DS_Store
 .claude/
 # --- cross-machine sync hygiene ---
- *.xcuserstate xcuserdata/ .claude/worktrees/
+*.xcuserstate
+xcuserdata/
+.claude/worktrees/
