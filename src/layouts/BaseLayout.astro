@@ -9,9 +9,21 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  themeColor?: string;
+  bodyClass?: string;
+  chrome?: boolean;
 }
 
-const { title, description = site.description, ogImage } = Astro.props;
+const {
+  title,
+  description = site.description,
+  ogImage,
+  ogImageAlt,
+  themeColor = '#fbf7f0',
+  bodyClass,
+  chrome = true
+} = Astro.props;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 const resolvedOgImage =
   ogImage && Astro.site ? new URL(withBase(ogImage), Astro.site) : undefined;
@@ -25,7 +37,7 @@ const resolvedOgImage =
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Aaron Price" />
-    <meta name="theme-color" content="#fbf7f0" />
+    <meta name="theme-color" content={themeColor} />
     {canonical && <link rel="canonical" href={canonical} />}
 
     <meta property="og:title" content={title} />
@@ -34,10 +46,11 @@ const resolvedOgImage =
     <meta property="og:site_name" content="Aaron Price" />
     {canonical && <meta property="og:url" content={canonical} />}
     {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+    {resolvedOgImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
     <meta name="twitter:card" content={resolvedOgImage ? 'summary_large_image' : 'summary'} />
 
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={withBase('/images/apps/widgtext-icon.png')} />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,11 +59,11 @@ const resolvedOgImage =
       rel="stylesheet"
     />
   </head>
-  <body>
-    <Header />
+  <body class={bodyClass}>
+    {chrome && <Header />}
     <main>
       <slot />
     </main>
-    <Footer />
+    {chrome && <Footer />}
   </body>
 </html>
