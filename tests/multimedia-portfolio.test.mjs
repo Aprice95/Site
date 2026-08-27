@@ -79,6 +79,7 @@ test('ships responsive and reduced-motion multimedia styles', async () => {
   assert.match(css, /\.hero-still\{[^}]*aspect-ratio:4\/5/);
   assert.match(css, /\.hero-copy h1\{[^}]*font-size:clamp\(50px,5\.3vw,78px\)/);
   assert.match(css, /\.portfolio-wordmark\{[^}]*min-width:44px[^}]*min-height:44px/);
+  assert.match(css, /\.multimedia-portfolio \.portfolio-header nav\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /@media \((?:max-width:|width<=)900px\)/);
   assert.match(css, /@media \((?:max-width:|width<=)620px\)/);
   assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);

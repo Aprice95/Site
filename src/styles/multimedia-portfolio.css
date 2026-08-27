@@ -642,11 +642,36 @@
 
   .multimedia-portfolio .portfolio-header {
     width: min(100% - 32px, 1240px);
-    min-height: 66px;
+    min-height: 0;
+    padding-block: 10px;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-rows: 44px auto;
+    justify-content: initial;
   }
 
   .multimedia-portfolio .portfolio-header nav {
-    display: none;
+    width: 100%;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--portfolio-line);
+  }
+
+  .multimedia-portfolio .portfolio-header nav a {
+    min-width: 0;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 6px 5px;
+    font: 650 9px/1.2 var(--portfolio-font-mono);
+    letter-spacing: .025em;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .multimedia-portfolio .portfolio-header nav a + a {
+    border-left: 1px solid var(--portfolio-line);
   }
 
   .multimedia-portfolio .multimedia-hero {
