@@ -1,0 +1,59 @@
+---
+import { multimediaPortfolio } from '../../data/multimedia-portfolio';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../lib/paths';
+import '../../styles/portfolio.css';
+---
+
+<BaseLayout
+  title="Multimedia Production | Aaron Price"
+  description={multimediaPortfolio.hero.support}
+  themeColor="#f4f0e7"
+  bodyClass="portfolio-home multimedia-portfolio"
+  chrome={false}
+>
+  <header class="portfolio-header">
+    <a class="portfolio-wordmark" href={withBase('/')} aria-label="Aaron Price, home">
+      <span>AP</span>
+      <span>Aaron Price</span>
+    </a>
+    <nav aria-label="Portfolio">
+      <a href="#live-production">Live production</a>
+      <a href="#educational-media">Educational media</a>
+      <a href="#campaign-production">Campaign production</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div id="top">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">{multimediaPortfolio.hero.eyebrow}</p>
+        <h1 id="hero-title">{multimediaPortfolio.hero.headline}</h1>
+        <p class="hero-support">{multimediaPortfolio.hero.support}</p>
+        <ul aria-label="Production capabilities">
+          {multimediaPortfolio.hero.proofs.map((proof) => <li>{proof}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-shell" id="live-production" aria-labelledby="live-production-title">
+      <h2 id="live-production-title">Live production</h2>
+    </section>
+
+    <section class="section-shell" id="educational-media" aria-labelledby="educational-media-title">
+      <h2 id="educational-media-title">Educational media</h2>
+    </section>
+
+    <section class="section-shell" id="campaign-production" aria-labelledby="campaign-production-title">
+      <h2 id="campaign-production-title">Campaign production</h2>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-shell">
+        <h2 id="contact-title">Contact</h2>
+        <p>{multimediaPortfolio.closing}</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
