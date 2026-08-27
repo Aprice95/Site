@@ -1,0 +1,48 @@
+---
+import type { YouTubeMedia } from '../data/multimedia-portfolio';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  media: YouTubeMedia;
+  featured?: boolean;
+}
+
+const { media, featured = false } = Astro.props;
+---
+
+<div
+  class:list={['deferred-youtube', { 'deferred-youtube--featured': featured }]}
+  data-deferred-youtube
+  data-youtube-id={media.id}
+  data-youtube-title={media.title}
+>
+  <button class="deferred-youtube__trigger" type="button" aria-label={`Play ${media.title}`}>
+    <img src={withBase(media.poster)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+    <span class="deferred-youtube__play" aria-hidden="true">▶</span>
+    <span class="deferred-youtube__caption">{media.title} · {media.duration}</span>
+  </button>
+  <p class="media-accessibility-note">{media.accessibilityNote}</p>
+  <noscript><a href={media.externalUrl}>Watch {media.title} on YouTube</a></noscript>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-deferred-youtube]').forEach((container) => {
+    const trigger = container.querySelector<HTMLButtonElement>('.deferred-youtube__trigger');
+    if (!trigger || trigger.dataset.ready === 'true') return;
+    trigger.dataset.ready = 'true';
+    trigger.addEventListener('click', () => {
+      const id = container.dataset.youtubeId;
+      const title = container.dataset.youtubeTitle;
+      if (!id || !title) return;
+      const frame = document.createElement('iframe');
+      frame.className = 'deferred-youtube__frame';
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      frame.title = title;
+      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.allowFullscreen = true;
+      frame.tabIndex = 0;
+      trigger.replaceWith(frame);
+      frame.focus();
+    });
+  });
+</script>

@@ -17,3 +17,13 @@ test('publishes the multimedia production portfolio route', async () => {
   assert.match(html, /id="educational-media"/);
   assert.match(html, /id="campaign-production"/);
 });
+
+test('defers privacy-enhanced YouTube players until interaction', async () => {
+  const html = await readPortfolio();
+
+  assert.match(html, /data-deferred-youtube/);
+  assert.match(html, /data-youtube-id="klKOPtfOaqs"/);
+  assert.match(html, /https:\/\/www\.youtube-nocookie\.com\/embed\//);
+  assert.match(html, /Watch Coile Middle Holiday Concert 2024 on YouTube/);
+  assert.doesNotMatch(html, /<iframe[^>]+src="https:\/\/www\.youtube/);
+});

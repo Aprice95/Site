@@ -1,5 +1,6 @@
 ---
 import { multimediaPortfolio } from '../../data/multimedia-portfolio';
+import DeferredYouTube from '../../components/DeferredYouTube.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { withBase } from '../../lib/paths';
 import '../../styles/portfolio.css';
@@ -39,6 +40,7 @@ import '../../styles/portfolio.css';
 
     <section class="section-shell" id="live-production" aria-labelledby="live-production-title">
       <h2 id="live-production-title">Live production</h2>
+      <DeferredYouTube media={multimediaPortfolio.liveProduction.media} featured />
     </section>
 
     <section class="section-shell" id="educational-media" aria-labelledby="educational-media-title">

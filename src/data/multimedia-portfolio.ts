@@ -35,5 +35,16 @@ export const multimediaPortfolio = {
       'I plan, capture, edit, mix, and deliver visual stories for learners, communities, and digital audiences.',
     proofs: ['Narrative video', 'Photography', 'Digital editing', 'Production management']
   },
+  liveProduction: {
+    media: {
+      kind: 'youtube',
+      id: 'klKOPtfOaqs',
+      title: 'Coile Middle Holiday Concert 2024',
+      duration: '23:20',
+      poster: '/images/portfolio/multimedia/coile-holiday-concert.jpg',
+      externalUrl: 'https://www.youtube.com/watch?v=klKOPtfOaqs',
+      accessibilityNote: 'Select play to load the concert from YouTube.'
+    } satisfies YouTubeMedia
+  },
   closing: 'Good production is equal parts story, systems, and care for the audience.'
 } as const;
