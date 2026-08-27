@@ -119,6 +119,53 @@ export const multimediaPortfolio = {
       }
     ] satisfies readonly YouTubeMedia[]
   },
+  campaignProduction: {
+    eyebrow: 'Campaign production · Marching Tycoon short-form system',
+    title: 'A repeatable short-form campaign system',
+    need: 'Turning a set of verified game features into a compact campaign that can move from brief to delivery across vertical social formats.',
+    role: 'Creative strategist · Copywriter · Editor · QA lead',
+    summary:
+      'Marching Tycoon’s campaign pairs four playable short-form videos with a format-adaptation workflow. Each piece uses clear captions and visual hierarchy, deliberate pacing, and a final quality check for an audience-ready delivery.',
+    workflow: ['Brief', 'Format system', 'Edit', 'Quality check', 'Delivery'],
+    decisions: [
+      'Adapt the same creative system for vertical social delivery while keeping the gameplay evidence legible.',
+      'Use captions, concise copy, and a consistent hierarchy so each idea reads quickly without sound.',
+      'Build pacing around the moment each feature becomes understandable, then check timing, captions, and exports before delivery.'
+    ],
+    deliverables: ['Four vertical campaign videos', 'Matching cover frames and campaign contact sheet', 'Format-ready captions, hierarchy, and QA pass'],
+    tools: 'Marching Tycoon gameplay assets · Short-form edit · Caption and hierarchy system · Export QA',
+    media: [
+      {
+        kind: 'local',
+        title: 'Band Camp Damage Speedrun',
+        src: '/video/portfolio/multimedia/marching-tycoon/01-band-camp-damage-speedrun.mp4',
+        poster: '/images/portfolio/multimedia/marching-tycoon/01-band-camp-damage-speedrun-cover.png',
+        accessibilityNote: 'A short-form gameplay edit showing the band-camp damage recovery loop.'
+      },
+      {
+        kind: 'local',
+        title: 'Every Band Has These People',
+        src: '/video/portfolio/multimedia/marching-tycoon/02-every-band-has-these-people.mp4',
+        poster: '/images/portfolio/multimedia/marching-tycoon/02-every-band-has-these-people-cover.png',
+        accessibilityNote: 'A short-form gameplay edit introducing the staff roles that keep a band running.'
+      },
+      {
+        kind: 'local',
+        title: 'The Boosters Finally Came Through',
+        src: '/video/portfolio/multimedia/marching-tycoon/03-the-boosters-finally-came-through.mp4',
+        poster: '/images/portfolio/multimedia/marching-tycoon/03-the-boosters-finally-came-through-cover.png',
+        accessibilityNote: 'A short-form gameplay edit showing the booster-funding feature in action.'
+      },
+      {
+        kind: 'local',
+        title: 'Band Kid Timing Challenge',
+        src: '/video/portfolio/multimedia/marching-tycoon/04-band-kid-timing-challenge.mp4',
+        poster: '/images/portfolio/multimedia/marching-tycoon/04-band-kid-timing-challenge-cover.png',
+        accessibilityNote: 'A short-form gameplay timing challenge set to the campaign’s rhythmic interaction.'
+      }
+    ] satisfies readonly LocalVideoMedia[],
+    contactSheet: '/images/portfolio/multimedia/marching-tycoon/contact-sheet.jpg'
+  },
   visualStorytelling: [
     {
       src: '/images/portfolio/multimedia/coile-holiday-concert.jpg',

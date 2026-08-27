@@ -51,3 +51,16 @@ test('features the instructional and personal YouTube evidence selected in the s
   assert.match(html, /Author · Instructional designer · Producer · Editor/);
   assert.match(html, /Selected creative work/);
 });
+
+test('shows the four-video campaign system without eager video downloads', async () => {
+  const html = await readPortfolio();
+
+  assert.equal((html.match(/<video/g) ?? []).length, 4);
+  assert.equal((html.match(/preload="none"/g) ?? []).length, 4);
+  assert.doesNotMatch(html, /<video[^>]+autoplay/);
+  assert.match(html, /Band Camp Damage Speedrun/);
+  assert.match(html, /Every Band Has These People/);
+  assert.match(html, /The Boosters Finally Came Through/);
+  assert.match(html, /Band Kid Timing Challenge/);
+  assert.match(html, /brief.*format system.*edit.*quality check.*delivery/is);
+});

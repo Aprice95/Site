@@ -1,6 +1,7 @@
 ---
 import { multimediaPortfolio } from '../../data/multimedia-portfolio';
 import DeferredYouTube from '../../components/DeferredYouTube.astro';
+import LocalVideoCard from '../../components/LocalVideoCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { withBase } from '../../lib/paths';
 import '../../styles/portfolio.css';
@@ -119,9 +120,49 @@ import '../../styles/portfolio.css';
     </section>
 
     <section class="section-shell" id="campaign-production" aria-labelledby="campaign-production-title">
+      <article class="case-study">
+        <p class="eyebrow">{multimediaPortfolio.campaignProduction.eyebrow}</p>
+        <h2 id="campaign-production-title">{multimediaPortfolio.campaignProduction.title}</h2>
+        <p class="case-study-summary">{multimediaPortfolio.campaignProduction.summary}</p>
+        <dl class="case-study-details">
+          <div><dt>Production need</dt><dd>{multimediaPortfolio.campaignProduction.need}</dd></div>
+          <div><dt>Role</dt><dd>{multimediaPortfolio.campaignProduction.role}</dd></div>
+        </dl>
+        <div class="campaign-workflow" aria-label="Campaign workflow">
+          {multimediaPortfolio.campaignProduction.workflow.map((step, index) => (
+            <span>{step}{index < multimediaPortfolio.campaignProduction.workflow.length - 1 && <span aria-hidden="true"> → </span>}</span>
+          ))}
+        </div>
+        <div class="campaign-feature">
+          <figure>
+            <img src={withBase(multimediaPortfolio.campaignProduction.contactSheet)} alt="Contact sheet showing the four Marching Tycoon campaign video covers" loading="lazy" decoding="async" />
+            <figcaption>Four-piece campaign contact sheet</figcaption>
+          </figure>
+          <div class="campaign-grid" aria-label="Marching Tycoon campaign videos">
+            {multimediaPortfolio.campaignProduction.media.map((media) => <LocalVideoCard media={media} />)}
+          </div>
+        </div>
+        <div class="case-study-grid">
+          <div>
+            <h3>Production decisions</h3>
+            <ul>{multimediaPortfolio.campaignProduction.decisions.map((decision) => <li>{decision}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Deliverables</h3>
+            <ul>{multimediaPortfolio.campaignProduction.deliverables.map((deliverable) => <li>{deliverable}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Tools / credits</h3>
+            <p>{multimediaPortfolio.campaignProduction.tools}</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-shell" id="creative-work" aria-labelledby="creative-work-title">
       <article class="case-study creative-work">
         <p class="eyebrow">{multimediaPortfolio.creativeWork.eyebrow}</p>
-        <h2 id="campaign-production-title">{multimediaPortfolio.creativeWork.title}</h2>
+        <h2 id="creative-work-title">{multimediaPortfolio.creativeWork.title}</h2>
         <p class="case-study-summary">{multimediaPortfolio.creativeWork.support}</p>
         <div class="supporting-media" aria-label="Selected creative videos">
           {multimediaPortfolio.creativeWork.media.map((media) => <DeferredYouTube media={media} />)}

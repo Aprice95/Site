@@ -1,0 +1,16 @@
+---
+import type { LocalVideoMedia } from '../data/multimedia-portfolio';
+import { withBase } from '../lib/paths';
+
+interface Props { media: LocalVideoMedia; }
+const { media } = Astro.props;
+---
+
+<article class="campaign-card">
+  <video controls preload="none" playsinline poster={withBase(media.poster)}>
+    <source src={withBase(media.src)} type="video/mp4" />
+    <p><a href={withBase(media.src)}>Open {media.title}</a></p>
+  </video>
+  <h3>{media.title}</h3>
+  <p>{media.accessibilityNote}</p>
+</article>
