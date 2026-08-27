@@ -13,6 +13,7 @@ interface Props {
   themeColor?: string;
   bodyClass?: string;
   chrome?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -22,7 +23,8 @@ const {
   ogImageAlt,
   themeColor = '#fbf7f0',
   bodyClass,
-  chrome = true
+  chrome = true,
+  structuredData
 } = Astro.props;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 const resolvedOgImage =
@@ -48,6 +50,10 @@ const resolvedOgImage =
     {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
     {resolvedOgImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
     <meta name="twitter:card" content={resolvedOgImage ? 'summary_large_image' : 'summary'} />
+
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
 
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />

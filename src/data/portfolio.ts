@@ -99,11 +99,11 @@ export const portfolioData = {
       summary:
         'Professional multi-camera concert capture paired with multichannel audio recording, post-production, mixing, and final delivery—plus paid live sound and custom digital sound production for regional programs.',
       links: [
-        { label: 'View music work', href: 'https://www.youtube.com/@BJGD5' },
         {
-          label: 'Request production samples',
-          href: 'mailto:hello@marchingtycoon.com?subject=Production%20sample%20request'
-        }
+          label: 'View multimedia production portfolio',
+          href: '/work/multimedia-production'
+        },
+        { label: 'View music work', href: 'https://www.youtube.com/@BJGD5' }
       ]
     },
     {

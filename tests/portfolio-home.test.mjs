@@ -26,3 +26,10 @@ test('keeps the portfolio header touch-friendly and consistently branded', async
   assert.match(html, /<link rel="apple-touch-icon" href="\/apple-touch-icon\.png">/);
   assert.match(css, /\.portfolio-header nav a\{[^}]*min-height:44px[^}]*padding:0 4px/);
 });
+
+test('links the homepage production project to the new case study', async () => {
+  const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /href="\/work\/multimedia-production\/?"/);
+  assert.match(html, /View multimedia production portfolio/);
+});

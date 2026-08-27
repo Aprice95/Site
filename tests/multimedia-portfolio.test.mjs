@@ -84,3 +84,14 @@ test('ships responsive and reduced-motion multimedia styles', async () => {
   assert.match(css, /@media \((?:max-width:|width<=)620px\)/);
   assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
 });
+
+test('publishes page-specific metadata and structured portfolio data', async () => {
+  const html = await readPortfolio();
+
+  assert.match(html, /<title>Multimedia Production Portfolio \| Aaron Price<\/title>/);
+  assert.match(html, /Narrative video, photography, educational media, live production, and digital campaign work produced by Aaron Price\./);
+  assert.match(html, /<link rel="canonical" href="https:\/\/aaronprice\.org\/work\/multimedia-production\/?">/);
+  assert.match(html, /multimedia-social-card\.png/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /"@type":"CollectionPage"/);
+});

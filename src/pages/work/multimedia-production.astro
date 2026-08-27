@@ -6,14 +6,70 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { withBase } from '../../lib/paths';
 import '../../styles/portfolio.css';
 import '../../styles/multimedia-portfolio.css';
+
+const pageTitle = 'Multimedia Production Portfolio | Aaron Price';
+const pageDescription =
+  'Narrative video, photography, educational media, live production, and digital campaign work produced by Aaron Price.';
+const siteUrl = Astro.site ?? new URL('https://aaronprice.org');
+const portfolioUrl = new URL(withBase('/work/multimedia-production/'), siteUrl).href;
+const absoluteMediaUrl = (path: string) =>
+  path.startsWith('http') ? path : new URL(withBase(path), siteUrl).href;
+const creator = {
+  '@type': 'Person',
+  name: 'Aaron Price',
+  url: new URL(withBase('/'), siteUrl).href
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Multimedia Production Portfolio',
+  description: pageDescription,
+  url: portfolioUrl,
+  creator,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: [
+      {
+        '@type': 'CreativeWork',
+        name: 'Coile Middle Holiday Concert 2024',
+        description: multimediaPortfolio.liveProduction.need,
+        url: `${portfolioUrl}#live-production`,
+        creator,
+        video: multimediaPortfolio.liveProduction.media.externalUrl
+      },
+      {
+        '@type': 'CreativeWork',
+        name: 'Music Tech Made Simple',
+        description: multimediaPortfolio.educationalMedia.summary,
+        url: `${portfolioUrl}#educational-media`,
+        creator,
+        video: [
+          multimediaPortfolio.educationalMedia.media.externalUrl,
+          ...multimediaPortfolio.educationalMedia.supportingMedia.map((media) => media.externalUrl)
+        ]
+      },
+      {
+        '@type': 'CreativeWork',
+        name: 'Marching Tycoon campaign production',
+        description: multimediaPortfolio.campaignProduction.summary,
+        url: `${portfolioUrl}#campaign-production`,
+        creator,
+        video: multimediaPortfolio.campaignProduction.media.map((media) => absoluteMediaUrl(media.src))
+      }
+    ]
+  }
+};
 ---
 
 <BaseLayout
-  title="Multimedia Production | Aaron Price"
-  description={multimediaPortfolio.hero.support}
+  title={pageTitle}
+  description={pageDescription}
+  ogImage="/images/portfolio/multimedia/multimedia-social-card.png"
+  ogImageAlt="Aaron Price multimedia production portfolio"
   themeColor="#f4f0e7"
   bodyClass="portfolio-home multimedia-portfolio"
   chrome={false}
+  structuredData={structuredData}
 >
   <header class="portfolio-header">
     <a class="portfolio-wordmark" href={withBase('/')} aria-label="Aaron Price, home">
