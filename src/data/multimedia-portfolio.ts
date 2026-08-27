@@ -25,6 +25,7 @@ export type CaseStudy = {
   decisions: readonly string[];
   deliverables: readonly string[];
   tools: string;
+  viewingPoints: readonly string[];
 };
 
 export const multimediaPortfolio = {
@@ -36,6 +37,23 @@ export const multimediaPortfolio = {
     proofs: ['Narrative video', 'Photography', 'Digital editing', 'Production management']
   },
   liveProduction: {
+    eyebrow: 'Live production · Coile Middle Holiday Concert 2024',
+    title: 'Capturing a live community performance',
+    need: 'Preserving a live school performance clearly for families and the school community.',
+    role: 'Recording engineer · Camera operator · Editor · Mixer',
+    decisions: [
+      'Multi-camera coverage keeps the performance legible as it unfolds.',
+      'Multichannel audio capture preserves the musical detail of a live ensemble.',
+      'Synchronization and editorial pacing keep picture and sound aligned from start to finish.',
+      'Mixing and final delivery shape a clear, shareable concert record.'
+    ],
+    deliverables: ['Full concert video', 'Synchronized picture and multichannel audio', 'Final mix and YouTube delivery'],
+    tools: 'YouTube delivery · Concert video · School community archive',
+    viewingPoints: [
+      '00:00 — Opening establishing view of the concert space and performers.',
+      '04:12 — A clean camera transition during a musical selection.',
+      '16:48 — Stable audio/video continuity through a sustained musical passage.'
+    ],
     media: {
       kind: 'youtube',
       id: 'klKOPtfOaqs',

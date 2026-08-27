@@ -35,12 +35,44 @@ import '../../styles/portfolio.css';
         <ul aria-label="Production capabilities">
           {multimediaPortfolio.hero.proofs.map((proof) => <li>{proof}</li>)}
         </ul>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#live-production">Explore live production <span aria-hidden="true">↘</span></a>
+        </div>
       </div>
     </section>
 
     <section class="section-shell" id="live-production" aria-labelledby="live-production-title">
-      <h2 id="live-production-title">Live production</h2>
-      <DeferredYouTube media={multimediaPortfolio.liveProduction.media} featured />
+      <article class="case-study">
+        <p class="eyebrow">{multimediaPortfolio.liveProduction.eyebrow}</p>
+        <h2 id="live-production-title">{multimediaPortfolio.liveProduction.title}</h2>
+        <dl class="case-study-details">
+          <div><dt>Production need</dt><dd>{multimediaPortfolio.liveProduction.need}</dd></div>
+          <div><dt>Role</dt><dd>{multimediaPortfolio.liveProduction.role}</dd></div>
+        </dl>
+        <div class="case-study-featured">
+          <DeferredYouTube media={multimediaPortfolio.liveProduction.media} featured />
+          <div class="viewing-points">
+            <h3>Suggested viewing points</h3>
+            <ul>
+              {multimediaPortfolio.liveProduction.viewingPoints.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div class="case-study-grid">
+          <div>
+            <h3>Production decisions</h3>
+            <ul>{multimediaPortfolio.liveProduction.decisions.map((decision) => <li>{decision}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Deliverables</h3>
+            <ul>{multimediaPortfolio.liveProduction.deliverables.map((deliverable) => <li>{deliverable}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Tools / credits</h3>
+            <p>{multimediaPortfolio.liveProduction.tools}</p>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section class="section-shell" id="educational-media" aria-labelledby="educational-media-title">

@@ -27,3 +27,14 @@ test('defers privacy-enhanced YouTube players until interaction', async () => {
   assert.match(html, /Watch Coile Middle Holiday Concert 2024 on YouTube/);
   assert.doesNotMatch(html, /<iframe[^>]+src="https:\/\/www\.youtube/);
 });
+
+test('explains Aaron’s live production ownership', async () => {
+  const html = await readPortfolio();
+
+  assert.match(html, /Capturing a live community performance/);
+  assert.match(html, /Recording engineer · Camera operator · Editor · Mixer/);
+  assert.match(html, /multi-camera/i);
+  assert.match(html, /multichannel audio/i);
+  assert.match(html, /synchronization/i);
+  assert.match(html, /mixing/i);
+});
