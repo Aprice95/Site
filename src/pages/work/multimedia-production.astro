@@ -5,6 +5,7 @@ import LocalVideoCard from '../../components/LocalVideoCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { withBase } from '../../lib/paths';
 import '../../styles/portfolio.css';
+import '../../styles/multimedia-portfolio.css';
 ---
 
 <BaseLayout
@@ -28,21 +29,25 @@ import '../../styles/portfolio.css';
   </header>
 
   <div id="top">
-    <section class="hero section-shell" aria-labelledby="hero-title">
+    <section class="hero multimedia-hero section-shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">{multimediaPortfolio.hero.eyebrow}</p>
         <h1 id="hero-title">{multimediaPortfolio.hero.headline}</h1>
         <p class="hero-support">{multimediaPortfolio.hero.support}</p>
-        <ul aria-label="Production capabilities">
+        <ul class="proof-list" aria-label="Production capabilities">
           {multimediaPortfolio.hero.proofs.map((proof) => <li>{proof}</li>)}
         </ul>
         <div class="hero-actions">
           <a class="button button-primary" href="#live-production">Explore live production <span aria-hidden="true">↘</span></a>
         </div>
       </div>
+      <figure class="hero-still">
+        <img src={withBase(multimediaPortfolio.liveProduction.media.poster)} alt="Concert-stage still from Coile Middle Holiday Concert 2024" decoding="async" />
+        <figcaption><span>01 / Live production</span><span>Coile Middle Holiday Concert 2024</span></figcaption>
+      </figure>
     </section>
 
-    <section class="section-shell" id="live-production" aria-labelledby="live-production-title">
+    <section class="section-shell case-study-section case-study-section--dark" id="live-production" aria-labelledby="live-production-title">
       <article class="case-study">
         <p class="eyebrow">{multimediaPortfolio.liveProduction.eyebrow}</p>
         <h2 id="live-production-title">{multimediaPortfolio.liveProduction.title}</h2>
@@ -76,7 +81,7 @@ import '../../styles/portfolio.css';
       </article>
     </section>
 
-    <section class="section-shell" id="educational-media" aria-labelledby="educational-media-title">
+    <section class="section-shell case-study-section case-study-section--light" id="educational-media" aria-labelledby="educational-media-title">
       <article class="case-study">
         <p class="eyebrow">{multimediaPortfolio.educationalMedia.eyebrow}</p>
         <h2 id="educational-media-title">{multimediaPortfolio.educationalMedia.title}</h2>
@@ -119,7 +124,7 @@ import '../../styles/portfolio.css';
       </article>
     </section>
 
-    <section class="section-shell" id="campaign-production" aria-labelledby="campaign-production-title">
+    <section class="section-shell case-study-section case-study-section--blue" id="campaign-production" aria-labelledby="campaign-production-title">
       <article class="case-study">
         <p class="eyebrow">{multimediaPortfolio.campaignProduction.eyebrow}</p>
         <h2 id="campaign-production-title">{multimediaPortfolio.campaignProduction.title}</h2>
@@ -159,7 +164,7 @@ import '../../styles/portfolio.css';
       </article>
     </section>
 
-    <section class="section-shell" id="creative-work" aria-labelledby="creative-work-title">
+    <section class="section-shell case-study-section case-study-section--creative" id="creative-work" aria-labelledby="creative-work-title">
       <article class="case-study creative-work">
         <p class="eyebrow">{multimediaPortfolio.creativeWork.eyebrow}</p>
         <h2 id="creative-work-title">{multimediaPortfolio.creativeWork.title}</h2>
@@ -172,8 +177,13 @@ import '../../styles/portfolio.css';
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="section-shell">
-        <h2 id="contact-title">Contact</h2>
+        <p class="eyebrow">Closing frame</p>
+        <h2 id="contact-title">Let’s make the next story useful.</h2>
         <p>{multimediaPortfolio.closing}</p>
+        <div class="contact-actions">
+          <a href="mailto:hello@marchingtycoon.com">hello@marchingtycoon.com <span aria-hidden="true">↗</span></a>
+          <a href={withBase('/')}>Back to the main portfolio <span aria-hidden="true">↖</span></a>
+        </div>
       </div>
     </section>
   </div>

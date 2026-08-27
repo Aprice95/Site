@@ -64,3 +64,22 @@ test('shows the four-video campaign system without eager video downloads', async
   assert.match(html, /Band Kid Timing Challenge/);
   assert.match(html, /brief.*format system.*edit.*quality check.*delivery/is);
 });
+
+test('ships responsive and reduced-motion multimedia styles', async () => {
+  const html = await readPortfolio();
+  const stylesheetPaths = [...html.matchAll(/href="(\/_astro\/[^\"]+\.css)"/g)].map((match) => match[1]);
+  const stylesheets = await Promise.all(
+    stylesheetPaths.map((path) => readFile(new URL(`../dist${path}`, import.meta.url), 'utf8'))
+  );
+  const css = stylesheets.join('\n');
+
+  assert.match(css, /\.multimedia-hero\{/);
+  assert.match(css, /\.case-study-grid\{/);
+  assert.match(css, /\.campaign-grid\{/);
+  assert.match(css, /\.hero-still\{[^}]*aspect-ratio:4\/5/);
+  assert.match(css, /\.hero-copy h1\{[^}]*font-size:clamp\(50px,5\.3vw,78px\)/);
+  assert.match(css, /\.portfolio-wordmark\{[^}]*min-width:44px[^}]*min-height:44px/);
+  assert.match(css, /@media \((?:max-width:|width<=)900px\)/);
+  assert.match(css, /@media \((?:max-width:|width<=)620px\)/);
+  assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
+});
