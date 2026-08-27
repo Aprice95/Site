@@ -5,6 +5,14 @@ import test from 'node:test';
 const readPortfolio = () =>
   readFile(new URL('../dist/work/multimedia-production/index.html', import.meta.url), 'utf8');
 
+const readStructuredData = async () => {
+  const html = await readPortfolio();
+  const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+
+  assert.ok(match, 'expected a JSON-LD script in the portfolio page');
+  return JSON.parse(match[1]);
+};
+
 test('publishes the multimedia production portfolio route', async () => {
   const html = await readPortfolio();
 
@@ -94,4 +102,56 @@ test('publishes page-specific metadata and structured portfolio data', async () 
   assert.match(html, /multimedia-social-card\.png/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /"@type":"CollectionPage"/);
+});
+
+test('describes each verified portfolio video as a VideoObject', async () => {
+  const structuredData = await readStructuredData();
+  const works = structuredData.mainEntity.itemListElement;
+
+  assert.deepEqual(works.map((work) => work.video), [
+    {
+      '@type': 'VideoObject',
+      name: 'Coile Middle Holiday Concert 2024',
+      contentUrl: 'https://www.youtube.com/watch?v=klKOPtfOaqs'
+    },
+    [
+      {
+        '@type': 'VideoObject',
+        name: 'Podcast Project Video Walkthrough',
+        contentUrl: 'https://www.youtube.com/watch?v=eJRE3znUYaA'
+      },
+      {
+        '@type': 'VideoObject',
+        name: 'DAW Introduction',
+        contentUrl: 'https://www.youtube.com/watch?v=9qUu9b4FUKY'
+      },
+      {
+        '@type': 'VideoObject',
+        name: '12 Bar Blues',
+        contentUrl: 'https://www.youtube.com/watch?v=WtsmqB7ogkA'
+      }
+    ],
+    [
+      {
+        '@type': 'VideoObject',
+        name: 'Band Camp Damage Speedrun',
+        contentUrl: 'https://aaronprice.org/video/portfolio/multimedia/marching-tycoon/01-band-camp-damage-speedrun.mp4'
+      },
+      {
+        '@type': 'VideoObject',
+        name: 'Every Band Has These People',
+        contentUrl: 'https://aaronprice.org/video/portfolio/multimedia/marching-tycoon/02-every-band-has-these-people.mp4'
+      },
+      {
+        '@type': 'VideoObject',
+        name: 'The Boosters Finally Came Through',
+        contentUrl: 'https://aaronprice.org/video/portfolio/multimedia/marching-tycoon/03-the-boosters-finally-came-through.mp4'
+      },
+      {
+        '@type': 'VideoObject',
+        name: 'Band Kid Timing Challenge',
+        contentUrl: 'https://aaronprice.org/video/portfolio/multimedia/marching-tycoon/04-band-kid-timing-challenge.mp4'
+      }
+    ]
+  ]);
 });

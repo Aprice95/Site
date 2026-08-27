@@ -14,6 +14,11 @@ const siteUrl = Astro.site ?? new URL('https://aaronprice.org');
 const portfolioUrl = new URL(withBase('/work/multimedia-production/'), siteUrl).href;
 const absoluteMediaUrl = (path: string) =>
   path.startsWith('http') ? path : new URL(withBase(path), siteUrl).href;
+const videoObject = (name: string, contentUrl: string) => ({
+  '@type': 'VideoObject',
+  name,
+  contentUrl
+});
 const creator = {
   '@type': 'Person',
   name: 'Aaron Price',
@@ -35,7 +40,10 @@ const structuredData = {
         description: multimediaPortfolio.liveProduction.need,
         url: `${portfolioUrl}#live-production`,
         creator,
-        video: multimediaPortfolio.liveProduction.media.externalUrl
+        video: videoObject(
+          multimediaPortfolio.liveProduction.media.title,
+          multimediaPortfolio.liveProduction.media.externalUrl
+        )
       },
       {
         '@type': 'CreativeWork',
@@ -44,9 +52,9 @@ const structuredData = {
         url: `${portfolioUrl}#educational-media`,
         creator,
         video: [
-          multimediaPortfolio.educationalMedia.media.externalUrl,
-          ...multimediaPortfolio.educationalMedia.supportingMedia.map((media) => media.externalUrl)
-        ]
+          multimediaPortfolio.educationalMedia.media,
+          ...multimediaPortfolio.educationalMedia.supportingMedia
+        ].map((media) => videoObject(media.title, media.externalUrl))
       },
       {
         '@type': 'CreativeWork',
@@ -54,7 +62,9 @@ const structuredData = {
         description: multimediaPortfolio.campaignProduction.summary,
         url: `${portfolioUrl}#campaign-production`,
         creator,
-        video: multimediaPortfolio.campaignProduction.media.map((media) => absoluteMediaUrl(media.src))
+        video: multimediaPortfolio.campaignProduction.media.map((media) =>
+          videoObject(media.title, absoluteMediaUrl(media.src))
+        )
       }
     ]
   }
