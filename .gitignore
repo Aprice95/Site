@@ -3,6 +3,7 @@ dist/
 .astro/
 .DS_Store
 .claude/
+.worktrees/
 # --- cross-machine sync hygiene ---
 *.xcuserstate
 xcuserdata/
