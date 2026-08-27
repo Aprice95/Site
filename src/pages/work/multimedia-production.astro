@@ -76,11 +76,57 @@ import '../../styles/portfolio.css';
     </section>
 
     <section class="section-shell" id="educational-media" aria-labelledby="educational-media-title">
-      <h2 id="educational-media-title">Educational media</h2>
+      <article class="case-study">
+        <p class="eyebrow">{multimediaPortfolio.educationalMedia.eyebrow}</p>
+        <h2 id="educational-media-title">{multimediaPortfolio.educationalMedia.title}</h2>
+        <p class="case-study-summary">{multimediaPortfolio.educationalMedia.summary}</p>
+        <dl class="case-study-details">
+          <div><dt>Production need</dt><dd>{multimediaPortfolio.educationalMedia.need}</dd></div>
+          <div><dt>Role</dt><dd>{multimediaPortfolio.educationalMedia.role}</dd></div>
+        </dl>
+        <div class="case-study-featured">
+          <DeferredYouTube media={multimediaPortfolio.educationalMedia.media} featured />
+        </div>
+        <div class="case-study-grid">
+          <div>
+            <h3>Production decisions</h3>
+            <ul>{multimediaPortfolio.educationalMedia.decisions.map((decision) => <li>{decision}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Deliverables</h3>
+            <ul>{multimediaPortfolio.educationalMedia.deliverables.map((deliverable) => <li>{deliverable}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Tools / credits</h3>
+            <p>{multimediaPortfolio.educationalMedia.tools}</p>
+          </div>
+        </div>
+        <div class="supporting-media" aria-label="Supporting instructional videos">
+          {multimediaPortfolio.educationalMedia.supportingMedia.map((media) => <DeferredYouTube media={media} />)}
+        </div>
+        <section class="visual-strip" aria-labelledby="visual-strip-title">
+          <h3 id="visual-strip-title">Selected frames and curriculum visuals</h3>
+          <div class="visual-strip__grid">
+            {multimediaPortfolio.visualStorytelling.map((item) => (
+              <figure>
+                <img src={withBase(item.src)} alt={item.alt} loading="lazy" decoding="async" />
+                <figcaption>{item.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      </article>
     </section>
 
     <section class="section-shell" id="campaign-production" aria-labelledby="campaign-production-title">
-      <h2 id="campaign-production-title">Campaign production</h2>
+      <article class="case-study creative-work">
+        <p class="eyebrow">{multimediaPortfolio.creativeWork.eyebrow}</p>
+        <h2 id="campaign-production-title">{multimediaPortfolio.creativeWork.title}</h2>
+        <p class="case-study-summary">{multimediaPortfolio.creativeWork.support}</p>
+        <div class="supporting-media" aria-label="Selected creative videos">
+          {multimediaPortfolio.creativeWork.media.map((media) => <DeferredYouTube media={media} />)}
+        </div>
+      </article>
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">

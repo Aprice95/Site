@@ -38,3 +38,16 @@ test('explains Aaron’s live production ownership', async () => {
   assert.match(html, /synchronization/i);
   assert.match(html, /mixing/i);
 });
+
+test('features the instructional and personal YouTube evidence selected in the spec', async () => {
+  const html = await readPortfolio();
+
+  for (const id of ['eJRE3znUYaA', '9qUu9b4FUKY', 'WtsmqB7ogkA', 'MSLR4xXSwUw', 'GIcdUm7W7vk']) {
+    assert.match(html, new RegExp(`data-youtube-id="${id}"`));
+  }
+  assert.match(html, /95-page/);
+  assert.match(html, /nine sequenced chapters/i);
+  assert.match(html, /approximately 175 minutes/i);
+  assert.match(html, /Author · Instructional designer · Producer · Editor/);
+  assert.match(html, /Selected creative work/);
+});
