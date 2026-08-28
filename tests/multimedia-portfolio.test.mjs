@@ -5,6 +5,9 @@ import test from 'node:test';
 const readPortfolio = () =>
   readFile(new URL('../dist/work/multimedia-production/index.html', import.meta.url), 'utf8');
 
+const readAttribute = (attributes, name) =>
+  attributes.match(new RegExp(`\\b${name}="([^"]+)"`))?.[1] ?? null;
+
 const readStructuredData = async () => {
   const html = await readPortfolio();
   const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
@@ -73,11 +76,32 @@ test('shows the four-video campaign system without eager video downloads', async
   assert.match(html, /brief.*format system.*edit.*quality check.*delivery/is);
 });
 
+test('gives every native campaign video its visible heading as an accessible name', async () => {
+  const html = await readPortfolio();
+  const headings = new Map(
+    [...html.matchAll(/<h3\b([^>]*)>([^<]+)<\/h3>/g)].map(([, attributes, title]) => [
+      readAttribute(attributes, 'id'),
+      title
+    ])
+  );
+  const videos = [...html.matchAll(/<video\b([^>]*)>/g)].map(([, attributes]) => {
+    const labelledBy = readAttribute(attributes, 'aria-labelledby');
+    return { labelledBy, title: headings.get(labelledBy) };
+  });
+
+  assert.deepEqual(videos, [
+    { labelledBy: 'campaign-video-01-band-camp-damage-speedrun-title', title: 'Band Camp Damage Speedrun' },
+    { labelledBy: 'campaign-video-02-every-band-has-these-people-title', title: 'Every Band Has These People' },
+    { labelledBy: 'campaign-video-03-the-boosters-finally-came-through-title', title: 'The Boosters Finally Came Through' },
+    { labelledBy: 'campaign-video-04-band-kid-timing-challenge-title', title: 'Band Kid Timing Challenge' }
+  ]);
+});
+
 test('keeps the multimedia page semantic, private, and non-autoplaying', async () => {
   const html = await readPortfolio();
 
-  assert.match(html, /<main>/);
-  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.match(html, /<main\b[^>]*>/);
+  assert.equal((html.match(/<h1\b[^>]*>/g) ?? []).length, 1);
   assert.match(html, /aria-labelledby="live-production-title"/);
   assert.match(html, /aria-labelledby="educational-media-title"/);
   assert.match(html, /aria-labelledby="campaign-production-title"/);
@@ -92,11 +116,31 @@ test('keeps the multimedia page semantic, private, and non-autoplaying', async (
 
 test('keeps YouTube fallbacks and visual-source labels available without JavaScript', async () => {
   const html = await readPortfolio();
+  const fallbacks = [...html.matchAll(/<noscript\b[^>]*>\s*<a\b[^>]*href="([^"]+)"[^>]*>\s*Watch\s+([^<]+?)\s+on YouTube\s*<\/a>\s*<\/noscript>/g)].map(
+    ([, url, title]) => ({ url, title })
+  );
+  const visualStrip = html.match(/<section\b[^>]*class="[^"]*\bvisual-strip\b[^"]*"[^>]*>([\s\S]*?)<\/section>/);
 
-  assert.equal((html.match(/<noscript><a href="https:\/\/www\.youtube\.com\/watch\?v=/g) ?? []).length, 6);
-  assert.equal((html.match(/<figcaption>(?:Video poster|Curriculum composition) ·/g) ?? []).length, 6);
-  assert.match(html, /Curriculum composition · Music Tech Made Simple page 50/);
-  assert.match(html, /Video poster · Coile Middle Holiday Concert 2024/);
+  assert.deepEqual(fallbacks, [
+    { url: 'https://www.youtube.com/watch?v=klKOPtfOaqs', title: 'Coile Middle Holiday Concert 2024' },
+    { url: 'https://www.youtube.com/watch?v=eJRE3znUYaA', title: 'Podcast Project Video Walkthrough' },
+    { url: 'https://www.youtube.com/watch?v=9qUu9b4FUKY', title: 'DAW Introduction' },
+    { url: 'https://www.youtube.com/watch?v=WtsmqB7ogkA', title: '12 Bar Blues' },
+    { url: 'https://www.youtube.com/watch?v=MSLR4xXSwUw', title: 'Mando Brightside' },
+    { url: 'https://www.youtube.com/watch?v=GIcdUm7W7vk', title: 'The American Dream Is Killing Me — Guitar Cover' }
+  ]);
+  assert.ok(visualStrip, 'expected the visual-storytelling strip');
+  assert.deepEqual(
+    [...visualStrip[1].matchAll(/<figcaption\b[^>]*>\s*([^<]+?)\s*<\/figcaption>/g)].map(([, caption]) => caption),
+    [
+      'Video poster · Coile Middle Holiday Concert 2024',
+      'Video poster · Podcast Project walkthrough',
+      'Curriculum composition · Music Tech Made Simple page 50',
+      'Curriculum composition · Music Tech Made Simple page 55',
+      'Curriculum composition · Music Tech Made Simple page 57',
+      'Video poster · Mando Brightside'
+    ]
+  );
 });
 
 test('ships responsive and reduced-motion multimedia styles', async () => {

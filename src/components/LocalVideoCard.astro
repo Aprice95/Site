@@ -4,13 +4,15 @@ import { withBase } from '../lib/paths';
 
 interface Props { media: LocalVideoMedia; }
 const { media } = Astro.props;
+const mediaSlug = media.src.split('/').pop()?.replace(/\.mp4$/, '').replace(/[^a-z0-9]+/gi, '-') ?? 'video';
+const titleId = `campaign-video-${mediaSlug}-title`;
 ---
 
 <article class="campaign-card">
-  <video controls preload="none" playsinline poster={withBase(media.poster)}>
+  <video aria-labelledby={titleId} controls preload="none" playsinline poster={withBase(media.poster)}>
     <source src={withBase(media.src)} type="video/mp4" />
     <p><a href={withBase(media.src)}>Open {media.title}</a></p>
   </video>
-  <h3>{media.title}</h3>
+  <h3 id={titleId}>{media.title}</h3>
   <p>{media.accessibilityNote}</p>
 </article>
