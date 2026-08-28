@@ -73,6 +73,32 @@ test('shows the four-video campaign system without eager video downloads', async
   assert.match(html, /brief.*format system.*edit.*quality check.*delivery/is);
 });
 
+test('keeps the multimedia page semantic, private, and non-autoplaying', async () => {
+  const html = await readPortfolio();
+
+  assert.match(html, /<main>/);
+  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.match(html, /aria-labelledby="live-production-title"/);
+  assert.match(html, /aria-labelledby="educational-media-title"/);
+  assert.match(html, /aria-labelledby="campaign-production-title"/);
+  assert.match(html, /Good production is equal parts story, systems, and care for the audience\./);
+  assert.match(html, /href="mailto:hello@marchingtycoon\.com"/);
+  assert.match(html, /Back to the main portfolio/);
+  assert.doesNotMatch(html, /FoodCorps/i);
+  assert.doesNotMatch(html, /student name|student email|grade data/i);
+  assert.doesNotMatch(html, /<video[^>]+autoplay/);
+  assert.equal((html.match(/preload="none"/g) ?? []).length, 4);
+});
+
+test('keeps YouTube fallbacks and visual-source labels available without JavaScript', async () => {
+  const html = await readPortfolio();
+
+  assert.equal((html.match(/<noscript><a href="https:\/\/www\.youtube\.com\/watch\?v=/g) ?? []).length, 6);
+  assert.equal((html.match(/<figcaption>(?:Video poster|Curriculum composition) ·/g) ?? []).length, 6);
+  assert.match(html, /Curriculum composition · Music Tech Made Simple page 50/);
+  assert.match(html, /Video poster · Coile Middle Holiday Concert 2024/);
+});
+
 test('ships responsive and reduced-motion multimedia styles', async () => {
   const html = await readPortfolio();
   const stylesheetPaths = [...html.matchAll(/href="(\/_astro\/[^\"]+\.css)"/g)].map((match) => match[1]);
