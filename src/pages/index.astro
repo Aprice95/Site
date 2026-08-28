@@ -25,13 +25,26 @@ const audioBars = Array.from({ length: 36 }, (_, index) => 22 + ((index * 37) % 
     </a>
     <nav aria-label="Portfolio">
       <a href="#work">Work</a>
+      <a href={withBase('/work/multimedia-production')}>Multimedia</a>
       <a href="#capabilities">Capabilities</a>
-      <a href={withBase('/euclidean-rhythm-lab')}>Lab</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <div id="top">
+    <a
+      class="portfolio-feature-banner"
+      href={withBase('/work/multimedia-production')}
+      aria-label="View Aaron Price’s multimedia production portfolio"
+    >
+      <span class="feature-banner-kicker">Featured portfolio</span>
+      <span class="feature-banner-copy">
+        <strong>Multimedia production</strong>
+        <span>Narrative video · educational media · campaign production</span>
+      </span>
+      <span class="feature-banner-action">View case studies <span aria-hidden="true">↗</span></span>
+    </a>
+
     <section class="hero section-shell" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">Athens, Georgia · Working remotely</p>

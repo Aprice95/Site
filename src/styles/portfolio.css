@@ -83,6 +83,65 @@
   color: var(--portfolio-blue);
 }
 
+.portfolio-feature-banner {
+  width: min(1240px, calc(100% - 32px));
+  min-height: 78px;
+  margin: 18px auto 0;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(18px, 3vw, 42px);
+  border: 1px solid var(--portfolio-ink);
+  background: var(--portfolio-blue);
+  box-shadow: 8px 8px 0 var(--portfolio-orange);
+  color: var(--portfolio-white);
+  text-decoration: none;
+}
+
+.portfolio-feature-banner:hover {
+  background: var(--portfolio-blue-dark);
+}
+
+.feature-banner-kicker {
+  padding: 7px 9px;
+  background: var(--portfolio-orange);
+  color: var(--portfolio-ink);
+  font: 700 10px/1 var(--portfolio-font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.feature-banner-copy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.feature-banner-copy strong {
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.feature-banner-copy > span {
+  color: rgba(255, 253, 248, 0.78);
+  font: 540 11px/1.4 var(--portfolio-font-mono);
+  letter-spacing: 0.025em;
+}
+
+.feature-banner-action {
+  min-height: 44px;
+  padding-left: clamp(18px, 3vw, 36px);
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border-left: 1px solid rgba(255, 253, 248, 0.42);
+  font: 650 11px/1.2 var(--portfolio-font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .portfolio-home .hero {
   min-height: 730px;
   padding-top: 64px;
@@ -857,6 +916,33 @@
 
   .portfolio-header nav a {
     font-size: 10px;
+  }
+
+  .portfolio-feature-banner {
+    width: calc(100% - 32px);
+    min-height: 0;
+    margin-top: 14px;
+    padding: 16px;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    box-shadow: 5px 5px 0 var(--portfolio-orange);
+  }
+
+  .feature-banner-kicker {
+    justify-self: start;
+  }
+
+  .feature-banner-copy strong {
+    font-size: 23px;
+  }
+
+  .feature-banner-action {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 0 0;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 253, 248, 0.42);
+    border-left: 0;
   }
 
   .portfolio-home .hero {
