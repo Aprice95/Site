@@ -123,7 +123,7 @@ export const multimediaPortfolio = {
     eyebrow: 'Campaign production · Marching Tycoon short-form system',
     title: 'A repeatable short-form campaign system',
     need: 'Turning a set of verified game features into a compact campaign that can move from brief to delivery across vertical social formats.',
-    role: 'Creative strategist · Copywriter · Editor · QA lead',
+    role: 'Product design · Development · Creative direction · Launch',
     summary:
       'Marching Tycoon’s campaign pairs four playable short-form videos with a format-adaptation workflow. Each piece uses clear captions and visual hierarchy, deliberate pacing, and a final quality check for an audience-ready delivery.',
     workflow: ['Brief', 'Format system', 'Edit', 'Quality check', 'Delivery'],

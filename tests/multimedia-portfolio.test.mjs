@@ -74,6 +74,11 @@ test('shows the four-video campaign system without eager video downloads', async
   assert.match(html, /The Boosters Finally Came Through/);
   assert.match(html, /Band Kid Timing Challenge/);
   assert.match(html, /brief.*format system.*edit.*quality check.*delivery/is);
+  assert.match(html, /Product design · Development · Creative direction · Launch/);
+  assert.match(
+    html,
+    /<img\b(?=[^>]*src="\/images\/portfolio\/multimedia\/marching-tycoon\/contact-sheet\.jpg")(?=[^>]*width="1080")(?=[^>]*height="480")[^>]*>/
+  );
 });
 
 test('gives every native campaign video its visible heading as an accessible name', async () => {
@@ -160,7 +165,10 @@ test('ships responsive and reduced-motion multimedia styles', async () => {
   assert.match(css, /\.multimedia-portfolio \.portfolio-header nav\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /@media \((?:max-width:|width<=)900px\)/);
   assert.match(css, /@media \((?:max-width:|width<=)620px\)/);
-  assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion:reduce\)\{[^}]*\.multimedia-portfolio \*,\.multimedia-portfolio (?:::{0,1})before,\.multimedia-portfolio (?:::{0,1})after\{(?=[^}]*scroll-behavior:auto!important)(?=[^}]*transition-duration:\.01ms!important)(?=[^}]*animation-duration:\.01ms!important)[^}]*\}\}/
+  );
 });
 
 test('publishes page-specific metadata and structured portfolio data', async () => {
