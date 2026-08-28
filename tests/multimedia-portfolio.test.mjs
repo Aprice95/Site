@@ -112,23 +112,23 @@ test('describes each verified portfolio video as a VideoObject', async () => {
     {
       '@type': 'VideoObject',
       name: 'Coile Middle Holiday Concert 2024',
-      contentUrl: 'https://www.youtube.com/watch?v=klKOPtfOaqs'
+      url: 'https://www.youtube.com/watch?v=klKOPtfOaqs'
     },
     [
       {
         '@type': 'VideoObject',
         name: 'Podcast Project Video Walkthrough',
-        contentUrl: 'https://www.youtube.com/watch?v=eJRE3znUYaA'
+        url: 'https://www.youtube.com/watch?v=eJRE3znUYaA'
       },
       {
         '@type': 'VideoObject',
         name: 'DAW Introduction',
-        contentUrl: 'https://www.youtube.com/watch?v=9qUu9b4FUKY'
+        url: 'https://www.youtube.com/watch?v=9qUu9b4FUKY'
       },
       {
         '@type': 'VideoObject',
         name: '12 Bar Blues',
-        contentUrl: 'https://www.youtube.com/watch?v=WtsmqB7ogkA'
+        url: 'https://www.youtube.com/watch?v=WtsmqB7ogkA'
       }
     ],
     [
