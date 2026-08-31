@@ -22,8 +22,8 @@ You type anything, and WidgText turns it into a widget. From there it's all abou
 
 ## Free to start, cheap to unlock
 
-The free tier gives you a full widget slot with core styling. WidgText Pro — every font, every gradient and border style, every widget slot, unlimited quotes, and no ads — is a **one-time $0.99 purchase**. No subscription.
+The free tier gives you a full widget slot with core styling. WidgText Pro — every font, every gradient and border style, every widget slot, unlimited quotes, and no ads — is a **one-time $4.99 purchase**. No subscription.
 
-One more thing that matters to me: **WidgText collects no data.** Your words stay on your device, period.
+One more thing that matters to me: your widget text stays on your device and is never sent with analytics events. WidgText uses **Firebase Analytics and Google AdMob** to understand app use and support the free version; the [privacy policy](/products/widgtext/privacy) explains the data and choices in plain language.
 
 [Get WidgText on the App Store](https://apps.apple.com/us/app/widgtext/id6762033066), or read more on the [WidgText page](/products/widgtext). If something's off or you have an idea, the [support form](/#contact) comes straight to me.

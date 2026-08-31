@@ -26,7 +26,7 @@ export const products: Product[] = [
     name: 'WidgText',
     status: 'shipped',
     statusLabel: 'On the App Store',
-    platforms: 'iPhone · iPad · Mac · Vision Pro',
+    platforms: 'iPhone',
     tagline: 'Your Home Screen, your words.',
     shortDescription:
       'Put your own words on your Home Screen and Lock Screen — quotes, reminders, mantras, inside jokes — styled exactly the way you want.',
@@ -40,7 +40,7 @@ export const products: Product[] = [
       },
       {
         title: 'Style every detail',
-        body: '50+ fonts with bold and italic, multi-color gradients up to four colors, and six border styles from clean solid to neon.'
+        body: '34 font families with bold and italic, multi-color gradients up to four colors, and six border styles from clean solid to neon.'
       },
       {
         title: 'Quote Mode',
@@ -56,14 +56,14 @@ export const products: Product[] = [
       },
       {
         title: 'Private by design',
-        body: 'WidgText collects no data. Your words stay on your device, period.'
+        body: 'Your widget text stays on your device. Firebase Analytics measures app use, and Google AdMob serves ads in the free version.'
       }
     ],
     facts: [
-      { label: 'Price', value: 'Free · one-time $0.99 Pro unlock' },
-      { label: 'Version', value: '2.2' },
+      { label: 'Price', value: 'Free · one-time $4.99 Pro unlock' },
+      { label: 'Version', value: '2.4' },
       { label: 'Requires', value: 'iOS 17 or later' },
-      { label: 'Privacy', value: 'No data collected' }
+      { label: 'Privacy', value: 'Analytics and advertising disclosed' }
     ],
     links: {
       appStore: 'https://apps.apple.com/us/app/widgtext/id6762033066'

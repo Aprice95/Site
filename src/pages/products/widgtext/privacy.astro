@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { withBase } from '../../../lib/paths';
+---
+
+<BaseLayout
+  title="WidgText Privacy Policy | Aaron Price"
+  description="How WidgText handles on-device widget text, Firebase Analytics data, Google AdMob data, consent, retention, and deletion."
+>
+  <header class="privacy-hero">
+    <div class="container privacy-hero-inner">
+      <a class="back-link" href={withBase('/products/widgtext')}>← Back to WidgText</a>
+      <span class="eyebrow">Plain-language privacy</span>
+      <h1>WidgText Privacy Policy</h1>
+      <p class="lead">
+        Your words belong to you. The text and quote lists you put in WidgText stay on your device.
+        The app does use analytics and advertising services, and this page explains exactly what that means.
+      </p>
+      <p class="privacy-date">Effective: August 31, 2026 · Last updated: August 31, 2026</p>
+    </div>
+  </header>
+
+  <div class="container privacy-layout">
+    <aside class="privacy-summary" aria-label="Privacy summary">
+      <span aria-hidden="true">Aa</span>
+      <div>
+        <strong>Your widget text stays on your device.</strong>
+        <p>It is not sent to Firebase Analytics or Google AdMob and is never included in analytics event parameters.</p>
+      </div>
+    </aside>
+
+    <article class="privacy-copy">
+      <nav class="privacy-jump" aria-label="Privacy policy sections">
+        <a href="#data">Data</a>
+        <a href="#uses">Uses</a>
+        <a href="#retention">Retention</a>
+        <a href="#choices">Choices</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <section id="data">
+        <span class="privacy-number" aria-hidden="true">01</span>
+        <h2>Data we collect</h2>
+        <p>
+          WidgText does not require an account, and the developer does not receive your name, email address,
+          widget text, or quote lists through the app. Two Google services may process other app and device data:
+        </p>
+
+        <div class="privacy-service-grid">
+          <section class="privacy-service-card">
+            <h3>Firebase Analytics</h3>
+            <p>Used to measure whether the app is useful and where its purchase flow needs improvement. It may collect:</p>
+            <ul>
+              <li>App interactions and lifecycle events, such as opens, screen activity, saved widgets, paywall views, purchases, and rewarded-ad results</li>
+              <li>A pseudonymous app-instance identifier and device or vendor identifiers</li>
+              <li>App version, device model, operating system, language, and similar technical information</li>
+              <li>Approximate location derived from an IP address; Google says Analytics does not log or store the IP address itself</li>
+            </ul>
+          </section>
+
+          <section class="privacy-service-card">
+            <h3>Google AdMob</h3>
+            <p>Used to display banner and rewarded ads in the free version. The Google Mobile Ads SDK may collect:</p>
+            <ul>
+              <li>IP address, which may be used to estimate general location</li>
+              <li>Device identifiers, including an advertising identifier when available and permitted</li>
+              <li>Advertising data, such as ads shown, and product interactions such as taps or rewarded-video views</li>
+              <li>Performance information, crash logs, and other diagnostic information</li>
+            </ul>
+          </section>
+        </div>
+
+        <p>
+          WidgText may ask for App Tracking Transparency permission only after you choose a rewarded ad.
+          If you decline, the promised reward remains available and ads may still be limited or non-personalized.
+        </p>
+      </section>
+
+      <section id="uses">
+        <span class="privacy-number" aria-hidden="true">02</span>
+        <h2>How we use data</h2>
+        <ul>
+          <li>Measure app reliability, feature use, onboarding, purchases, and the rewarded-ad funnel</li>
+          <li>Improve WidgText and understand whether the free and Pro experiences are working</li>
+          <li>Serve, measure, limit, and protect advertising, including fraud prevention</li>
+          <li>Meet legal, security, and App Store obligations</li>
+        </ul>
+        <p>
+          Google processes this data under its applicable terms and privacy policy.
+          WidgText does not sell your widget text or use it for advertising.
+        </p>
+        <p>
+          Learn more in
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>,
+          <a href="https://support.google.com/analytics/answer/11593727" target="_blank" rel="noopener">Google Analytics data collection documentation</a>,
+          and
+          <a href="https://developers.google.com/admob/ios/privacy/data-disclosure" target="_blank" rel="noopener">Google's AdMob iOS disclosure</a>.
+        </p>
+      </section>
+
+      <section id="retention">
+        <span class="privacy-number" aria-hidden="true">03</span>
+        <h2>Retention and deletion</h2>
+        <p>
+          Widget text and settings remain on your device until you change them or delete the app. Firebase Analytics
+          user-level and event-level data is retained according to the Google Analytics property's configured retention
+          period and is automatically deleted by Google when that period ends. Standard aggregated reports may remain
+          after user-level and event-level data is deleted.
+        </p>
+        <p>
+          AdMob data is retained and deleted under Google's service terms and privacy policy. WidgText keeps data only
+          as long as reasonably needed for the purposes above, legal obligations, dispute resolution, and security.
+        </p>
+        <p>
+          You may contact us to request access to or deletion of data under our control. Because WidgText has no account
+          system and analytics identifiers are pseudonymous, we may not be able to connect a request to a particular
+          Analytics or AdMob record without information that identifies it. We will still explain and honor the options
+          available under applicable law.
+        </p>
+      </section>
+
+      <section id="choices">
+        <span class="privacy-number" aria-hidden="true">04</span>
+        <h2>Change your privacy choices</h2>
+        <ul>
+          <li>When required for your region, open WidgText, choose <strong>Help</strong>, then <strong>Privacy Choices</strong> to review or change advertising consent.</li>
+          <li>On iPhone, use <strong>Settings → Privacy &amp; Security → Tracking</strong> to change tracking permission.</li>
+          <li>You can use WidgText's free editor even when you decline consent or an ad is unavailable.</li>
+          <li>Deleting WidgText removes its locally stored widget text and settings from the device.</li>
+        </ul>
+      </section>
+
+      <section id="children">
+        <span class="privacy-number" aria-hidden="true">05</span>
+        <h2>Children</h2>
+        <p>
+          WidgText is not directed to children under 13. If you believe a child has provided personal information
+          through the app, contact us so we can investigate and take appropriate action.
+        </p>
+      </section>
+
+      <section id="changes">
+        <span class="privacy-number" aria-hidden="true">06</span>
+        <h2>Policy changes</h2>
+        <p>
+          This policy may change when WidgText's features, service providers, or legal obligations change. The date at
+          the top will be updated, and material changes will be communicated in the app or release notes when appropriate.
+        </p>
+      </section>
+
+      <section id="contact" class="privacy-contact">
+        <span class="privacy-number" aria-hidden="true">07</span>
+        <h2>Contact</h2>
+        <p>
+          WidgText is developed by Aaron Price in Georgia, United States. For privacy questions or requests, use the
+          <a href={withBase('/#contact')}>support form</a> and mention “WidgText privacy.”
+        </p>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

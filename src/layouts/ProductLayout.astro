@@ -97,6 +97,17 @@ const ogImage = product.screenshots[0]?.src ?? product.icon;
           ))
         }
       </div>
+      {
+        product.slug === 'widgtext' && (
+          <p class="product-privacy-note">
+            WidgText uses Firebase Analytics to understand app use and Google AdMob to support the free version.
+            Your widget text stays on your device and is never sent with analytics events.
+            <a class="text-link" href={withBase('/products/widgtext/privacy')}>
+              Read the WidgText privacy policy
+            </a>
+          </p>
+        )
+      }
     </div>
   </section>
 
