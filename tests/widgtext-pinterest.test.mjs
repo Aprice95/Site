@@ -6,7 +6,7 @@ const readBuiltPage = (path) =>
   readFile(new URL(`../dist/${path}/index.html`, import.meta.url), 'utf8');
 
 test('the Pinterest landing page states the real price and links to the App Store', async () => {
-  const html = await readBuiltPage('products/widgtext/calm');
+  const html = await readBuiltPage('widgtext');
 
   assert.match(html, /\$9\.99/);
   assert.match(html, /no subscription/i);
@@ -15,7 +15,7 @@ test('the Pinterest landing page states the real price and links to the App Stor
 });
 
 test('the Pinterest landing page targets the search terms the pins are written for', async () => {
-  const html = await readBuiltPage('products/widgtext/calm');
+  const html = await readBuiltPage('widgtext');
 
   for (const term of ['affirmation', 'home screen', 'lock screen', 'widget']) {
     assert.match(html, new RegExp(term, 'i'), `missing "${term}"`);
@@ -23,7 +23,7 @@ test('the Pinterest landing page targets the search terms the pins are written f
 });
 
 test('the App Store link is reachable without scrolling past the fold', async () => {
-  const html = await readBuiltPage('products/widgtext/calm');
+  const html = await readBuiltPage('widgtext');
 
   // BaseLayout always renders a sticky site-nav <header> before <main>, so the
   // FIRST </header> in the document belongs to that nav, not to this page's
