@@ -9,12 +9,12 @@ test('publishes truthful WidgText 2.4 product details and privacy disclosure', a
   const html = await readBuiltPage('products/widgtext');
 
   assert.match(html, /34 font families/);
-  assert.match(html, /Free · one-time \$4\.99 Pro unlock/);
+  assert.match(html, /Free · one-time \$9\.99 Pro unlock/);
   assert.match(html, /<strong>2\.4<\/strong>/);
   assert.match(html, /Firebase Analytics/);
   assert.match(html, /Google AdMob/);
   assert.match(html, /href="\/products\/widgtext\/privacy\/?"/);
-  assert.doesNotMatch(html, /50\+ fonts|\$0\.99|collects no data|No data collected|iPad · Mac · Vision Pro/);
+  assert.doesNotMatch(html, /50\+ fonts|\$4\.99|\$0\.99|collects no data|No data collected|iPad · Mac · Vision Pro/);
 });
 
 test('publishes a dedicated, complete WidgText privacy policy', async () => {
@@ -42,7 +42,7 @@ test('publishes a dedicated, complete WidgText privacy policy', async () => {
 test('removes the old price and no-data claim from the public launch post', async () => {
   const html = await readBuiltPage('blog/launching-widgtext');
 
-  assert.match(html, /one-time \$4\.99 purchase/);
+  assert.match(html, /one-time \$9\.99 purchase/);
   assert.match(html, /Firebase Analytics and Google AdMob/);
-  assert.doesNotMatch(html, /one-time \$0\.99 purchase|WidgText collects no data/);
+  assert.doesNotMatch(html, /one-time \$4\.99 purchase|one-time \$0\.99 purchase|WidgText collects no data/);
 });

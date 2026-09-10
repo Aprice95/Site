@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StoreBadges from '../../../components/StoreBadges.astro';
+import { withBase } from '../../../lib/paths';
+
+const appStoreUrl = 'https://apps.apple.com/app/id6762033066';
+---
+
+<BaseLayout
+  title="Aesthetic Affirmation Widgets for iPhone | WidgText"
+  description="Put a daily affirmation on your iPhone Home Screen or Lock Screen. Eleven calm themes, 34 fonts, 120 mindful messages. One purchase, no subscription."
+  ogImage="/images/apps/widgtext-shot-1.jpg"
+  ogImageAlt="A WidgText affirmation widget styled in a calm theme, on an iPhone Home Screen"
+>
+  <header class="calm-hero">
+    <div class="container calm-hero-inner">
+      <span class="eyebrow">Aesthetic iPhone widgets</span>
+      <h1>A daily affirmation, right on your Home Screen.</h1>
+      <p class="lead">
+        Pick a calm theme, choose a mindful message or write your own, and it sits on your
+        Home Screen or Lock Screen looking like it belongs there — eleven themes, 34 fonts,
+        and 120 affirmations to start from.
+      </p>
+      <StoreBadges links={{ appStore: appStoreUrl }} appName="WidgText" />
+      <p class="calm-price">
+        Free to try. <strong>One purchase, $9.99</strong> — no subscription, no streaks,
+        no daily guilt.
+      </p>
+      <div class="app-shot calm-hero-shot">
+        <img
+          src={withBase('/images/apps/widgtext-shot-1.jpg')}
+          width="640"
+          height="1390"
+          loading="eager"
+          alt="A WidgText affirmation widget styled in a calm theme, on an iPhone Home Screen"
+        />
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Why it's different</span>
+          <h2>Built for a screen you already look at</h2>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-tile">
+          <h3>Your words, or ours</h3>
+          <p>
+            Type the affirmation you want to remember, or choose from 120 mindful
+            messages across ten collections — grounding, gratitude, rest, morning calm.
+          </p>
+        </article>
+        <article class="feature-tile">
+          <h3>Home Screen and Lock Screen</h3>
+          <p>
+            Small, medium, and large widgets, plus Lock Screen accessories, on iPhone
+            and iPad — eleven calm themes and 34 fonts to match how you like your
+            Home Screen to feel.
+          </p>
+        </article>
+        <article class="feature-tile">
+          <h3>No subscription</h3>
+          <p>
+            Most affirmation apps rent you your own reminders, every year. WidgText is
+            a single $9.99 unlock, and the free tier is genuinely usable.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container calm-close">
+      <h2>Give your Home Screen something to say.</h2>
+      <StoreBadges links={{ appStore: appStoreUrl }} appName="WidgText" />
+      <p>
+        <a class="text-link" href={withBase('/products/widgtext')}>More about WidgText →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
