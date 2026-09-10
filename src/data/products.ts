@@ -60,7 +60,7 @@ export const products: Product[] = [
       }
     ],
     facts: [
-      { label: 'Price', value: 'Free · one-time $4.99 Pro unlock' },
+      { label: 'Price', value: 'Free · one-time $9.99 Pro unlock' },
       { label: 'Version', value: '2.4' },
       { label: 'Requires', value: 'iOS 17 or later' },
       { label: 'Privacy', value: 'Analytics and advertising disclosed' }
