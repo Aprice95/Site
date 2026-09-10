@@ -4,41 +4,156 @@ import StoreBadges from '../components/StoreBadges.astro';
 import { withBase } from '../lib/paths';
 
 const appStoreUrl = 'https://apps.apple.com/app/id6762033066';
+
+// The real theme catalogue, exported from the app's own MindfulPresetCatalog.
+// Gradients, ink colours and sample quotes are the values the app ships, so
+// this wall is the product rather than a picture of it.
+type Theme = {
+  name: string;
+  stops: string[];
+  ink: string;
+  face: 'serif' | 'sans' | 'script';
+  quote: string;
+};
+
+const themes: Theme[] = [
+  { name: 'Still Morning', stops: ['#F7F1E7', '#C9D8C0'], ink: '#35413A', face: 'serif', quote: 'Begin gently.' },
+  { name: 'Forest Breath', stops: ['#102C26', '#47705D'], ink: '#F3F5EB', face: 'sans', quote: 'Root into this moment.' },
+  { name: 'Lavender Hush', stops: ['#F1ECF6', '#CFC5E8'], ink: '#4A405D', face: 'serif', quote: 'Let quiet find you.' },
+  { name: 'Ocean Breath', stops: ['#0B3C49', '#2B7A78'], ink: '#F4FBFA', face: 'sans', quote: 'Inhale space. Exhale weight.' },
+  { name: 'Warm Sand', stops: ['#F4E8D4', '#D9B98C'], ink: '#4B3A2D', face: 'serif', quote: 'There is nowhere else to be.' },
+  { name: 'Blue Hour', stops: ['#14213D', '#315B7D'], ink: '#F5F1E8', face: 'serif', quote: 'The day can soften now.' },
+  { name: 'Soft Rose', stops: ['#F7E5E2', '#D9B5B2'], ink: '#563E42', face: 'sans', quote: 'Speak to yourself kindly.' },
+  { name: 'Moonlit', stops: ['#151A2D', '#3E435F'], ink: '#F0EEE8', face: 'sans', quote: 'Rest is welcome here.' },
+  { name: 'Aurora Drift', stops: ['#1B2A4A', '#2E6B8F', '#4FA6A0', '#9BD5B4'], ink: '#F2FBF7', face: 'sans', quote: 'Let it move through you.' },
+  { name: 'Candlelight', stops: ['#241A12', '#5C3A21'], ink: '#FFE9C9', face: 'serif', quote: 'Rest is not a reward.' },
+  { name: 'Paper Lantern', stops: ['#FBF3E4', '#E9D2B8', '#D4A88C'], ink: '#4A3A30', face: 'script', quote: 'Soft is still strong.' }
+];
+
+const wash = (t: Theme) => `linear-gradient(155deg, ${t.stops.join(', ')})`;
+
+// The three carried into the hero stack: one light, one deep, one four-stop,
+// so the range of the theme set reads before any scrolling happens.
+const hero = [themes[4], themes[9], themes[8]];
+
+// Captured from the 2.4 build on an iPhone 16 Pro. Recapture with the app
+// running in the simulator rather than reusing these once the UI changes.
+const shots = [
+  {
+    src: '/images/apps/widgtext-editor.jpg',
+    caption: 'Write it, watch it change',
+    alt: 'The WidgText editor showing a live widget preview in the Forest Breath theme above the message and typography controls'
+  },
+  {
+    src: '/images/apps/widgtext-themes.jpg',
+    caption: 'Eleven themes, one tap each',
+    alt: 'The Mindful Presets screen showing the Still Morning, Forest Breath and Lavender Hush widget themes'
+  },
+  {
+    src: '/images/apps/widgtext-quotes.jpg',
+    caption: 'Ten collections to draw from',
+    alt: 'Quote collections in WidgText including Mindful Moments, Grounding, Self-Compassion, Rest and Reset, Gentle Affirmations and Gratitude'
+  }
+];
 ---
 
 <BaseLayout
   title="Aesthetic Affirmation Widgets for iPhone | WidgText"
-  description="Put a daily affirmation on your iPhone Home Screen or Lock Screen. Eleven calm themes, 34 fonts, 120 mindful messages. One purchase, no subscription."
-  ogImage="/images/apps/widgtext-shot-1.jpg"
-  ogImageAlt="A WidgText affirmation widget styled in a calm theme, on an iPhone Home Screen"
+  description="Put a daily affirmation on your iPhone Home Screen or Lock Screen. Eleven calm themes, 34 fonts, 120 mindful messages. Free, with a one-time Pro unlock and no subscription."
+  ogImage="/images/apps/widgtext-themes.jpg"
+  ogImageAlt="WidgText's Mindful Presets screen showing calm widget themes ready to apply"
 >
-  <header class="calm-hero">
-    <div class="container calm-hero-inner">
-      <span class="eyebrow">Aesthetic iPhone widgets</span>
-      <h1>A daily affirmation, right on your Home Screen.</h1>
-      <p class="lead">
-        Pick a calm theme, choose a mindful message or write your own, and it sits on your
-        Home Screen or Lock Screen looking like it belongs there — eleven themes, 34 fonts,
-        and 120 affirmations to start from.
-      </p>
-      <StoreBadges links={{ appStore: appStoreUrl }} appName="WidgText" />
-      <p class="calm-price">
-        Free to try. <strong>One purchase, $9.99</strong> — no subscription, no streaks,
-        no daily guilt.
-      </p>
-      <div class="app-shot calm-hero-shot">
-        <img
-          src={withBase('/images/apps/widgtext-shot-1.jpg')}
-          width="640"
-          height="1390"
-          loading="eager"
-          alt="A WidgText affirmation widget styled in a calm theme, on an iPhone Home Screen"
-        />
+  <header class="wt-hero">
+    <div class="wt-hero-wash" aria-hidden="true"></div>
+    <div class="container wt-hero-grid">
+      <div class="wt-hero-copy">
+        <span class="eyebrow">Aesthetic iPhone widgets</span>
+        <h1>A daily affirmation,<br />right on your Home&nbsp;Screen.</h1>
+        <p class="lead">
+          Pick a calm theme, choose a mindful message or write your own, and it sits on
+          your Home Screen or Lock Screen looking like it belongs there.
+        </p>
+
+        <div class="wt-stats">
+          <div><strong>11</strong><span>themes</span></div>
+          <div><strong>34</strong><span>fonts</span></div>
+          <div><strong>120</strong><span>affirmations</span></div>
+        </div>
+
+        <StoreBadges links={{ appStore: appStoreUrl }} appName="WidgText" />
+
+        <p class="wt-price">
+          <strong>The app is free.</strong> Pro is a one-time <strong>$9.99</strong> —
+          no subscription, no streaks, no daily guilt.
+        </p>
+      </div>
+
+      <div class="wt-hero-stack" aria-hidden="true">
+        {hero.map((t, i) => (
+          <figure class={`wt-widget wt-face-${t.face} wt-stack-${i}`} style={`background:${wash(t)};color:${t.ink}`}>
+            <blockquote>{t.quote}</blockquote>
+            <figcaption>{t.name}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </header>
 
-  <section class="section">
+  <section class="section wt-themes">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Eleven themes</span>
+          <h2>Every one of them, exactly as it ships</h2>
+          <p class="wt-sub">
+            No mockups below. These are the real gradients, inks and words the app puts
+            on your screen.
+          </p>
+        </div>
+      </div>
+
+      <div class="wt-wall">
+        {themes.map((t, i) => (
+          <figure
+            class={`wt-widget wt-face-${t.face}`}
+            style={`background:${wash(t)};color:${t.ink};--i:${i}`}
+          >
+            <blockquote>{t.quote}</blockquote>
+            <figcaption>{t.name}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section wt-shots">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Inside the app</span>
+          <h2>Three taps from blank to yours</h2>
+        </div>
+      </div>
+
+      <div class="wt-shot-row">
+        {shots.map((s, i) => (
+          <figure class={`wt-shot wt-shot-${i}`}>
+            <img
+              src={withBase(s.src)}
+              width="620"
+              height="1348"
+              loading="lazy"
+              decoding="async"
+              alt={s.alt}
+            />
+            <figcaption>{s.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
     <div class="container">
       <div class="section-head">
         <div>
@@ -58,24 +173,24 @@ const appStoreUrl = 'https://apps.apple.com/app/id6762033066';
         <article class="feature-tile">
           <h3>Home Screen and Lock Screen</h3>
           <p>
-            Small, medium, and large widgets, plus Lock Screen accessories, on iPhone
-            and iPad — eleven calm themes and 34 fonts to match how you like your
-            Home Screen to feel.
+            Small, medium and large widgets, plus Lock Screen accessories, on iPhone
+            and iPad — with 34 fonts to match how you like your Home Screen to feel.
           </p>
         </article>
         <article class="feature-tile">
-          <h3>No subscription</h3>
+          <h3>Free, and actually free</h3>
           <p>
             Most affirmation apps rent you your own reminders, every year. WidgText is
-            a single $9.99 unlock, and the free tier is genuinely usable.
+            free to use, and Pro is a single $9.99 unlock if you want every theme, font
+            and widget slot.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section section-tint">
-    <div class="container calm-close">
+  <section class="section wt-close">
+    <div class="container">
       <h2>Give your Home Screen something to say.</h2>
       <StoreBadges links={{ appStore: appStoreUrl }} appName="WidgText" />
       <p>
@@ -84,3 +199,206 @@ const appStoreUrl = 'https://apps.apple.com/app/id6762033066';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* --- the widget card, the page's one repeated object ------------------ */
+  .wt-widget {
+    aspect-ratio: 1 / 1;
+    border-radius: 22%;
+    margin: 0;
+    padding: clamp(1rem, 2.4vw, 1.6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    box-shadow: 0 18px 40px rgba(48, 33, 12, 0.16);
+    overflow: hidden;
+  }
+
+  .wt-widget blockquote {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.5vw, 1.18rem);
+    line-height: 1.34;
+    text-wrap: balance;
+  }
+
+  .wt-widget figcaption {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  /* The app's families are not web fonts. Rather than load five lookalikes,
+     the three shapes that actually distinguish them are reproduced here. */
+  .wt-face-serif blockquote { font-family: Georgia, 'Times New Roman', serif; }
+  .wt-face-sans blockquote {
+    font-family: var(--font-body);
+    letter-spacing: 0.01em;
+    font-weight: 500;
+  }
+  .wt-face-script blockquote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  }
+
+  /* --- hero ------------------------------------------------------------- */
+  .wt-hero {
+    position: relative;
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+    overflow: hidden;
+  }
+
+  .wt-hero-wash {
+    position: absolute;
+    inset: -30% -10% auto;
+    height: 130%;
+    background:
+      radial-gradient(60% 55% at 78% 18%, rgba(217, 185, 140, 0.42), transparent 68%),
+      radial-gradient(52% 48% at 12% 8%, rgba(201, 216, 192, 0.46), transparent 66%);
+    pointer-events: none;
+  }
+
+  .wt-hero-grid {
+    position: relative;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: center;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .wt-hero-copy h1 {
+    font-size: clamp(2.3rem, 5.2vw, 3.7rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    margin: 0.6rem 0 0;
+    text-wrap: balance;
+  }
+
+  .wt-hero-copy .lead { max-width: 34rem; }
+
+  .wt-stats {
+    display: flex;
+    gap: clamp(1.4rem, 3vw, 2.4rem);
+    margin: 1.6rem 0 1.8rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .wt-stats div { display: flex; flex-direction: column; line-height: 1.15; }
+  .wt-stats strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    color: var(--accent-deep);
+  }
+  .wt-stats span {
+    font-size: 0.74rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .wt-price {
+    margin: 1.1rem 0 0;
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    max-width: 30rem;
+  }
+  .wt-price strong { color: var(--text); }
+
+  /* Three cards, fanned. Overlap does the work a single flat screenshot
+     cannot: it shows the range of the theme set in one glance. */
+  .wt-hero-stack {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.8rem, 1.6vw, 1.2rem);
+    align-items: start;
+  }
+
+  .wt-stack-0 { grid-column: 1; transform: rotate(-3deg); }
+  .wt-stack-1 { grid-column: 2; transform: rotate(2.5deg) translateY(1.6rem); }
+  .wt-stack-2 {
+    grid-column: 1 / -1;
+    width: 62%;
+    margin: -14% auto 0;
+    transform: rotate(-1deg);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* --- theme wall ------------------------------------------------------- */
+  .wt-sub {
+    color: var(--text-soft);
+    max-width: 38rem;
+    margin: 0.6rem 0 0;
+  }
+
+  .wt-wall {
+    margin-top: clamp(1.8rem, 4vw, 2.8rem);
+    display: grid;
+    gap: clamp(0.7rem, 1.6vw, 1.15rem);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  /* The cards are visible by default and the entrance is pure enhancement.
+     `backwards` means the resting state is the natural one, so a browser that
+     never runs the animation still shows a full wall — the earlier version
+     used a scroll-driven timeline from opacity:0 and rendered blank wherever
+     that timeline did not advance. Content this page exists to show must not
+     depend on an animation firing. */
+  @media (prefers-reduced-motion: no-preference) {
+    .wt-wall .wt-widget {
+      animation: wt-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+      animation-delay: calc(var(--i) * 45ms);
+    }
+  }
+
+  @keyframes wt-rise {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  }
+
+  /* --- screenshots ------------------------------------------------------ */
+  .wt-shot-row {
+    margin-top: clamp(1.8rem, 4vw, 2.6rem);
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 2.2rem);
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    align-items: start;
+  }
+
+  .wt-shot { margin: 0; text-align: center; }
+
+  .wt-shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 26px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    background: var(--surface);
+  }
+
+  .wt-shot figcaption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+  }
+
+  /* A gentle stagger, so three portrait rectangles do not read as a bar chart. */
+  @media (min-width: 760px) {
+    .wt-shot-1 { transform: translateY(clamp(1rem, 2.4vw, 2rem)); }
+  }
+
+  .wt-close { text-align: center; }
+  .wt-close h2 { margin-bottom: 1.4rem; }
+
+  @media (max-width: 860px) {
+    .wt-hero-grid { grid-template-columns: 1fr; }
+    .wt-hero-stack { max-width: 24rem; margin-inline: auto; }
+    .wt-stats { gap: 1.6rem; }
+  }
+</style>

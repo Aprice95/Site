@@ -14,6 +14,27 @@ test('the Pinterest landing page states the real price and links to the App Stor
   assert.doesNotMatch(html, /\$4\.99|\$5\.00|\$10\.00|\$0\.99/);
 });
 
+test('the Pinterest landing page calls the app free, not free to try', async () => {
+  const html = await readBuiltPage('widgtext');
+
+  // The app is genuinely free; Pro is a one-time $9.99 on top. "Free to try"
+  // reads as a trial that expires, which misdescribes the product.
+  assert.doesNotMatch(html, /free to try/i);
+  assert.match(html, /The app is free/i);
+  assert.match(html, /one-time/i);
+});
+
+test('the landing page shows current screenshots, not the pre-2.3 ones', async () => {
+  const html = await readBuiltPage('widgtext');
+
+  // Captured from the 2.4 build. widgtext-shot-1 predates the mindful
+  // repositioning and showed the old generic text-widget UI.
+  for (const shot of ['widgtext-editor', 'widgtext-themes', 'widgtext-quotes']) {
+    assert.match(html, new RegExp(shot), `missing ${shot}`);
+  }
+  assert.doesNotMatch(html, /widgtext-shot-1/);
+});
+
 test('the Pinterest landing page targets the search terms the pins are written for', async () => {
   const html = await readBuiltPage('widgtext');
 
