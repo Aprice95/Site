@@ -42,6 +42,11 @@ const resolvedOgImage =
     <meta name="theme-color" content={themeColor} />
     {canonical && <link rel="canonical" href={canonical} />}
 
+    <!-- Pinterest domain claim for aaronprice.org. Claiming is what stops a new
+         account being throttled, and it attributes every Pin linking here. Safe
+         to remove once Pinterest confirms, but it costs nothing to leave. -->
+    <meta name="p:domain_verify" content="77bad7589400e7d0ad20d69316490a1b" />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
