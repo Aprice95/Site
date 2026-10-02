@@ -70,16 +70,16 @@ export const products: Product[] = [
     },
     screenshots: [
       {
-        src: '/images/apps/widgtext-shot-1.jpg',
-        alt: 'WidgText widgets on an iPhone Home Screen — “Your words, your way. Type anything. Style it however you want.”'
+        src: '/images/apps/widgtext-editor.jpg',
+        alt: 'WidgText 2.5 editor with a live preview, message field and typography controls.'
       },
       {
-        src: '/images/apps/widgtext-shot-2.jpg',
-        alt: 'A gradient WidgText widget sitting on an iPhone Home Screen.'
+        src: '/images/apps/widgtext-themes.jpg',
+        alt: 'WidgText 2.5 seasonal collection browser showing Cozy Evenings.'
       },
       {
-        src: '/images/apps/widgtext-shot-3.jpg',
-        alt: 'WidgText editor with fonts, styles, and up to eight independent widgets.'
+        src: '/images/apps/widgtext-sharing.jpg',
+        alt: 'WidgText 2.5 sharing preview showing the image, privacy explanation and Share image and link button.'
       }
     ]
   },
