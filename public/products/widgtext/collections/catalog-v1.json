@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "collections": [
+    {
+      "id": "cozy-evenings",
+      "name": "Cozy Evenings",
+      "subtitle": "Warm colors for the quieter end of the day",
+      "releaseDate": "2026-10-01",
+      "themes": [
+        {
+          "preset": {
+            "id": "cozy-evenings-amber-lamp",
+            "name": "Amber Lamp",
+            "subtitle": "Honey light on warm linen",
+            "sampleQuote": "Let the evening gather you in.",
+            "gradientHexColors": [
+              "#FAE8CA",
+              "#E0AE71"
+            ],
+            "textHexColor": "#49311D",
+            "fontFamily": "Georgia",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": false,
+            "hasBorder": false,
+            "borderHexColor": "#B37C43",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "cozy-evenings-ink-and-oat",
+            "name": "Ink & Oat",
+            "subtitle": "Cream paper with charcoal type",
+            "sampleQuote": "A softer light. A slower pace.",
+            "gradientHexColors": [
+              "#F6EDE0",
+              "#D5C6B5"
+            ],
+            "textHexColor": "#292D33",
+            "fontFamily": "Courier New",
+            "textPointSize": 25,
+            "gradientDirection": "horizontal",
+            "textAlignment": "leading",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#8D8173",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "cozy-evenings-copper-dusk",
+            "name": "Copper Dusk",
+            "subtitle": "A deep dusk you can earn",
+            "sampleQuote": "Set the busy hours down.",
+            "gradientHexColors": [
+              "#663A37",
+              "#B37252"
+            ],
+            "textHexColor": "#FFF0DA",
+            "fontFamily": "Futura",
+            "textPointSize": 26,
+            "gradientDirection": "diagonal",
+            "textAlignment": "center",
+            "isBold": true,
+            "isItalic": false,
+            "hasShadow": true,
+            "hasBorder": false,
+            "borderHexColor": "#EAB68D",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "reward"
+        },
+        {
+          "preset": {
+            "id": "cozy-evenings-fireside-glow",
+            "name": "Fireside Glow",
+            "subtitle": "An ember halo and fine gold edge",
+            "sampleQuote": "There is room for quiet here.",
+            "gradientHexColors": [
+              "#291C26",
+              "#794035",
+              "#D79B59"
+            ],
+            "textHexColor": "#FFEBCD",
+            "fontFamily": "Bodoni 72",
+            "textPointSize": 26,
+            "gradientDirection": "radial",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": true,
+            "hasBorder": true,
+            "borderHexColor": "#DBA165",
+            "borderWidth": 2,
+            "borderStyle": "neon",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "cozy-evenings-velvet-night",
+            "name": "Velvet Night",
+            "subtitle": "Plum velvet with a double frame",
+            "sampleQuote": "Warm hands, unhurried thoughts.",
+            "gradientHexColors": [
+              "#201C32",
+              "#574264",
+              "#927B95"
+            ],
+            "textHexColor": "#F7EFE3",
+            "fontFamily": "Avenir Next",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": true,
+            "hasBorder": true,
+            "borderHexColor": "#C0A4B2",
+            "borderWidth": 2,
+            "borderStyle": "double",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "cozy-evenings-wool-and-paper",
+            "name": "Wool & Paper",
+            "subtitle": "Layered cocoa on softly torn paper",
+            "sampleQuote": "Tonight can begin with a breath.",
+            "gradientHexColors": [
+              "#FFF5DF",
+              "#E7D3B6",
+              "#BFA281"
+            ],
+            "textHexColor": "#4D3A2A",
+            "fontFamily": "American Typewriter",
+            "textPointSize": 25,
+            "gradientDirection": "diagonal",
+            "textAlignment": "leading",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#957558",
+            "borderWidth": 2,
+            "borderStyle": "torn",
+            "isPro": true
+          },
+          "access": "pro"
+        }
+      ],
+      "quotes": [
+        "Let the evening gather you in.",
+        "A softer light. A slower pace.",
+        "Set the busy hours down.",
+        "There is room for quiet here.",
+        "Warm hands, unhurried thoughts.",
+        "Tonight can begin with a breath.",
+        "Let the kettle be your clock.",
+        "Keep one gentle corner of the day.",
+        "The lamp is on. You can settle.",
+        "Small comforts make a home.",
+        "Trade a little hurry for warmth.",
+        "Fold the day into something soft.",
+        "A quiet evening is time well spent.",
+        "Leave tomorrow beyond the window.",
+        "Find your place beside the glow.",
+        "Rest arrives in ordinary ways.",
+        "Stay close to what feels warm.",
+        "Let this hour ask less of you."
+      ]
+    },
+    {
+      "id": "small-gratitudes",
+      "name": "Small Gratitudes",
+      "subtitle": "Make a little space for what is already good",
+      "releaseDate": "2026-10-22",
+      "themes": [
+        {
+          "preset": {
+            "id": "small-gratitudes-golden-note",
+            "name": "Golden Note",
+            "subtitle": "A sunny note in rounded handwriting",
+            "sampleQuote": "A small good thing is still good.",
+            "gradientHexColors": [
+              "#FFF4C8",
+              "#E7C773"
+            ],
+            "textHexColor": "#56441F",
+            "fontFamily": "Noteworthy",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": false,
+            "borderHexColor": "#B69C53",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "small-gratitudes-olive-table",
+            "name": "Olive Table",
+            "subtitle": "Garden green with creamy lettering",
+            "sampleQuote": "Save a moment that made you smile.",
+            "gradientHexColors": [
+              "#364A3D",
+              "#819171"
+            ],
+            "textHexColor": "#FFF7E4",
+            "fontFamily": "Georgia",
+            "textPointSize": 25,
+            "gradientDirection": "diagonal",
+            "textAlignment": "leading",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": false,
+            "hasBorder": false,
+            "borderHexColor": "#CAD3B0",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "small-gratitudes-berry-kindness",
+            "name": "Berry Kindness",
+            "subtitle": "Earn a little raspberry warmth",
+            "sampleQuote": "Thank the ordinary for showing up.",
+            "gradientHexColors": [
+              "#F8E4E4",
+              "#D9A9AD"
+            ],
+            "textHexColor": "#613B47",
+            "fontFamily": "SF Pro",
+            "textPointSize": 26,
+            "gradientDirection": "horizontal",
+            "textAlignment": "center",
+            "isBold": true,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#B57682",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "reward"
+        },
+        {
+          "preset": {
+            "id": "small-gratitudes-harvest-letter",
+            "name": "Harvest Letter",
+            "subtitle": "Handwritten copper with a dotted edge",
+            "sampleQuote": "There was kindness in this day.",
+            "gradientHexColors": [
+              "#FCEDD7",
+              "#EAC08D",
+              "#C58E62"
+            ],
+            "textHexColor": "#684526",
+            "fontFamily": "Bradley Hand",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#936837",
+            "borderWidth": 2,
+            "borderStyle": "dotted",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "small-gratitudes-sage-ribbon",
+            "name": "Sage Ribbon",
+            "subtitle": "Four green tones tied in a fine frame",
+            "sampleQuote": "Let enough feel like enough.",
+            "gradientHexColors": [
+              "#153F3C",
+              "#356357",
+              "#6B9180",
+              "#A9C2A7"
+            ],
+            "textHexColor": "#FFF7E6",
+            "fontFamily": "Optima",
+            "textPointSize": 26,
+            "gradientDirection": "diagonal",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": true,
+            "hasBorder": true,
+            "borderHexColor": "#BDD4B9",
+            "borderWidth": 2,
+            "borderStyle": "double",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "small-gratitudes-rose-gold-list",
+            "name": "Rose Gold List",
+            "subtitle": "A warm radial bloom and serif ink",
+            "sampleQuote": "Notice the light on familiar things.",
+            "gradientHexColors": [
+              "#F8E8DD",
+              "#E2B7A7",
+              "#C88683"
+            ],
+            "textHexColor": "#5A3340",
+            "fontFamily": "Iowan Old Style",
+            "textPointSize": 25,
+            "gradientDirection": "radial",
+            "textAlignment": "leading",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#AE7273",
+            "borderWidth": 2,
+            "borderStyle": "dashed",
+            "isPro": true
+          },
+          "access": "pro"
+        }
+      ],
+      "quotes": [
+        "A small good thing is still good.",
+        "Save a moment that made you smile.",
+        "Thank the ordinary for showing up.",
+        "There was kindness in this day.",
+        "Let enough feel like enough.",
+        "Notice the light on familiar things.",
+        "A shared laugh belongs on the list.",
+        "Keep the little joys in view.",
+        "Something good arrived quietly.",
+        "Give this simple pleasure a name.",
+        "The small things are a whole life.",
+        "Remember who made today lighter.",
+        "Let a warm cup count.",
+        "There is goodness in the in-between.",
+        "Hold one bright detail a little longer.",
+        "A kind word can stay with you.",
+        "Make room for a modest miracle.",
+        "Today has a detail worth keeping."
+      ]
+    },
+    {
+      "id": "winter-quiet",
+      "name": "Winter Quiet",
+      "subtitle": "Cool skies, warm words, and room to pause",
+      "releaseDate": "2026-11-12",
+      "themes": [
+        {
+          "preset": {
+            "id": "winter-quiet-snow-window",
+            "name": "Snow Window",
+            "subtitle": "Pale sky with crisp navy type",
+            "sampleQuote": "Let the quiet have its season.",
+            "gradientHexColors": [
+              "#F1F5F8",
+              "#CCDDE7"
+            ],
+            "textHexColor": "#293F53",
+            "fontFamily": "SF Pro",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#8EAABE",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "winter-quiet-pine-silence",
+            "name": "Pine Silence",
+            "subtitle": "Deep pine and soft winter white",
+            "sampleQuote": "A slower day can still be full.",
+            "gradientHexColors": [
+              "#163B35",
+              "#4A6B5C"
+            ],
+            "textHexColor": "#F7F3E7",
+            "fontFamily": "Georgia",
+            "textPointSize": 26,
+            "gradientDirection": "diagonal",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": true,
+            "hasBorder": false,
+            "borderHexColor": "#BFCFC0",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "free"
+        },
+        {
+          "preset": {
+            "id": "winter-quiet-frosted-lilac",
+            "name": "Frosted Lilac",
+            "subtitle": "Earn a gentle lavender frost",
+            "sampleQuote": "Hold a little warmth for yourself.",
+            "gradientHexColors": [
+              "#ECEAF5",
+              "#B8BCD8"
+            ],
+            "textHexColor": "#414666",
+            "fontFamily": "Futura",
+            "textPointSize": 26,
+            "gradientDirection": "horizontal",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": false,
+            "hasBorder": false,
+            "borderHexColor": "#8E96BC",
+            "borderWidth": 2,
+            "borderStyle": "solid",
+            "isPro": false
+          },
+          "access": "reward"
+        },
+        {
+          "preset": {
+            "id": "winter-quiet-polar-night",
+            "name": "Polar Night",
+            "subtitle": "Four night-sky tones with a quiet glow",
+            "sampleQuote": "The sky leaves room to breathe.",
+            "gradientHexColors": [
+              "#101B37",
+              "#263959",
+              "#476079",
+              "#7E99AC"
+            ],
+            "textHexColor": "#EEF4F6",
+            "fontFamily": "Avenir Next Condensed",
+            "textPointSize": 26,
+            "gradientDirection": "vertical",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": false,
+            "hasShadow": true,
+            "hasBorder": true,
+            "borderHexColor": "#AFCBD9",
+            "borderWidth": 2,
+            "borderStyle": "neon",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "winter-quiet-birch-page",
+            "name": "Birch Page",
+            "subtitle": "Warm paper with a torn winter edge",
+            "sampleQuote": "Find the calm between the branches.",
+            "gradientHexColors": [
+              "#FCF7EC",
+              "#E5DCCB",
+              "#C4BBAA"
+            ],
+            "textHexColor": "#514D45",
+            "fontFamily": "Charter",
+            "textPointSize": 25,
+            "gradientDirection": "diagonal",
+            "textAlignment": "leading",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": false,
+            "hasBorder": true,
+            "borderHexColor": "#A59A86",
+            "borderWidth": 2,
+            "borderStyle": "torn",
+            "isPro": true
+          },
+          "access": "pro"
+        },
+        {
+          "preset": {
+            "id": "winter-quiet-silver-moon",
+            "name": "Silver Moon",
+            "subtitle": "Moonlit blue with a delicate frame",
+            "sampleQuote": "Make a small shelter from the noise.",
+            "gradientHexColors": [
+              "#24384D",
+              "#6A8094",
+              "#C5D5DE"
+            ],
+            "textHexColor": "#FCF7EA",
+            "fontFamily": "Bodoni 72 Oldstyle",
+            "textPointSize": 26,
+            "gradientDirection": "radial",
+            "textAlignment": "center",
+            "isBold": false,
+            "isItalic": true,
+            "hasShadow": true,
+            "hasBorder": true,
+            "borderHexColor": "#D9E0E1",
+            "borderWidth": 2,
+            "borderStyle": "double",
+            "isPro": true
+          },
+          "access": "pro"
+        }
+      ],
+      "quotes": [
+        "Let the quiet have its season.",
+        "A slower day can still be full.",
+        "Hold a little warmth for yourself.",
+        "The sky leaves room to breathe.",
+        "Find the calm between the branches.",
+        "Make a small shelter from the noise.",
+        "Winter light is still light.",
+        "Let the stillness meet you halfway.",
+        "One warm moment at a time.",
+        "Keep a gentle rhythm through the cold.",
+        "You can be quiet and be here.",
+        "A clear window. An open breath.",
+        "Give the day a softer landing.",
+        "The world can wait through one cup.",
+        "Wrap this moment in a little care.",
+        "Look for peace in the pale light.",
+        "Let your thoughts find a resting place.",
+        "There is warmth in staying present."
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@ test('publishes truthful WidgText 2.4 product details and privacy disclosure', a
 
   assert.match(html, /34 font families/);
   assert.match(html, /Free · one-time \$9\.99 Pro unlock/);
-  assert.match(html, /<strong>2\.4<\/strong>/);
+  assert.match(html, /<strong>2\.4 · 2\.5 coming soon<\/strong>/);
   assert.match(html, /Firebase Analytics/);
   assert.match(html, /Google AdMob/);
   assert.match(html, /href="\/products\/widgtext\/privacy\/?"/);
@@ -35,7 +35,7 @@ test('publishes a dedicated, complete WidgText privacy policy', async () => {
   assert.match(html, /Help<\/strong>, then <strong>Privacy Choices/);
   assert.match(html, /Contact/);
   assert.match(html, /href="\/#contact"/);
-  assert.match(html, /Last updated: August 31, 2026/);
+  assert.match(html, /Last updated: October 2, 2026/);
   assert.doesNotMatch(html, /Google processes this data as a service provider/);
 });
 

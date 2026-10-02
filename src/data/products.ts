@@ -26,7 +26,7 @@ export const products: Product[] = [
     name: 'WidgText',
     status: 'shipped',
     statusLabel: 'On the App Store',
-    platforms: 'iPhone',
+    platforms: 'iPhone · iPad',
     tagline: 'Your Home Screen, your words.',
     shortDescription:
       'Put your own words on your Home Screen and Lock Screen — quotes, reminders, mantras, inside jokes — styled exactly the way you want.',
@@ -36,11 +36,11 @@ export const products: Product[] = [
     features: [
       {
         title: 'Type anything',
-        body: 'A live-preview editor for your own words — no templates, no accounts, no fuss.'
+        body: 'A live-preview editor for your own words — your words or a ready-to-use theme, without an account.'
       },
       {
         title: 'Style every detail',
-        body: '34 font families with bold and italic, multi-color gradients up to four colors, and six border styles from clean solid to neon.'
+        body: 'Start with free fonts and two-color gradients. Pro adds all 34 font families, gradients up to four colors, and six border styles.'
       },
       {
         title: 'Quote Mode',
@@ -48,7 +48,7 @@ export const products: Product[] = [
       },
       {
         title: 'Eight widget slots',
-        body: 'Run multiple independent widgets, each with its own text, style, and refresh schedule.'
+        body: 'Pro unlocks eight independent widgets, each with its own text, style, and refresh schedule.'
       },
       {
         title: 'Home and Lock Screen',
@@ -61,7 +61,7 @@ export const products: Product[] = [
     ],
     facts: [
       { label: 'Price', value: 'Free · one-time $9.99 Pro unlock' },
-      { label: 'Version', value: '2.4' },
+      { label: 'Version', value: '2.4 · 2.5 coming soon' },
       { label: 'Requires', value: 'iOS 17 or later' },
       { label: 'Privacy', value: 'Analytics and advertising disclosed' }
     ],

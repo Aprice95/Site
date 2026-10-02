@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find a little calm for your Home Screen. Explore WidgText collections of thoughtful words and beautiful text widgets.">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#F5F1E9">
+  <title>Words worth keeping close · WidgText</title>
+  <style>
+    :root {color-scheme:light dark;--paper:#f5f1e9;--ink:#222822;--muted:#60675f;--sage:#3e6555;--card:#fffdf8;--line:#d9ded2;--soft:#e7eadf}
+    * {box-sizing:border-box} body {margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a {color:var(--sage)} a:focus-visible,button:focus-visible {outline:3px solid var(--sage);outline-offset:5px} button,a {touch-action:manipulation}
+    header,main,footer {max-width:1100px;margin:auto;padding:30px 32px} header {display:flex;justify-content:space-between;align-items:center;gap:24px;border-bottom:1px solid var(--line)}
+    .brand {color:var(--ink);font:600 24px Georgia,serif;text-decoration:none;letter-spacing:-.5px} .brand span {color:var(--sage);margin-right:10px} .eyebrow {font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);font-weight:700}
+    .hero {display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:45px 0 60px} h1 {font:normal clamp(38px,5vw,58px)/1.08 Georgia,serif;letter-spacing:-1.8px;margin:14px 0 22px} h2 {font:normal 30px/1.25 Georgia,serif;margin:0 0 12px} h3 {font:600 19px/1.3 Georgia,serif;margin:0}
+    p {margin:0 0 18px}.intro {font-size:18px;color:var(--muted);max-width:450px}.actions {display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 14px}.button {display:inline-flex;justify-content:center;align-items:center;text-decoration:none;border-radius:12px;padding:13px 20px;font-weight:650;min-height:48px;background:var(--sage);color:white;border:1px solid var(--sage)}.button.secondary {background:transparent;color:var(--sage)}
+    .note {font-size:13px;color:var(--muted)} .preview-shell {background:var(--soft);padding:36px;border-radius:32px;box-shadow:0 16px 40px #203c2410;transform:rotate(-2deg)}
+    .widget {aspect-ratio:2/1;border-radius:22px;display:flex;align-items:center;justify-content:center;padding:22px;background:linear-gradient(135deg,#1d2825,#547264);color:#fcf7ed;font:600 25px/1.25 Georgia,serif;overflow:hidden;text-align:center;white-space:pre-wrap;overflow-wrap:anywhere}
+    .preview-caption {margin-top:22px;text-align:center;color:var(--muted);font-size:13px}.badge {display:inline-flex;padding:3px 9px;border-radius:8px;background:var(--soft);color:var(--sage);font:650 11px/1.6 -apple-system,sans-serif;letter-spacing:.3px}.badge.pro {background:#fbebe2;color:#8e361a}.badge.reward {background:#e8e3f0;color:#594774}
+    .section-head {display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:18px 0 24px}.section-head p {color:var(--muted);font-size:14px}.themes {display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.theme {appearance:none;width:100%;text-align:left;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--ink);padding:14px;cursor:pointer;transition:transform .15s,border-color .15s;display:block}.theme:hover {transform:translateY(-3px)}.theme[aria-pressed="true"] {border:2px solid var(--sage);padding:13px}.theme .widget {border-radius:14px;font-size:18px;padding:18px}.theme-meta {display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 3px 8px}.theme p {font-size:13px;color:var(--muted);margin:0 3px 5px}.archive {display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 34px}.archive a {border:1px solid var(--line);padding:8px 14px;border-radius:30px;text-decoration:none}.guide {background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;margin-top:42px}.guide h2 {font-size:24px}.guide ol {margin:16px 0;padding-left:22px}.guide li {padding:5px 0;color:var(--muted)}#status {padding:10px 0;color:var(--muted)}[hidden] {display:none!important}footer {border-top:1px solid var(--line);color:var(--muted);display:flex;justify-content:space-between;gap:20px;font-size:13px;margin-top:40px}footer a {margin-left:16px}
+    @media(max-width:760px) {header,main,footer {padding:22px}.hero {grid-template-columns:1fr;gap:30px;padding:30px 0 40px}.preview-shell {max-width:480px;width:100%;margin:auto;padding:24px}.themes {grid-template-columns:repeat(2,1fr);gap:14px}.section-head {display:block}.widget {font-size:23px}.theme-meta {align-items:start;flex-direction:column;gap:8px}.guide {padding:22px}footer {flex-wrap:wrap}}
+    @media(max-width:430px) {.themes {grid-template-columns:1fr}.theme-meta {flex-direction:row;align-items:center}.theme .widget {font-size:24px}.actions .button {flex:1}}
+    @media(prefers-color-scheme:dark) {:root {--paper:#191d19;--ink:#f7f4ea;--muted:#b6c0b2;--sage:#a6c7b0;--card:#232923;--line:#414b40;--soft:#303b31}.button {color:#19291f}.preview-shell {box-shadow:none}.badge.pro {background:#4e3027;color:#ffc5a3}.badge.reward {background:#3d3548;color:#dac6f1}}
+    @media(prefers-reduced-motion:reduce) {.theme {transition:none}.theme:hover {transform:none}}
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="/products/widgtext/"><span aria-hidden="true">❧</span>WidgText</a><span class="note">A little calm for your Home Screen.</span></header>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div><span class="eyebrow">A WidgText collection</span><h1 id="title">Words worth<br>keeping close.</h1><p class="intro" id="subtitle">Thoughtful messages. Beautiful little widgets. Find a look that feels like you.</p>
+        <div class="actions"><a class="button" id="app-store" href="https://apps.apple.com/app/id6762033066?ct=widget-share">Get WidgText</a><a class="button secondary" id="open-app" hidden>Open in WidgText</a></div>
+        <p class="note" id="access-note">Free to start. Pro is a one-time purchase in the app.</p>
+      </div>
+      <div class="preview-shell"><div id="featured-preview" class="widget" aria-label="Widget preview">Make room for a softer moment.</div><div class="preview-caption" id="featured-caption">Your words, beautifully at home.</div></div>
+    </section>
+    <p id="status" role="status" aria-live="polite">Loading collections…</p>
+    <section id="collection-content" hidden aria-labelledby="themes-title"><div class="section-head"><h2 id="themes-title">Find your favorite feeling.</h2><p>Choose a look to preview it.</p></div><div id="themes" class="themes"></div></section>
+    <section id="archive-section" hidden aria-labelledby="archive-title"><div class="section-head"><h2 id="archive-title">More words to come home to.</h2></div><div class="archive" id="archive"></div></section>
+    <section class="guide" aria-labelledby="guide-title"><h2 id="guide-title">Keep this look close.</h2><ol><li>Install WidgText from the App Store.</li><li>Come back and reopen this link, then choose <strong>Open in WidgText</strong>.</li><li>Preview the look in the app, apply it when you’re ready, and save your widget.</li></ol><p class="note">Free looks are available to everyone. Earn looks require one optional rewarded ad in the app. Pro looks require the existing one-time Pro purchase. Opening a link does not unlock a look or replace your current widget.</p><p class="note">This web preview uses fonts available on your device. The app shows the final native appearance.</p></section>
+    <noscript><p>JavaScript is needed to display this collection preview. You can still get WidgText from the App Store using the button above.</p></noscript>
+  </main>
+  <footer><span>WidgText · Made for the words that matter.</span><span><a href="/products/widgtext/privacy/">Privacy</a><a href="/products/widgtext/">About WidgText</a></span></footer>
+  <script id="collection-app">
+  'use strict';
+  const appStoreURL = 'https://apps.apple.com/app/id6762033066?ct=widget-share';
+  const idPattern = /^[a-z0-9][a-z0-9-]{0,63}$/;
+  const fontNames = ['SF Pro','Arial','Arial Rounded MT Bold','Gill Sans','Helvetica','Helvetica Neue','Trebuchet MS','Verdana','Futura','Avenir','Avenir Next','Avenir Next Condensed','Optima','Georgia','Times New Roman','Palatino','American Typewriter','Bodoni 72','Bodoni 72 Oldstyle','Bodoni 72 Smallcaps','Charter','Iowan Old Style','Courier New','Courier','Menlo','Copperplate','Rockwell','Snell Roundhand','Marker Felt','Chalkboard SE','Chalkduster','Papyrus','Noteworthy','Bradley Hand'];
+  function requireValue(condition) { if (!condition) throw new Error('Unsupported collection data'); }
+  function parseRoute(query) {
+    requireValue(query.length <= 1024);
+    const params = new URLSearchParams(query);
+    if ([...params].length === 0) return null;
+    const keys = [...params.keys()];
+    requireValue(keys.length === new Set(keys).size && keys.every(k => ['collection','theme'].includes(k)));
+    const collectionID = params.get('collection'), themeID = params.get('theme');
+    requireValue(idPattern.test(collectionID || '') && (themeID === null || idPattern.test(themeID)));
+    return {collectionID,themeID};
+  }
+  function validDate(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+    const date = new Date(value + 'T12:00:00Z');
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10) === value && value >= '2000-01-01' && value <= '2100-12-31';
+  }
+  function releasedOn(releaseDate, localDay) { return releaseDate <= localDay; }
+  function validateCatalog(data) {
+    requireValue(data && data.schemaVersion === 1 && Number.isSafeInteger(data.revision) && data.revision >= 1);
+    requireValue(Array.isArray(data.collections) && data.collections.length > 0 && data.collections.length <= 100);
+    const collectionIDs = new Set(), themeIDs = new Set();
+    const short = (v,max) => typeof v === 'string' && v.trim().length > 0 && [...v].length <= max && !/[\u0000-\u001f\u007f-\u009f]/.test(v);
+    const color = v => typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v);
+    for (const c of data.collections) {
+      requireValue(short(c.id,64) && idPattern.test(c.id) && !collectionIDs.has(c.id)); collectionIDs.add(c.id);
+      requireValue(short(c.name,64) && short(c.subtitle,120) && validDate(c.releaseDate));
+      requireValue(Array.isArray(c.themes) && c.themes.length > 0 && c.themes.length <= 24 && Array.isArray(c.quotes) && c.quotes.length > 0 && c.quotes.length <= 100 && c.quotes.every(q => short(q,90)));
+      for (const t of c.themes) {
+        const p = t.preset;
+        requireValue(p && idPattern.test(p.id || '') && !themeIDs.has(p.id)); themeIDs.add(p.id);
+        requireValue(['free','reward','pro'].includes(t.access) && p.isPro === (t.access === 'pro'));
+        requireValue(short(p.name,64) && short(p.subtitle,120) && short(p.sampleQuote,90));
+        requireValue(Array.isArray(p.gradientHexColors) && p.gradientHexColors.length >= 2 && p.gradientHexColors.length <= 4 && p.gradientHexColors.every(color) && color(p.textHexColor) && color(p.borderHexColor));
+        requireValue(fontNames.includes(p.fontFamily) && Number.isFinite(p.textPointSize) && p.textPointSize >= 14 && p.textPointSize <= 56 && Number.isFinite(p.borderWidth) && p.borderWidth >= 1 && p.borderWidth <= 10);
+        requireValue(['solid','diagonal','horizontal','vertical','radial'].includes(p.gradientDirection) && ['leading','center','trailing'].includes(p.textAlignment) && ['solid','dashed','dotted','double','torn','neon'].includes(p.borderStyle));
+        requireValue(['isBold','isItalic','hasShadow','hasBorder','isPro'].every(k => typeof p[k] === 'boolean'));
+        const freeFeatures = ['SF Pro','Georgia','Courier New','Noteworthy','Futura'].includes(p.fontFamily) && p.gradientDirection !== 'radial' && p.borderStyle === 'solid' && p.gradientHexColors.length === 2;
+        requireValue(t.access === 'pro' ? !freeFeatures : freeFeatures);
+      }
+    }
+    return data;
+  }
+  function previewStyle(p) {
+    const colors = p.gradientHexColors.join(',');
+    const angle = {diagonal:'135deg',horizontal:'90deg',vertical:'180deg'}[p.gradientDirection] || '135deg';
+    const border = p.hasBorder ? `${p.borderWidth}px ${['dashed','dotted','double'].includes(p.borderStyle) ? p.borderStyle : 'solid'} ${p.borderHexColor}` : 'none';
+    return {background:p.gradientDirection === 'solid' ? p.gradientHexColors[0] : p.gradientDirection === 'radial' ? `radial-gradient(circle,${colors})` : `linear-gradient(${angle},${colors})`,color:p.textHexColor,fontFamily:p.fontFamily === 'SF Pro' ? '-apple-system, sans-serif' : `"${p.fontFamily}", serif`,fontWeight:p.isBold ? '700':'400',fontStyle:p.isItalic ? 'italic':'normal',textAlign:{leading:'left',center:'center',trailing:'right'}[p.textAlignment],justifyContent:{leading:'flex-start',center:'center',trailing:'flex-end'}[p.textAlignment],border,textShadow:p.hasShadow ? '1px 2px 4px #0008':'none',boxShadow:p.hasBorder && p.borderStyle === 'neon' ? `0 0 12px ${p.borderHexColor}` : 'none'};
+  }
+  function localDay() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+  async function main() {
+    const byID = id => document.getElementById(id);
+    const text = (id,value) => { byID(id).textContent = value; };
+    const paint = (node,p,large) => { node.textContent = p.sampleQuote; Object.assign(node.style,previewStyle(p)); node.style.fontSize = Math.min(large ? 34 : 24, p.textPointSize) + 'px'; };
+    try {
+      const route = parseRoute(location.search);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(),10000);
+      let response;
+      try { response = await fetch('./catalog-v1.json', {credentials:'omit',signal:controller.signal}); }
+      finally { clearTimeout(timeout); }
+      if (!response.ok) throw new Error('Catalog unavailable');
+      if (Number(response.headers.get('content-length')) > 524288) throw new Error('Catalog too large');
+      const body = await response.text(); if (new TextEncoder().encode(body).length > 524288) throw new Error('Catalog too large');
+      const catalog = validateCatalog(JSON.parse(body));
+      const released = catalog.collections.filter(c => releasedOn(c.releaseDate,localDay())).sort((a,b) => b.releaseDate.localeCompare(a.releaseDate));
+      const collection = route ? catalog.collections.find(c => c.id === route.collectionID) : released[0];
+      if (!collection) { text('status','This collection link is unavailable. Explore WidgText in the app.'); return; }
+      text('title',collection.name); text('subtitle',collection.subtitle); document.title = collection.name + ' · WidgText';
+      if (!released.includes(collection)) { text('status',`This collection arrives ${collection.releaseDate}. Reopen this link on release day.`); return; }
+      const selected = route?.themeID ? collection.themes.find(t => t.preset.id === route.themeID) : collection.themes[0];
+      if (!selected) { text('status','This preset link is unavailable. Explore the collection in WidgText.'); return; }
+      const buttons = [];
+      const choose = theme => {
+        paint(byID('featured-preview'),theme.preset,true); text('featured-caption',theme.preset.name + ' · ' + ({free:'Free',reward:'Earn with one optional ad',pro:'Pro'}[theme.access]));
+        text('access-note',({free:'Free to use in WidgText.',reward:'Earn this look with one optional rewarded ad in the app.',pro:'This look requires WidgText Pro, a one-time purchase.'}[theme.access]));
+        byID('open-app').href = `widgtext://collection/${collection.id}?theme=${theme.preset.id}`; byID('open-app').hidden = false;
+        for (const b of buttons) b.node.setAttribute('aria-pressed',String(b.theme === theme));
+      };
+      for (const theme of collection.themes) {
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'theme'; button.setAttribute('aria-label',`${theme.preset.name}, ${theme.access === 'reward' ? 'Earn with optional ad' : theme.access}`);
+        const preview = document.createElement('div'); preview.className = 'widget'; paint(preview,theme.preset,false); preview.setAttribute('aria-hidden','true');
+        const meta = document.createElement('div'); meta.className = 'theme-meta'; const name = document.createElement('h3'); name.textContent = theme.preset.name;
+        const badge = document.createElement('span'); badge.className = 'badge ' + theme.access; badge.textContent = {free:'FREE',reward:'EARN',pro:'PRO'}[theme.access]; meta.append(name,badge);
+        const detail = document.createElement('p'); detail.textContent = theme.preset.subtitle;
+        button.append(preview,meta,detail); button.addEventListener('click',() => choose(theme)); byID('themes').append(button); buttons.push({node:button,theme});
+      }
+      choose(selected); byID('collection-content').hidden = false; byID('status').hidden = true;
+      for (const c of released) { const link = document.createElement('a'); link.href = '?collection=' + c.id; link.textContent = c.name; byID('archive').append(link); }
+      byID('archive-section').hidden = released.length < 2;
+    } catch (_) { text('status','This preview is unavailable right now. You can still get WidgText, then reopen this link later.'); }
+  }
+  if (typeof module !== 'undefined') module.exports = {parseRoute,validateCatalog,releasedOn,previewStyle,appStoreURL};
+  if (typeof document !== 'undefined') main();
+  </script>
+</body>
+</html>
